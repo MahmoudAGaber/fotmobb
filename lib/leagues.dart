@@ -31,7 +31,6 @@ class _LeaguesState extends State<Leagues> with SingleTickerProviderStateMixin{
         title: Padding(
           padding: const EdgeInsets.only(right: 10),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
           Text("الدوريات",)
           ],

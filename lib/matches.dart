@@ -99,7 +99,7 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
       appBar: AppBar(
         actions: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(right: 8),
+            padding: const EdgeInsets.only(right: 10),
             child: Row(
               children: <Widget>[
                 Icon(

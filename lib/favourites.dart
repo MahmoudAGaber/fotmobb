@@ -27,17 +27,18 @@ class _FavouritesState extends State<Favourites> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     return Scaffold(
         appBar:AppBar(
-          leading:Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Icon(Icons.add),
-              SizedBox(width: 8,),
-              Icon(Icons.edit),
-            ],
-          ),
+          actions: <Widget>[
+            Row(
+              children: <Widget>[
+                Icon(Icons.edit),
+                SizedBox(width: 15,),
+                Icon(Icons.add),
+                SizedBox(width: 8,)
+              ],
+            )
+          ],
           backgroundColor: Theme.of(context).primaryColor,
           title: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
              children: <Widget>[
                Text("المفضل")
              ],
@@ -50,21 +51,22 @@ class _FavouritesState extends State<Favourites> with SingleTickerProviderStateM
             labelPadding: EdgeInsets.only(right: 50),
             tabs:<Widget>[
 
-               Padding(
-                 padding: const EdgeInsets.only(left: 150),
-                 child: Tab(   child: Text("الفرق",style: tapbar,),
-                 ),
-               ),
+
+              Tab(   child: Text("الفرق",style: tapbar,),
+              ),
               Tab(
                 child: Text("اللاعبين",style: tapbar,),
               ),
-              Tab(
-                child: Text("الدوريات",style: tapbar,),),
+              Padding(
+                padding: const EdgeInsets.only(right: 100),
+                child: Tab(
+                  child: Text("الدوريات",style: tapbar,),),
+              ),
             ],
 
           ),
         ),
-        endDrawer: Drawer(
+        drawer: Drawer(
           child: Column(
             children: <Widget>[
               Container(

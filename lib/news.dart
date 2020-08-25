@@ -35,33 +35,38 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:Row(mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[Text("الاخبار")],),
+        title:Padding(
+          padding: const EdgeInsets.only(right: 15),
+          child: Row(
+            children: <Widget>[Text("الاخبار")],),
+        ),
         bottom: TabBar(
           isScrollable: true,
           controller: tabController,
           labelColor: Colors.white,
           indicatorColor: Colors.yellow[500],
           tabs: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(left: 60),
-              child: Tab(
-                child: Text("الدوريات",style: tapbar,),
-              ),
-            ),
             Tab(
-              child: Text("الانتقالات",style: tapbar,),
-            ),
+              child: Text("لك",style: tapbar,),
+              ),
             Tab(
               child: Text("الاحدث",style: tapbar,),
             ),
-             Tab(
-              child: Text("لك",style: tapbar,),
+            Tab(
+              child: Text("الانتقالات",style: tapbar,),
+
             ),
+             Padding(
+               padding: const EdgeInsets.only(right: 100),
+               child: Tab(
+
+                 child: Text("الدوريات",style: tapbar,),
+            ),
+             ),
           ],
         ),
       ),
-      endDrawer: Drawer(
+      drawer: Drawer(
         child: Column(
           children: <Widget>[
             Container(
@@ -172,95 +177,6 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
       body: TabBarView(
         controller: tabController,
         children: [
-
-
-
-          new Scaffold(),
-          new Scaffold(),
-          new Scaffold(
-            body: ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: trend.length,
-                itemBuilder: (BuildContext context, index) {
-                  return Column(
-                    children: <Widget>[
-                      Container(
-                        child: Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: new Card(
-                                semanticContainer: true,
-                                elevation: 0.0,
-                                child: new Column(
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        Padding(
-                                          padding:
-                                          const EdgeInsets.only(left: 4.0),
-                                          child: Container(
-                                            width: 357,
-                                            height: 200,
-                                            child: new ClipRRect(
-                                              child: Image.asset(
-                                                trend[index].imageUrl,
-                                                fit: BoxFit.fill,
-                                              ),
-                                              borderRadius:
-                                              BorderRadius.circular(16.0),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10.0,
-                                    ),
-                                    Text(
-                                      trend[index].text,
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 12),
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.end,
-                                        children: <Widget>[
-
-                                          Text(
-                                            "  منذ 6 دقائق",
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.grey),
-                                          ),
-                                          Text(
-                                            "  FotMob",
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.grey),
-                                          ),
-                                          Icon(
-                                            MdiIcons.soccer,
-                                            size: 15.0,
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  );
-                }),
-          ),
           new ListView(
             children: <Widget>[
               Column(
@@ -561,6 +477,104 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
             ],
 
           ),
+          new Scaffold(
+            body: ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: trend.length,
+                itemBuilder: (BuildContext context, index) {
+                  return Column(
+                    children: <Widget>[
+                      Container(
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new Card(
+                                semanticContainer: true,
+                                elevation: 0.0,
+                                child: new Column(
+                                  children: <Widget>[
+                                    Row(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding:
+                                          const EdgeInsets.only(left: 4.0),
+                                          child: Container(
+                                            width: 357,
+                                            height: 200,
+                                            child: new ClipRRect(
+                                              child: Image.asset(
+                                                trend[index].imageUrl,
+                                                fit: BoxFit.fill,
+                                              ),
+                                              borderRadius:
+                                              BorderRadius.circular(16.0),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10.0,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 20),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: <Widget>[
+                                           Expanded(
+                                             child: Text(
+                                              trend[index].text,
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w500),
+                                          ),
+                                           ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 12),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: <Widget>[
+
+                                          Text(
+                                            "  منذ 6 دقائق",
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.grey),
+                                          ),
+                                          Text(
+                                            "  FotMob",
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.grey),
+                                          ),
+                                          Icon(
+                                            MdiIcons.soccer,
+                                            size: 15.0,
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  );
+                }),
+          ),
+          new Scaffold(),
+          new Scaffold(),
+
+
         ],
       ),
     );
