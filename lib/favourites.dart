@@ -10,6 +10,8 @@ class Favourites extends StatefulWidget {
 class _FavouritesState extends State<Favourites> with SingleTickerProviderStateMixin{
   TabController tabController;
 
+  static const TextStyle tapbar =
+  TextStyle(fontSize: 17, fontWeight: FontWeight.w500);
   @override
   void initState() {
     super.initState();
@@ -25,20 +27,21 @@ class _FavouritesState extends State<Favourites> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     return Scaffold(
         appBar:AppBar(
-          actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: Row(
-                children: <Widget>[
-                  Icon(Icons.edit),
-                  SizedBox(width: 15,),
-                  Icon(Icons.add)
-                ],
-              ),
-            )
-          ],
+          leading:Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Icon(Icons.add),
+              SizedBox(width: 8,),
+              Icon(Icons.edit),
+            ],
+          ),
           backgroundColor: Theme.of(context).primaryColor,
-          title: Text("Favourites"),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+             children: <Widget>[
+               Text("المفضل")
+             ],
+          ),
           bottom:TabBar(
             isScrollable: true,
             controller: tabController,
@@ -47,15 +50,21 @@ class _FavouritesState extends State<Favourites> with SingleTickerProviderStateM
             labelPadding: EdgeInsets.only(right: 50),
             tabs:<Widget>[
 
-               Tab(text: "TEAMS",),
-                Tab(text: "PLAYER",),
-              Tab(text: "LEAGUES",),
-
+               Padding(
+                 padding: const EdgeInsets.only(left: 150),
+                 child: Tab(   child: Text("الفرق",style: tapbar,),
+                 ),
+               ),
+              Tab(
+                child: Text("اللاعبين",style: tapbar,),
+              ),
+              Tab(
+                child: Text("الدوريات",style: tapbar,),),
             ],
 
           ),
         ),
-        drawer: Drawer(
+        endDrawer: Drawer(
           child: Column(
             children: <Widget>[
               Container(
@@ -72,7 +81,7 @@ class _FavouritesState extends State<Favourites> with SingleTickerProviderStateM
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 50.0,left: 26.0),
-                      child: Text("Usre Name",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
+                      child: Text("اسم المستخدم",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                     )
                   ],),
               ),
@@ -80,7 +89,7 @@ class _FavouritesState extends State<Favourites> with SingleTickerProviderStateM
                 leading: IconButton(icon: Icon(Icons.tv),iconSize: 25.0,
                     onPressed: null),
                 title: Text(
-                  "Tv schedules",
+                  "الجدول التلفزيوني",
                   style: TextStyle(
                       fontSize: 14,color:  Colors.black,fontWeight: FontWeight.w400),
                 ),
@@ -89,50 +98,66 @@ class _FavouritesState extends State<Favourites> with SingleTickerProviderStateM
                 leading: IconButton(icon: Icon(Icons.loop),iconSize: 25.0,
                     onPressed: null),
                 title: Text(
-                  "Transfer Centre",
+                  "الانتقالات",
                   style: TextStyle(
                       fontSize: 14,color:  Colors.black,fontWeight: FontWeight.w400),
                 ),
               ),
-              SizedBox(height: 400  ,),
+
               Divider(height: 2,),
-              ListTile(
-                leading: IconButton(icon: Icon(Icons.attach_money),iconSize: 25.0,
-                    onPressed: null),
-                title: Text(
-                  "Remove ads",
-                  style: TextStyle(
-                      fontSize: 14,color:  Colors.black,fontWeight: FontWeight.w400),
-                ),
+              Expanded(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      ListTile(
+                        leading: IconButton(
+                            icon: Icon(Icons.attach_money),
+                            iconSize: 25.0,
+                            onPressed: null),
+                        title: Text(
+                          "ازالة الاعلانات",
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ),
+                      ListTile(
+                        leading: IconButton(
+                            icon: Icon(Icons.brightness_4),
+                            iconSize: 25.0,
+                            onPressed: null),
+                        title: Text(
+                          "الوضع الليلي",
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        trailing: Switch(
+                            value: isSwitched,
+                            onChanged: (value) {
+                              setState(() {
+                                isSwitched = value;
+                              });
+                            }),
+                      ),
+                      ListTile(
+                        leading: IconButton(
+                            icon: Icon(Icons.settings),
+                            iconSize: 25.0,
+                            onPressed: null),
+                        title: Text(
+                          "الاعدادات",
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ),
+                    ]),
               ),
-
-              ListTile(
-                leading:
-                IconButton(icon: Icon(Icons.brightness_4),iconSize: 25.0,
-                    onPressed: null),
-                title:Text("Dark mode",
-                  style: TextStyle(
-                      fontSize: 14,color:  Colors.black,fontWeight: FontWeight.w400),
-                ),
-                trailing: Switch(value: isSwitched, onChanged: (value){
-                  setState(() {
-                    isSwitched=value;
-                  });
-                }),
-
-              ),
-
-              ListTile(
-                leading: IconButton(icon: Icon(Icons.settings),iconSize: 25.0,
-                    onPressed: null),
-                title: Text(
-                  "Settings",
-                  style: TextStyle(
-                      fontSize: 14,color:  Colors.black,fontWeight: FontWeight.w400),
-                ),
-
-              ),
-
 
             ],
           ),

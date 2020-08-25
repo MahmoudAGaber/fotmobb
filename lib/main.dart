@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:fotmobb/matchInfo.dart';
 import 'package:fotmobb/matches.dart';
 import 'package:fotmobb/news.dart';
 import 'package:fotmobb/leagues.dart';
@@ -15,15 +16,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: ' FotMob',
+      title: ' EPLWORLD',
       theme: ThemeData(
         primarySwatch: Colors.grey,
-        primaryColor: Color.fromRGBO(0, 152, 95, 1.0)
+        primaryColor: Color.fromRGBO(95, 31, 117, 1.0)
 
       ),
       home: MyHomePage(title: 'FotMob'),
         routes: <String, WidgetBuilder>{
-          "/matches": (BuildContext context) => new matches(),
+          "/matchInfo": (BuildContext context) => new matchInfo(),
 
         }
     );
@@ -59,7 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
     matches(),
     news(),
     Leagues(),
-    Favourites()
+    Favourites(),
+
   ];
 
   @override
@@ -76,44 +78,49 @@ class _MyHomePageState extends State<MyHomePage> {
           showUnselectedLabels: true,
           onTap: _onItemTapped,
           items: [
+
             BottomNavigationBarItem(
                 icon:new Icon(MdiIcons.soccerField,
-                    color: _selectedIndex == 0 ? Color.fromRGBO(0, 152, 95, 1.0) : Colors.grey),
-                title:new Text("Matches",
+                    color: _selectedIndex == 0 ? Color.fromRGBO(95, 31, 117, 1.0) : Colors.grey),
+                title:new Text("المباريات",
                   style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      color: _selectedIndex == 0 ? Color.fromRGBO(0, 152, 95, 1.0) : Colors.grey),)
+                      color: _selectedIndex == 0 ? Color.fromRGBO(95, 31, 117, 1.0) : Colors.grey),)
             ),
 
             BottomNavigationBarItem(
                 icon:new Icon(MdiIcons.newspaperVariant,
-                  color: _selectedIndex == 1 ? Color.fromRGBO(0, 152, 95, 1.0) : Colors.grey
+                    color: _selectedIndex == 1 ? Color.fromRGBO(95, 31, 117, 1.0) : Colors.grey
                 ),
-                title:new Text("News",
+                title:new Text("الاخبار",
                   style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      color: _selectedIndex == 1 ? Color.fromRGBO(0, 152, 95, 1.0) : Colors.grey),)
+                      color: _selectedIndex == 1 ? Color.fromRGBO(95, 31, 117, 1.0) : Colors.grey),)
             ),
 
             BottomNavigationBarItem(
                 icon: new Icon(MdiIcons.trophy,
-                    color: _selectedIndex == 2 ? Color.fromRGBO(0, 152, 95, 1.0): Colors.grey
+                    color: _selectedIndex == 2 ? Color.fromRGBO(95, 31, 117, 1.0): Colors.grey
                 ),
-                title:new Text("Leagues",
+                title:new Text("الدوريات",
                   style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      color: _selectedIndex == 2 ? Color.fromRGBO(0, 152, 95, 1.0) : Colors.grey),)
+                      color: _selectedIndex == 2 ? Color.fromRGBO(95, 31, 117, 1.0): Colors.grey),)
             ),
 
             BottomNavigationBarItem(
                 icon:Icon(Icons.star,
-                    color: _selectedIndex == 3 ? Color.fromRGBO(0, 152, 95, 1.0) : Colors.grey
+                    color: _selectedIndex == 3 ? Color.fromRGBO(95, 31, 117, 1.0) : Colors.grey
                 ),
-                title:Text("Favourites",
+                title:Text("المفضل",
                   style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      color: _selectedIndex == 3 ? Color.fromRGBO(0, 152, 95, 1.0) : Colors.grey),)
+                      color: _selectedIndex == 3 ? Color.fromRGBO(95, 31, 117, 1.0) : Colors.grey),)
             ),
+
+
+
+
           ],
 
 
@@ -135,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 50.0,left: 26.0),
-                  child: Text("Usre Name",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
+                  child: Text("اسم المستخدم",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                 )
               ],),
             ),
@@ -143,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
               leading: IconButton(icon: Icon(Icons.tv),iconSize: 25.0,
                   onPressed: null),
               title: Text(
-                "Tv schedules",
+                "الجدول التلفزيوني",
                 style: TextStyle(
                   fontSize: 14,color:  Colors.black,fontWeight: FontWeight.w400),
               ),
@@ -152,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
               leading: IconButton(icon: Icon(Icons.loop),iconSize: 25.0,
                   onPressed: null),
               title: Text(
-                "Transfer Centre",
+                "الانتقالات",
                 style: TextStyle(
                   fontSize: 14,color:  Colors.black,fontWeight: FontWeight.w400),
               ),
@@ -163,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
               leading: IconButton(icon: Icon(Icons.attach_money),iconSize: 25.0,
                   onPressed: null),
               title: Text(
-                "Remove ads",
+                "ازالة الاعلانات",
                 style: TextStyle(
                   fontSize: 14,color:  Colors.black,fontWeight: FontWeight.w400),
               ),
@@ -173,7 +180,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   leading:
                     IconButton(icon: Icon(Icons.brightness_4),iconSize: 25.0,
                         onPressed: null),
-                  title:Text("Dark mode",
+                  title:Text("الوضع الليلي",
                       style: TextStyle(
                           fontSize: 14,color:  Colors.black,fontWeight: FontWeight.w400),
                     ),
@@ -189,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
               leading: IconButton(icon: Icon(Icons.settings),iconSize: 25.0,
                   onPressed: null),
               title: Text(
-                "Settings",
+                "الاعدادات",
                 style: TextStyle(
                   fontSize: 14,color:  Colors.black,fontWeight: FontWeight.w400),
               ),

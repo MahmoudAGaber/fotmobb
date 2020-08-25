@@ -28,91 +28,18 @@ class _LeaguesState extends State<Leagues> with SingleTickerProviderStateMixin{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Leagues"),
-      ),
-        drawer: Drawer(
-          child: Column(
+        title: Padding(
+          padding: const EdgeInsets.only(right: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Container(
-                height: 110.0,
-                color: Theme.of(context).primaryColor,
-                child: Row(mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50.0,left: 28.0),
-                      child: CircleAvatar(
-                        radius: 13.0,
-                        backgroundImage: null,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50.0,left: 26.0),
-                      child: Text("Usre Name",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
-                    )
-                  ],),
-              ),
-              ListTile(
-                leading: IconButton(icon: Icon(Icons.tv),iconSize: 25.0,
-                    onPressed: null),
-                title: Text(
-                  "Tv schedules",
-                  style: TextStyle(
-                      fontSize: 14,color:  Colors.black,fontWeight: FontWeight.w400),
-                ),
-              ),
-              ListTile(
-                leading: IconButton(icon: Icon(Icons.loop),iconSize: 25.0,
-                    onPressed: null),
-                title: Text(
-                  "Transfer Centre",
-                  style: TextStyle(
-                      fontSize: 14,color:  Colors.black,fontWeight: FontWeight.w400),
-                ),
-              ),
-              SizedBox(height: 400  ,),
-              Divider(height: 2,),
-              ListTile(
-                leading: IconButton(icon: Icon(Icons.attach_money),iconSize: 25.0,
-                    onPressed: null),
-                title: Text(
-                  "Remove ads",
-                  style: TextStyle(
-                      fontSize: 14,color:  Colors.black,fontWeight: FontWeight.w400),
-                ),
-              ),
-
-              ListTile(
-                leading:
-                IconButton(icon: Icon(Icons.brightness_4),iconSize: 25.0,
-                    onPressed: null),
-                title:Text("Dark mode",
-                  style: TextStyle(
-                      fontSize: 14,color:  Colors.black,fontWeight: FontWeight.w400),
-                ),
-                trailing: Switch(value: isSwitched, onChanged: (value){
-                  setState(() {
-                    isSwitched=value;
-                  });
-                }),
-
-              ),
-
-              ListTile(
-                leading: IconButton(icon: Icon(Icons.settings),iconSize: 25.0,
-                    onPressed: null),
-                title: Text(
-                  "Settings",
-                  style: TextStyle(
-                      fontSize: 14,color:  Colors.black,fontWeight: FontWeight.w400),
-                ),
-
-              ),
-
-
-            ],
+          Text("الدوريات",)
+          ],
           ),
+        )
 
-        ),
+      ),
+
       body:
         GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -133,19 +60,20 @@ class _LeaguesState extends State<Leagues> with SingleTickerProviderStateMixin{
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(6),
                         ),),
                         child: Row(children: <Widget>[
-                          SizedBox(width: 15,),
-                          Icon(Icons.search,color: Colors.grey[600],),
+                          SizedBox(width: 240,),
                           SizedBox(width: 10,),
                           Expanded(
                             child: TextField(
+                              textDirection: TextDirection.rtl,
                               obscureText: true,
                               textCapitalization: TextCapitalization.sentences,
                               decoration: InputDecoration.collapsed(
-
-                                hintText: "Find Leagues",hintStyle: TextStyle(fontSize: 15)
+                                hintText: "ابحث عن الدوري",hintStyle: TextStyle(fontSize: 15),
                               ),
                             ),
-                          )
+
+                          ),
+                          Icon(Icons.search,color: Colors.grey[600],),
 
                         ],),
                       ),
@@ -180,57 +108,58 @@ class MyTile{
 }
 
 List<MyTile> listOfTiles =<MyTile>[
-  new MyTile('Favourites',
+  new MyTile('المفضل',
 <MyTile>[
-  new MyTile("LaLiga"),
-  new MyTile("Premier League")
+  new MyTile("الدوري الاسباني"),
+  new MyTile(" الدوري الانجليزي")
 
 ]
   ),
-  new MyTile('Suggested',
+  new MyTile('المقترح',
 <MyTile>[
 
-  new MyTile("Premier League"),
-  new MyTile("Champions League Legue"),
-  new MyTile("World Cup"),
-  new MyTile("Serie A"),
-  new MyTile("Europa League"),
+  new MyTile("الدوري الانجليزي"),
+  new MyTile("دوري ابطال اوروبا"),
+  new MyTile("كاس العالم"),
+  new MyTile("الدوري الايطالي "),
+  new MyTile("الدوري الاوربي "),
 
 ]
   ),
-  new MyTile('Rest of the world',
+  new MyTile('دوربات العالم',
 <MyTile>[
 ]
   ),
-  new MyTile('Egypt',
+  new MyTile('مصر',
       <MyTile>[
-        new MyTile("LaLiga"),
-        new MyTile("Premier League")
+        new MyTile("الدوري المصري الممتاز "),
+        new MyTile("الدوري المصري درجه تانيه")
       ]
   ),
-  new MyTile('International-National teams',
+  new MyTile('الفرق العالميه',
       <MyTile>[
-        new MyTile("LaLiga"),
-        new MyTile("Premier League")
+        new MyTile("برشلونه"),
+        new MyTile("ربال مدريد")
       ]
 
   ),
-  new MyTile('Alegeria',
+  new MyTile('الجزائر',
       <MyTile>[
-        new MyTile("LaLiga"),
-        new MyTile("Premier League")
+
+        new MyTile("الدوري الممتاز"),
+        new MyTile("الدرجه التانيه")
       ]
   ),
-  new MyTile('Austrlia',
+  new MyTile('استراليا',
       <MyTile>[
-        new MyTile("LaLiga"),
-        new MyTile("Premier League")
+        new MyTile("الدوري الممتاز"),
+        new MyTile("الدرجه التانيه")
       ]
   ),
-  new MyTile('Argentina',
+  new MyTile('الارجنتين',
       <MyTile>[
-        new MyTile("LaLiga"),
-        new MyTile("Premier League")
+        new MyTile("الدوري الدرجه الاولي "),
+        new MyTile("الدرجه الثانيه")
       ]
   ),
 

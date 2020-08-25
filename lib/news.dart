@@ -13,10 +13,16 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
   TabController tabController;
   bool isSwitched = false;
 
+
+  static const TextStyle tapbar =
+  TextStyle(fontSize: 17, fontWeight: FontWeight.w500);
+
+
   @override
   void initState() {
     super.initState();
     tabController = new TabController(length: 4, vsync: this);
+
   }
 
   @override
@@ -24,169 +30,268 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
     tabController.dispose();
     super.dispose();
   }
+ 
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: Icon(Icons.format_align_left,size: 20,),
-          )
-        ],
-        title: Text("News"),
+        title:Row(mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[Text("الاخبار")],),
         bottom: TabBar(
           isScrollable: true,
           controller: tabController,
           labelColor: Colors.white,
           indicatorColor: Colors.yellow[500],
           tabs: <Widget>[
-            Tab(
-              text: "FOR YOU",
+            Padding(
+              padding: const EdgeInsets.only(left: 60),
+              child: Tab(
+                child: Text("الدوريات",style: tapbar,),
+              ),
             ),
             Tab(
-              text: "LATEST",
+              child: Text("الانتقالات",style: tapbar,),
             ),
             Tab(
-              text: "TRANSFERS",
+              child: Text("الاحدث",style: tapbar,),
             ),
-            Tab(
-              text: "LEAGUES",
+             Tab(
+              child: Text("لك",style: tapbar,),
             ),
           ],
         ),
       ),
-      drawer: Drawer(
-          child: Column(
-        children: <Widget>[
-          Container(
-            height: 110.0,
-            color: Theme.of(context).primaryColor,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 50.0, left: 28.0),
-                  child: CircleAvatar(
-                    radius: 13.0,
-                    backgroundImage: null,
+      endDrawer: Drawer(
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: 110.0,
+              color: Theme.of(context).primaryColor,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50.0, left: 28.0),
+                    child: CircleAvatar(
+                      radius: 13.0,
+                      backgroundImage: null,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 50.0, left: 26.0),
-                  child: Text(
-                    "Usre Name",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w400),
-                  ),
-                )
-              ],
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50.0, left: 26.0),
+                    child: Text(
+                      "اسم المستخدم",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w400),
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-          ListTile(
-            leading: IconButton(
-                icon: Icon(Icons.tv), iconSize: 25.0, onPressed: null),
-            title: Text(
-              "Tv schedules",
-              style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w400),
+            ListTile(
+              leading: IconButton(
+                  icon: Icon(Icons.tv), iconSize: 25.0, onPressed: null),
+              title: Text(
+                "الجدول التلفزيوني",
+                style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w400),
+              ),
             ),
-          ),
-          ListTile(
-            leading: IconButton(
-                icon: Icon(Icons.loop), iconSize: 25.0, onPressed: null),
-            title: Text(
-              "Transfer Centre",
-              style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w400),
+            ListTile(
+              leading: IconButton(
+                  icon: Icon(Icons.loop), iconSize: 25.0, onPressed: null),
+              title: Text(
+                "الانتقالات",
+                style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w400),
+              ),
             ),
-          ),
-          SizedBox(
-            height: 400.0,
-          ),
-          Divider(
-            height: 2,
-          ),
-          ListTile(
-            leading: IconButton(
-                icon: Icon(Icons.attach_money),
-                iconSize: 25.0,
-                onPressed: null),
-            title: Text(
-              "Remove ads",
-              style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w400),
+            Divider(
+              height: 2,
             ),
-          ),
-          ListTile(
-            leading: IconButton(
-                icon: Icon(Icons.brightness_4),
-                iconSize: 25.0,
-                onPressed: null),
-            title: Text(
-              "Dark mode",
-              style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w400),
+            Expanded(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    ListTile(
+                      leading: IconButton(
+                          icon: Icon(Icons.attach_money),
+                          iconSize: 25.0,
+                          onPressed: null),
+                      title: Text(
+                        "ازالة الاعلانات",
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ),
+                    ListTile(
+                      leading: IconButton(
+                          icon: Icon(Icons.brightness_4),
+                          iconSize: 25.0,
+                          onPressed: null),
+                      title: Text(
+                        "الوضع الليلي",
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      trailing: Switch(
+                          value: isSwitched,
+                          onChanged: (value) {
+                            setState(() {
+                              isSwitched = value;
+                            });
+                          }),
+                    ),
+                    ListTile(
+                      leading: IconButton(
+                          icon: Icon(Icons.settings),
+                          iconSize: 25.0,
+                          onPressed: null),
+                      title: Text(
+                        "الاعدادات",
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ),
+                  ]),
             ),
-            trailing: Switch(
-                value: isSwitched,
-                onChanged: (value) {
-                  setState(() {
-                    isSwitched = value;
-                  });
-                }),
-          ),
-          ListTile(
-            leading: IconButton(
-                icon: Icon(Icons.settings), iconSize: 25.0, onPressed: null),
-            title: Text(
-              "Settings",
-              style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w400),
-            ),
-          ),
-        ],
-      )),
+          ],
+        ),
+      ),
       body: TabBarView(
         controller: tabController,
         children: [
+
+
+
+          new Scaffold(),
+          new Scaffold(),
+          new Scaffold(
+            body: ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: trend.length,
+                itemBuilder: (BuildContext context, index) {
+                  return Column(
+                    children: <Widget>[
+                      Container(
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new Card(
+                                semanticContainer: true,
+                                elevation: 0.0,
+                                child: new Column(
+                                  children: <Widget>[
+                                    Row(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding:
+                                          const EdgeInsets.only(left: 4.0),
+                                          child: Container(
+                                            width: 357,
+                                            height: 200,
+                                            child: new ClipRRect(
+                                              child: Image.asset(
+                                                trend[index].imageUrl,
+                                                fit: BoxFit.fill,
+                                              ),
+                                              borderRadius:
+                                              BorderRadius.circular(16.0),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10.0,
+                                    ),
+                                    Text(
+                                      trend[index].text,
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 12),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: <Widget>[
+
+                                          Text(
+                                            "  منذ 6 دقائق",
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.grey),
+                                          ),
+                                          Text(
+                                            "  FotMob",
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.grey),
+                                          ),
+                                          Icon(
+                                            MdiIcons.soccer,
+                                            size: 15.0,
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  );
+                }),
+          ),
           new ListView(
             children: <Widget>[
-               Column(
+              Column(
                 children: <Widget>[
                   Container(
                     child: Column(
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.only(right: 10,top: 10),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
-                              Icon(
-                                MdiIcons.trendingDown,
-                                color: Colors.green,
-                              ),
                               Text(
-                                "Trending",
+                                "تريند",
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18),
-                              )
+                              ),
+                              SizedBox(width: 5),
+                              Icon(
+                                MdiIcons.trendingDown,
+                                color: Colors.green,
+                              ),
+
+
                             ],
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.only(left: 8,right: 8,bottom: 8),
                           child: new Card(
                             semanticContainer: true,
                             elevation: 0.0,
@@ -222,10 +327,14 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 12),
                                   child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
                                     children: <Widget>[
-                                      Icon(
-                                        MdiIcons.soccer,
-                                        size: 15.0,
+                                      Text(
+                                        " منذ 6 دقائق",
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.grey),
                                       ),
                                       Text(
                                         "  FotMob",
@@ -234,13 +343,10 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
                                             fontWeight: FontWeight.w400,
                                             color: Colors.grey),
                                       ),
-                                      Text(
-                                        "  6 min ago",
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.grey),
-                                      )
+                                      Icon(
+                                        MdiIcons.soccer,
+                                        size: 15.0,
+                                      ),
                                     ],
                                   ),
                                 )
@@ -255,9 +361,9 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
                 ],
               ),
               ListView.builder(
-                physics: ClampingScrollPhysics(),
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
+                  physics: ClampingScrollPhysics(),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
                   itemCount: trend.length,
                   itemBuilder:(BuildContext context , index){
                     return Column(
@@ -268,6 +374,51 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
                               padding: const EdgeInsets.all(8.0),
                               child: Row(
                                 children: <Widget>[
+
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 8.0),
+                                      child: Column(
+                                        children: <Widget>[
+                                          Center(
+                                            child: Text(trend[index].text,
+                                              style: TextStyle(
+                                                  fontSize: 13.0
+                                              ),),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 5),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.end,
+                                              children: <Widget>[
+                                                Text(
+                                                  " منذ 6 دقائق",
+                                                  style: TextStyle(
+                                                      fontSize: 12,
+                                                      fontWeight: FontWeight.w400,
+                                                      color: Colors.grey),
+                                                ),
+                                                Text(
+                                                  "  FotMob",
+                                                  style: TextStyle(
+                                                      fontSize: 12,
+                                                      fontWeight: FontWeight.w400,
+                                                      color: Colors.grey),
+                                                ),
+                                                Icon(
+                                                  MdiIcons.soccer,
+                                                  size: 15.0,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+
+                                        ]
+                                        ,
+                                      ),
+                                    ),
+                                  ),
+
                                   Column(
                                     children: <Widget>[
                                       Container(
@@ -282,43 +433,7 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
                                     ],
 
                                   ),
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(left: 8.0),
-                                      child: Column(
-                                        children: <Widget>[
-                                          Text(trend[index].text,
-                                            style: TextStyle(
-                                                fontSize: 13.0
-                                            ),),
-                                          Row(
-                                            children: <Widget>[
-                                              Icon(
-                                                MdiIcons.soccer,
-                                                size: 15.0,
-                                              ),
-                                              Text(
-                                                "  FotMob",
-                                                style: TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: Colors.grey),
-                                              ),
-                                              Text(
-                                                "  6 min ago",
-                                                style: TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: Colors.grey),
-                                              )
-                                            ],
-                                          ),
 
-                                        ]
-                                        ,
-                                      ),
-                                    ),
-                                  ),
 
                                 ],
 
@@ -338,21 +453,22 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
                 height: 8,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 8,bottom: 8,top: 10),
+                padding: const EdgeInsets.only(bottom: 8,top: 10,right: 18),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    Icon(
-                      Icons.access_time,
-                      color: Colors.green,
-                    ),
-                    SizedBox(width: 8,),
                     Text(
-                      "Latest",
+                      "الاحدث",
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w600,
                           fontSize: 18),
-                    )
+                    ),
+                    SizedBox(width: 10,),
+                    Icon(
+                      Icons.access_time,
+                      color: Colors.green,
+                    ),
                   ],
                 ),
               ),
@@ -406,10 +522,14 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 12),
                                       child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
                                         children: <Widget>[
-                                          Icon(
-                                            MdiIcons.soccer,
-                                            size: 15.0,
+                                          Text(
+                                            " منذ 6 دقائق",
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.grey),
                                           ),
                                           Text(
                                             "  FotMob",
@@ -418,13 +538,10 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
                                                 fontWeight: FontWeight.w400,
                                                 color: Colors.grey),
                                           ),
-                                          Text(
-                                            "  6 min ago",
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.grey),
-                                          )
+                                          Icon(
+                                            MdiIcons.soccer,
+                                            size: 15.0,
+                                          ),
                                         ],
                                       ),
                                     )
@@ -443,95 +560,6 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
 
             ],
 
-          ),
-          new Scaffold(
-            body: ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: trend.length,
-                itemBuilder: (BuildContext context, index) {
-                  return Column(
-                    children: <Widget>[
-                      Container(
-                        child: Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: new Card(
-                                semanticContainer: true,
-                                elevation: 0.0,
-                                child: new Column(
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 4.0),
-                                          child: Container(
-                                            width: 357,
-                                            height: 200,
-                                            child: new ClipRRect(
-                                              child: Image.asset(
-                                                trend[index].imageUrl,
-                                                fit: BoxFit.fill,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(16.0),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10.0,
-                                    ),
-                                    Text(
-                                      trend[index].text,
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 12),
-                                      child: Row(
-                                        children: <Widget>[
-                                          Icon(
-                                            MdiIcons.soccer,
-                                            size: 15.0,
-                                          ),
-                                          Text(
-                                            "  FotMob",
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.grey),
-                                          ),
-                                          Text(
-                                            "  6 min ago",
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.grey),
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  );
-                }),
-          ),
-          new Scaffold(
-
-          ),
-          new Scaffold(
-
-            
           ),
         ],
       ),
