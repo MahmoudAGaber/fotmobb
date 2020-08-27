@@ -7,12 +7,12 @@ class _trend{
 }
 
 List trend =[
-  _trend("assets/6.jpg","Bravo Leaves Manchister City"),
-  _trend("assets/7.jpg","I respect The Player,not th man David Silva'Real Sociyed move infuriates Lazio director"),
-  _trend("assets/8.jpg","Arsenal Agree 22m Deal for Coveted Lille Centre-back Gabrial Maglhaes"),
-  _trend("assets/9.jpg","Koman speaks out on 'awkward timing'of immient Barcholona move"),
-  _trend("assets/6.jpg","Arsenal Agree 22m Deal for Coveted Lille Centre-back Gabrial Maglhaes"),
-  _trend("assets/7.jpg","I respect The Player,not th man David Silva'Real Sociyed move infuriates Lazio director"),
-  _trend("assets/8.jpg","Bravo Leaves Manchister City"),
+  _trend("assets/6.jpg","كشف خورخي ميسي والد الأرجنتيني ليونيل ميسي قائد برشلونة، "),
+  _trend("assets/7.jpg","كشف محمد فرج عامر رئيس نادي سموحة، أن اللجنة الخماسية التي تدير الاتحاد المصري لكرة القدم قررت.."),
+  _trend("assets/8.jpg","كشف خورخي ميسي والد الأرجنتيني ليونيل ميسي قائد برشلونة"),
+  _trend("assets/9.jpg","كشف محمد فرج عامر رئيس نادي سموحة، أن اللجنة الخماسية التي تدير الاتحاد المصري لكرة القدم قررت.."),
+  _trend("assets/6.jpg","كشف محمد فرج عامر رئيس نادي سموحة، أن اللجنة الخماسية التي تدير الاتحاد المصري لكرة القدم قررت.."),
+  _trend("assets/7.jpg","كشف محمد فرج عامر رئيس نادي سموحة، أن اللجنة الخماسية التي تدير الاتحاد المصري لكرة القدم قررت.."),
+  _trend("assets/8.jpg","كشف خورخي ميسي والد الأرجنتيني ليونيل ميسي قائد برشلونة"),
 
 ];

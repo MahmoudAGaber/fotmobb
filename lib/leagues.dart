@@ -26,76 +26,79 @@ class _LeaguesState extends State<Leagues> with SingleTickerProviderStateMixin{
     super.dispose();
   }
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.only(right: 10),
-          child: Row(
-            children: <Widget>[
-          Text("الدوريات",)
-          ],
-          ),
-        )
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: Row(
+              children: <Widget>[
+            Text("الدوريات",)
+            ],
+            ),
+          )
 
-      ),
+        ),
 
-      body:
-        GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: ListView(
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            children: <Widget>[
-              GestureDetector(
-                onTap: () => FocusScope.of(context).unfocus(),
-                child: Container(
-                  child: Padding(
-                    padding: const EdgeInsets.all(6.0),
-                    child: Container(
-                      height: 53,
-                      child:
-                      Card(
-                        elevation: 2  ,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(6),
-                        ),),
-                        child: Row(children: <Widget>[
-                          SizedBox(width: 240,),
-                          SizedBox(width: 10,),
-                          Expanded(
-                            child: TextField(
-                              textDirection: TextDirection.rtl,
-                              obscureText: true,
-                              textCapitalization: TextCapitalization.sentences,
-                              decoration: InputDecoration.collapsed(
-                                hintText: "ابحث عن الدوري",hintStyle: TextStyle(fontSize: 15),
+        body:
+          GestureDetector(
+            onTap: () => FocusScope.of(context).unfocus(),
+            child: ListView(
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              children: <Widget>[
+                GestureDetector(
+                  onTap: () => FocusScope.of(context).unfocus(),
+                  child: Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Container(
+                        height: 53,
+                        child:
+                        Card(
+                          elevation: 2  ,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(6),
+                          ),),
+                          child: Row(children: <Widget>[
+                            SizedBox(width: 10,),
+                            Icon(Icons.search,color: Colors.grey[600],),
+                            SizedBox(width: 10,),
+                            Expanded(
+                              child: TextField(
+                                obscureText: true,
+                                textCapitalization: TextCapitalization.sentences,
+                                decoration: InputDecoration.collapsed(
+                                  hintText: "ابحث عن الدوري",hintStyle: TextStyle(fontSize: 15),
+                                ),
                               ),
+
                             ),
 
-                          ),
-                          Icon(Icons.search,color: Colors.grey[600],),
 
-                        ],),
+                          ],),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-               new ListView.builder(
-                 physics: ClampingScrollPhysics(),
-                 shrinkWrap: true,
-                 scrollDirection: Axis.vertical,
-                itemCount: listOfTiles.length,
-                itemBuilder: (BuildContext context , int index){
-                  return new StuffInTiles(listOfTiles[index]);
-                },
-              ),
-            ],
+                 new ListView.builder(
+                   physics: ClampingScrollPhysics(),
+                   shrinkWrap: true,
+                   scrollDirection: Axis.vertical,
+                  itemCount: listOfTiles.length,
+                  itemBuilder: (BuildContext context , int index){
+                    return new StuffInTiles(listOfTiles[index]);
+                  },
+                ),
+              ],
 
-          ),
-        )
-
+            ),
+          )
 
 
+
+      ),
     );
   }
 

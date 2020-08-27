@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:fotmobb/matchInfo.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import 'matchesData.dart';
 
@@ -18,6 +19,8 @@ class matches extends StatefulWidget {
 }
 
 class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
+  static const TextStyle tapbar =
+  TextStyle(fontSize: 17, fontWeight: FontWeight.w500);
   bool isSwitched = false;
   List<matchesData> _list;
   _matchesState(this._list);
@@ -41,46 +44,50 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
     });
   }
 
-  static const TextStyle tapbar =
-      TextStyle(fontSize: 13, fontWeight: FontWeight.w700);
+  static const TextStyle tapbar1 =
+      TextStyle(fontSize: 13, fontWeight: FontWeight.w600);
 
   @override
   void initState() {
     super.initState();
     tabController = new TabController(length: 11, vsync: this);
     //getTapDays
-    var now = new DateTime.now();
-    DateFormat('EEE d MMM').format(now);
+    initializeDateFormatting("ar_SA", null).then((_) {
+      var now = new DateTime.now();
+      DateFormat.MEd('ar_SA').format(now);
 
-    today = DateFormat('EEE d MMM').format(now.subtract(new Duration(days: 0)));
-    yesterday =
-        DateFormat('EEE d MMM').format(now.subtract(new Duration(days: 1)));
-    oneDayAgo =
-        DateFormat('EEE d MMM').format(now.subtract(new Duration(days: 2)));
-    twoDaysAgo =
-        DateFormat('EEE d MMM').format(now.subtract(new Duration(days: 3)));
-    tomorrow = DateFormat('EEE d MMM').format(now.add(new Duration(days: 1)));
-    oneDayThen = DateFormat('EEE d MMM').format(now.add(new Duration(days: 2)));
-    twoDaysThen =
-        DateFormat('EEE d MMM').format(now.add(new Duration(days: 3)));
-    threeDayThen =
-        DateFormat('EEE d MMM').format(now.add(new Duration(days: 4)));
-    fourDayThen =
-        DateFormat('EEE d MMM').format(now.add(new Duration(days: 5)));
-    fiveDayThen =
-        DateFormat('EEE d MMM').format(now.add(new Duration(days: 6)));
-    List daysList = [
-      today,
-      yesterday,
-      oneDayAgo,
-      twoDaysAgo,
-      tomorrow,
-      oneDayThen,
-      twoDaysThen,
-      threeDayThen,
-      fourDayThen,
-      fiveDayThen
-    ];
+      today =
+          DateFormat.MEd('ar_SA').format(now.subtract(new Duration(days: 0)));
+      yesterday =
+          DateFormat.MEd('ar_SA').format(now.subtract(new Duration(days: 1)));
+      oneDayAgo =
+          DateFormat.MEd('ar_SA').format(now.subtract(new Duration(days: 2)));
+      twoDaysAgo =
+          DateFormat.MEd('ar_SA').format(now.subtract(new Duration(days: 3)));
+      tomorrow = DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 1)));
+      oneDayThen =
+          DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 2)));
+      twoDaysThen =
+          DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 3)));
+      threeDayThen =
+          DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 4)));
+      fourDayThen =
+          DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 5)));
+      fiveDayThen =
+          DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 6)));
+      List daysList = [
+        today,
+        yesterday,
+        oneDayAgo,
+        twoDaysAgo,
+        tomorrow,
+        oneDayThen,
+        twoDaysThen,
+        threeDayThen,
+        fourDayThen,
+        fiveDayThen
+      ];
+    });
     /*for(var i in daysList){
       tapList.add(Tab(text: i,));
     }*/
@@ -128,34 +135,33 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
           labelStyle: tapbar,
           tabs: [
             Tab(
-              text: twoDaysAgo,
+             child:Text(twoDaysAgo,),
             ),
             Tab(
-              text: oneDayAgo,
+              child:Text(oneDayAgo),
             ),
             Tab(
-              text: "الامس",
+              child:Text("الامس"),
             ),
             Tab(
-              text: "اليوم",
+              child:Text("اليوم"),
             ),
             Tab(
-              text: "الغد",
+              child:Text("الغد"),
             ),
             Tab(
-              text: oneDayThen,
+              child:Text(oneDayThen),
             ),
             Tab(
-              text: twoDaysThen,
+              child:Text(twoDaysThen),
             ),
             Tab(
-              text: threeDayThen,
+              child:Text(threeDayThen),
             ),
             Tab(
-              text: fourDayThen,
-            ),
+              child:Text(fourDayThen),),
             Tab(
-              text: fiveDayThen,
+              child:Text(fiveDayThen),
             ),
             Tab(
               text: "التقويم",
@@ -457,6 +463,6 @@ class _live {
 }
 
 List live = [
-  _live('ريال مدريد', 'برشلونه', 'assets/11.jpg', 'assets/530.jpg'),
-  _live('ومالك', 'الاهلي', 'assets/11.jpg', 'assets/530.jpg'),
+  _live('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg'),
+  _live('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg'),
 ];

@@ -76,7 +76,7 @@ class _matchInfoState extends State<matchInfo> with TickerProviderStateMixin {
             centerTitle: true,
             title: Container(
               height: 70,
-              width: MediaQuery.of(context).size.width * 0.51,
+              width: MediaQuery.of(context).size.width * 0.55,
               child: Row(
                 children: [
                   Card(
@@ -87,8 +87,8 @@ class _matchInfoState extends State<matchInfo> with TickerProviderStateMixin {
                         children: <Widget>[
                           Container(
                             child: Container(
-                              width: 80,
-                              height: 40,
+                              width: 90,
+                              height: 32,
                               child: Image.asset('assets/530.jpg'),
                             ),
                           ),
@@ -106,7 +106,7 @@ class _matchInfoState extends State<matchInfo> with TickerProviderStateMixin {
                         children: <Widget>[
                           Container(
                             width: 90,
-                            height: 40,
+                            height: 32,
                             child: Image.asset('assets/530.jpg'),
                           ),
                         ],
@@ -167,30 +167,4 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
     return false;
   }
 }
-class _SliverAppBarDelegate1 extends SliverPersistentHeaderDelegate {
-  _SliverAppBarDelegate1({
-    @required this.minHeight,
-    @required this.maxHeight,
-    @required this.child,
-});
-  final double minHeight;
-  final double maxHeight;
-  final Widget child;
 
-  @override
-  double get minExtent => minHeight;
-
-  @override
-  double get maxExtent => maxHeight;
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return new SizedBox.expand(child: child);
-  }
-
-  @override
-  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
-    return maxHeight !=oldDelegate.maxExtent || minHeight != oldDelegate.minExtent;
-  }
-}
