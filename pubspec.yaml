@@ -23,7 +23,20 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   flutter_sticky_header : "^0.4.5"
+  hijri_picker: ^2.0.0
+  table_calendar: ^2.2.3
+  carousel_slider: ^2.2.1
+  carousel_pro: ^0.0.13
+  scroll_to_index: ^1.0.6
+  sticky_headers: "^0.1.8"
+  flutter_swiper: ^1.1.6
+  percent_indicator: ^2.1.5
+
+
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -57,6 +70,7 @@ flutter:
     - assets/11.jpg
     - assets/12.jpg
     - assets/530.jpg
+    - assets/541.jpg
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

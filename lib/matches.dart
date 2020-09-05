@@ -1,28 +1,59 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:fotmobb/matchInfo.dart';
+import 'package:fotmobb/Matches/LeagueN.dart';
+import 'package:fotmobb/LeagueDetailsD.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'clander.dart';
+import 'dart:async';
 
-import 'matchesData.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hijri/hijri_calendar.dart';
+import 'package:hijri_picker/hijri_picker.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class matches extends StatefulWidget {
   @override
   _matchesState createState() => _matchesState([
-        matchesData("AustrliaPremierLeague", true),
-        matchesData("AustrliaPremierLeague", true),
-        matchesData("CandaPremierLeague", true),
-        matchesData("ChinePremierLeague", true)
+    LeagueN("AustrliaPremierLeague", true),
+    LeagueN("AustrliaPremierLeague", true),
+    LeagueN("CandaPremierLeague", true),
+    LeagueN("ChinePremierLeague", true)
       ]);
 }
 
+
 class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
+
+  var selectedDate = new HijriCalendar.now();
+  Future<Null> _selectDate(BuildContext context) async {
+    final HijriCalendar picked = await showHijriDatePicker(
+      context: context,
+      initialDate: selectedDate,
+
+      lastDate: new HijriCalendar()
+        ..hYear = 1445
+        ..hMonth = 9
+        ..hDay = 25,
+      firstDate: new HijriCalendar()
+        ..hYear = 1438
+        ..hMonth = 12
+        ..hDay = 25,
+      initialDatePickerMode: DatePickerMode.day,
+    );
+    if (picked != null)
+      setState(() {
+        selectedDate = picked;
+      });
+  }
+
   static const TextStyle tapbar =
   TextStyle(fontSize: 17, fontWeight: FontWeight.w500);
   bool isSwitched = false;
-  List<matchesData> _list;
+  List<LeagueN> _list;
   _matchesState(this._list);
   TabController tabController;
 
@@ -52,42 +83,46 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
     super.initState();
     tabController = new TabController(length: 11, vsync: this);
     //getTapDays
-    initializeDateFormatting("ar_SA", null).then((_) {
-      var now = new DateTime.now();
-      DateFormat.MEd('ar_SA').format(now);
+    setState(() {
+      initializeDateFormatting("ar_SA", null).then((_) {
+        var now = new DateTime.now();
+        DateFormat.MEd('ar_SA').format(now);
 
-      today =
-          DateFormat.MEd('ar_SA').format(now.subtract(new Duration(days: 0)));
-      yesterday =
-          DateFormat.MEd('ar_SA').format(now.subtract(new Duration(days: 1)));
-      oneDayAgo =
-          DateFormat.MEd('ar_SA').format(now.subtract(new Duration(days: 2)));
-      twoDaysAgo =
-          DateFormat.MEd('ar_SA').format(now.subtract(new Duration(days: 3)));
-      tomorrow = DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 1)));
-      oneDayThen =
-          DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 2)));
-      twoDaysThen =
-          DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 3)));
-      threeDayThen =
-          DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 4)));
-      fourDayThen =
-          DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 5)));
-      fiveDayThen =
-          DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 6)));
-      List daysList = [
-        today,
-        yesterday,
-        oneDayAgo,
-        twoDaysAgo,
-        tomorrow,
-        oneDayThen,
-        twoDaysThen,
-        threeDayThen,
-        fourDayThen,
-        fiveDayThen
-      ];
+        today =
+            DateFormat.MEd('ar_SA').format(now.subtract(new Duration(days: 0)));
+        yesterday =
+            DateFormat.MEd('ar_SA').format(now.subtract(new Duration(days: 1)));
+        oneDayAgo =
+            DateFormat.MEd('ar_SA').format(now.subtract(new Duration(days: 2)));
+        twoDaysAgo =
+            DateFormat.MEd('ar_SA').format(now.subtract(new Duration(days: 3)));
+        tomorrow = DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 1)));
+        oneDayThen =
+            DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 2)));
+        twoDaysThen =
+            DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 3)));
+        threeDayThen =
+            DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 4)));
+        fourDayThen =
+            DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 5)));
+        fiveDayThen =
+            DateFormat.MEd('ar_SA').format(now.add(new Duration(days: 6)));
+
+        List daysList = [
+          today,
+          yesterday,
+          oneDayAgo,
+          twoDaysAgo,
+          tomorrow,
+          oneDayThen,
+          twoDaysThen,
+          threeDayThen,
+          fourDayThen,
+          fiveDayThen
+        ];
+      });
     });
+
     /*for(var i in daysList){
       tapList.add(Tab(text: i,));
     }*/
@@ -102,6 +137,7 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
   }
 
   Widget build(BuildContext context) {
+    var selectedDate = new HijriCalendar.now();
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
@@ -135,10 +171,10 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
           labelStyle: tapbar,
           tabs: [
             Tab(
-             child:Text(twoDaysAgo,),
+             text: "الاتنين ٢٤/٧ ",
             ),
             Tab(
-              child:Text(oneDayAgo),
+              child:Text("الثلائاء ٢٥/۸"),
             ),
             Tab(
               child:Text("الامس"),
@@ -150,18 +186,18 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
               child:Text("الغد"),
             ),
             Tab(
-              child:Text(oneDayThen),
+              child:Text("السبت ٢٩/۸"),
             ),
             Tab(
-              child:Text(twoDaysThen),
+              child:Text("الاحد ٣۰/۸"),
             ),
             Tab(
-              child:Text(threeDayThen),
+              child:Text("الاتنين ٣١/۸"),
             ),
             Tab(
-              child:Text(fourDayThen),),
+              child:Text("الثلاثاء ١/۹"),),
             Tab(
-              child:Text(fiveDayThen),
+              child:Text("الاربعاء ٢/۹"),
             ),
             Tab(
               text: "التقويم",
@@ -316,7 +352,9 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
         _tabBarPage(),
         _tabBarPage(),
         _tabBarPage(),
-        _tabBarPage(),
+       GestureDetector(
+         onTap: ()=> _selectDate(context) ,
+       )
       ]),
     );
   }
@@ -381,7 +419,7 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
   Widget _tabBarPage() {
     return ListView.builder(
       itemBuilder: (widget, indx) => _fullTile(),
-      itemCount: 6,
+      itemCount: leaguen.length
     );
   }
 
@@ -414,34 +452,34 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
-        itemCount: live.length,
+        itemCount: leaguedetails.length,
         itemBuilder: (widget, index) {
           return GestureDetector(
             onTap: () {
               Navigator.pushNamed(context, '/matchInfo');
             },
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 13),
+              padding: const EdgeInsets.only(left:95,right:95,bottom: 13),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text(live[index].firstTeam),
+                  Text(leaguedetails[index].firstTeam),
                   Container(
                     width: 30,
                     height: 25,
-                    child: Image.asset(live[index].urlFirst),
+                    child: Image.asset(leaguedetails[index].urlFirst),
                   ),
                   SizedBox(
                     width: 8,
                   ),
-                  Center(child: Text("9:00 pm")),
+                  Center(child: Text(leaguedetails[index].time)),
                   SizedBox(width: 6),
                   Container(
                     width: 30,
                     height: 25,
-                    child: Image.asset(live[index].urlSecond),
+                    child: Image.asset(leaguedetails[index].urlSecond),
                   ),
-                  Text(live[index].seconTeam),
+                  Text(leaguedetails[index].seconTeam),
                 ],
               ),
             ),
@@ -453,16 +491,4 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
   }
 }
 
-class _live {
-  final String firstTeam;
-  final String seconTeam;
-  final String urlFirst;
-  final String urlSecond;
 
-  _live(this.firstTeam, this.seconTeam, this.urlFirst, this.urlSecond);
-}
-
-List live = [
-  _live('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg'),
-  _live('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg'),
-];
