@@ -8,6 +8,8 @@ import 'package:fotmobb/leagues.dart';
 import 'package:fotmobb/favourites.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import 'EachTeam/eachTeam.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -27,6 +29,7 @@ class MyApp extends StatelessWidget {
         routes: <String, WidgetBuilder>{
           "/matchInfo": (BuildContext context) => new matchInfo(),
           "/eachLeague": (BuildContext context) => new eachLeague(),
+          "/eachTeam": (BuildContext context) => new eachTeam(),
 
         }
     );

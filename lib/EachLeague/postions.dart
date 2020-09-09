@@ -164,37 +164,42 @@ class _postionsState extends State<postions> {
             itemCount: 18,
             itemBuilder: (BuildContext context, index) {
               return Column(children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Text("1"),
-                            Container(
-                              child: Container(
-                                  width: 40,
-                                  height: 30,
-                                  child: Image.asset(
-                                      "assets/541.jpg")),
-                            ),
-                            Text("ريال مدريد"),
-                          ],
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      width: 25.0,
-                    ),
-                    Text("23"),
-                    Text("20"),
-                    Text("2"),
-                    Text("1"),
-                    Text("8-56"),
-                    Text("48"),
-                    Text("62"),
-                  ],
+                GestureDetector(
+                  onTap: (){
+                    Navigator.pushNamed(context, '/eachTeam');
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Text("1"),
+                              Container(
+                                child: Container(
+                                    width: 40,
+                                    height: 30,
+                                    child: Image.asset(
+                                        "assets/541.jpg")),
+                              ),
+                              Text("ريال مدريد"),
+                            ],
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        width: 25.0,
+                      ),
+                      Text("23"),
+                      Text("20"),
+                      Text("2"),
+                      Text("1"),
+                      Text("8-56"),
+                      Text("48"),
+                      Text("62"),
+                    ],
+                  ),
                 ),
                 Divider(
                   height: 2.0,

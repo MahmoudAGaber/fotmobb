@@ -13,6 +13,8 @@ class _MatchEventsState extends State<MatchEvents> {
    bool _visable1 = false;
    bool _visable2 = false;
    bool _visable3 = false;
+   int i=0 ;
+   int sumI=0;
   @override
   Widget build(BuildContext context) {
     return   Column(children: <Widget>[
@@ -67,8 +69,11 @@ class _MatchEventsState extends State<MatchEvents> {
                                         GestureDetector(
                                           onTap: (){
                                             setState(() {
+                                              i++;
+                                              sumI+=i;
                                               _visable=true;
                                             });
+                                            print(sumI);
                                           },
                                           child: Container(height: 40,width: 40,
                                             decoration: BoxDecoration(
@@ -221,7 +226,6 @@ class _MatchEventsState extends State<MatchEvents> {
                           Stack(
                               children: <Widget>[
                                 Container(
-                                  color: Colors.green,
                                   height: 180,
                                   child: Column(children: <Widget>[
                                     Padding(

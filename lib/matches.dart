@@ -18,10 +18,10 @@ import 'package:table_calendar/table_calendar.dart';
 class matches extends StatefulWidget {
   @override
   _matchesState createState() => _matchesState([
-    LeagueN("AustrliaPremierLeague", true),
-    LeagueN("AustrliaPremierLeague", true),
-    LeagueN("CandaPremierLeague", true),
-    LeagueN("ChinePremierLeague", true)
+    LeagueN("AustrliaPremierLeague","assets/12.jpg", true),
+    LeagueN("AustrliaPremierLeague","assets/12.jpg", true),
+    LeagueN("CandaPremierLeague","assets/12.jpg", true),
+    LeagueN("ChinePremierLeague","assets/12.jpg", true)
       ]);
 }
 
@@ -418,27 +418,31 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
 
   Widget _tabBarPage() {
     return ListView.builder(
-      itemBuilder: (widget, indx) => _fullTile(),
+      itemBuilder: (widget, indx) => _fullTile(indx),
       itemCount: leaguen.length
     );
   }
 
-  Widget _fullTile() {
+  Widget _fullTile(int index) {
     return Card(
       child: ExpansionTile(
         initiallyExpanded: true,
-        title: Row(
-          children: [
-            Container(
-                width: 35, height: 30, child: Image.asset("assets/12.jpg")),
-            SizedBox(
-              width: 10,
-            ),
-            Text(
-              "الدوري الاسباني",
-              style: TextStyle(color: Colors.black, fontSize: 16),
-            )
-          ],
+        title: GestureDetector(onTap: (){
+          Navigator.pushNamed(context, '/eachLeague');
+        },
+          child: Row(
+            children: [
+              Container(
+                  width: 35, height: 30, child: Image.asset(leaguen[index].img)),
+              SizedBox(
+                width: 10,
+              ),
+              Text(leaguen[index].leagueName
+                ,
+                style: TextStyle(color: Colors.black, fontSize: 16),
+              )
+            ],
+          ),
         ),
         children: [
           _tileItem(),
@@ -459,7 +463,7 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
               Navigator.pushNamed(context, '/matchInfo');
             },
             child: Padding(
-              padding: const EdgeInsets.only(left:95,right:95,bottom: 13),
+              padding: const EdgeInsets.only(left:75,right:75,bottom: 13),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [

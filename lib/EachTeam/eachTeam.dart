@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:fotmobb/EachLeague/leagueNews.dart';
-import 'package:fotmobb/EachLeague/matchsForLeague.dart';
-import 'package:fotmobb/EachLeague/playersStats.dart';
-import 'package:fotmobb/EachLeague/postions.dart';
-import 'package:fotmobb/EachLeague/teamsStats.dart';
+import 'package:fotmobb/EachTeam/overView.dart';
 
-class eachLeague extends StatefulWidget {
+class eachTeam extends StatefulWidget {
   @override
-  _eachLeagueState createState() => _eachLeagueState();
+  _eachTeamState createState() => _eachTeamState();
 }
 
-class _eachLeagueState extends State<eachLeague> with TickerProviderStateMixin{
+class _eachTeamState extends State<eachTeam> with TickerProviderStateMixin{
 
   bool chContaier = false;
   ScrollController _scrollController = new ScrollController();
@@ -55,7 +51,7 @@ class _eachLeagueState extends State<eachLeague> with TickerProviderStateMixin{
       return <Widget>[
         Directionality(
           textDirection: TextDirection.rtl,
-          child: SliverAppBar(
+          child: SliverAppBar(elevation: 0.0,
             actions: <Widget>[
               Row(
                 children: <Widget>[
@@ -77,21 +73,21 @@ class _eachLeagueState extends State<eachLeague> with TickerProviderStateMixin{
             snap: true,
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
-              child: Stack(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(right: 25,top: 70),
-                    child: Row(mainAxisAlignment:MainAxisAlignment.start,children: <Widget>[
-                       Container(height: 45,width: 50,
-                          child: Image.asset("assets/530.jpg")),
-                    ],
+                child: Stack(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(right: 25,top: 60),
+                      child: Row(mainAxisAlignment:MainAxisAlignment.start,children: <Widget>[
+                        Container(height: 60,width: 55,
+                            child: Image.asset("assets/541.jpg")),
+                      ],
 
+                      ),
                     ),
-                  ),
-                  Positioned(top:100,right: 80,
-                      child: Row(children: <Widget>[Text("اسبانيا",style: TextStyle(color: Colors.grey[200]),)],))
-                ],
-              ),),
+                    Positioned(top:100,right: 100,
+                        child: Row(children: <Widget>[Text("اسبانيا",style: TextStyle(color: Colors.grey[200]),)],))
+                  ],
+                ),),
               centerTitle: true,
               titlePadding: EdgeInsets.only(top: 1.0,bottom: 13.0),
               title: Row(
@@ -103,7 +99,7 @@ class _eachLeagueState extends State<eachLeague> with TickerProviderStateMixin{
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         Text(
-                          'الدوري الاسباني',
+                          ' ريال مدريد',
                           style: TextStyle(fontSize: 18),)],),
                   ),
 
@@ -119,7 +115,6 @@ class _eachLeagueState extends State<eachLeague> with TickerProviderStateMixin{
             child: SliverPersistentHeader(
               pinned: true,
               delegate: _SliverAppBarDelegate(
-
                   TabBar(isScrollable: true, controller: tabController,
                       onTap: (index){
                         setState(() {
@@ -130,19 +125,19 @@ class _eachLeagueState extends State<eachLeague> with TickerProviderStateMixin{
                       },
                       tabs: [
                         Tab(
-                          text: "  المراكز",
+                          text: "  نظرة عامة",
                         ),
                         Tab(
                           text: " المباريات",
                         ),
                         Tab(
-                          text: " اخبار",
+                          text: " المراكز",
                         ),
                         Tab(
-                          text: " احصائيات اللاعبين",
+                          text: " احصائيات ",
                         ),
                         Tab(
-                          text: " احصائيات الفرق",
+                          text: "  الكؤوس",
                         ),
                       ])),
             ),
@@ -161,23 +156,21 @@ class _eachLeagueState extends State<eachLeague> with TickerProviderStateMixin{
             headerSliverBuilder: _sliverBuilder,
             body: new TabBarView(controller: tabController, children: [
               ListView(children: <Widget>[
-                postions()
+                overView()
               ]
               ),
               ListView(children: <Widget>[
-                matchesForLeague()
               ]),
               ListView(
                   children: <Widget>[
-                    leagueNews()
+
                   ]),
               ListView(
                   children: <Widget>[
-                    playersStats()
+
                   ]),
               ListView(
                   children: <Widget>[
-                    teamsStats()
                   ]),
             ]),
           ),

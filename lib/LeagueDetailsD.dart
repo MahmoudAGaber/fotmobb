@@ -14,23 +14,23 @@ class LeagueDetails{
       this.urlSecond, this.time);
 }
 
-final LeagueN l1= LeagueN("الدوري s", true);
-final LeagueN l2= LeagueN("الدوري الاسباني", true);
-final LeagueN l3= LeagueN("الدوري الاسباني", true);
-final LeagueN l4= LeagueN("الدوري الاسباني", true);
-final LeagueN l5= LeagueN("الدوري الاسباني", true);
-final LeagueN l6= LeagueN("الدوري الاسباني", true);
-final LeagueN l7= LeagueN("الدوري الاسباني", true);
+final LeagueN l1= LeagueN("الدوري الاسباني","assets/12.jpg",true);
+final LeagueN l2= LeagueN("الدوري الاسباني","assets/12.jpg", true);
+final LeagueN l3= LeagueN("الدوري الاسباني","assets/12.jpg",true);
+final LeagueN l4= LeagueN("الدوري الاسباني","assets/12.jpg",true);
+final LeagueN l5= LeagueN("الدوري الاسباني","assets/12.jpg", true);
+final LeagueN l6= LeagueN("الدوري الاسباني","assets/12.jpg",true);
+final LeagueN l7= LeagueN("الدوري الاسباني","assets/12.jpg",true);
 
 List<LeagueN> leaguen =[
-  LeagueN("الدوري s", true),
-  LeagueN("الدوري fsd", true),
-  LeagueN("الدوري s", true),
-  LeagueN("الدوري fsd", true),
-  LeagueN("الدوري s", true),
-  LeagueN("الدوري fsd", true),
-  LeagueN("الدوري s", true),
-  LeagueN("الدوري fsd", true),
+  LeagueN("الدوري الاسباني ","assets/12.jpg", true),
+  LeagueN("الدوري الاسباني","assets/12.jpg", true),
+  LeagueN("الدوري الاسباني","assets/12.jpg", true),
+  LeagueN("الدوري الاسباني","assets/12.jpg", true),
+  LeagueN("الدوري الاسباني","assets/12.jpg", true),
+  LeagueN("الدوري الاسباني","assets/12.jpg", true),
+  LeagueN("الدوري الاسباني","assets/12.jpg", true),
+  LeagueN("الدوري الاسباني","assets/12.jpg", true),
 
 
 ];
