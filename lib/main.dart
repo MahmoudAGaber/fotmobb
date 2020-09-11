@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:fotmobb/EachLeague/eachLeague.dart';
 import 'package:fotmobb/Matches/matchInfo.dart';
+import 'package:fotmobb/Playrers/players.dart';
 import 'package:fotmobb/matches.dart';
 import 'package:fotmobb/news.dart';
 import 'package:fotmobb/leagues.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
           "/matchInfo": (BuildContext context) => new matchInfo(),
           "/eachLeague": (BuildContext context) => new eachLeague(),
           "/eachTeam": (BuildContext context) => new eachTeam(),
+          "/players": (BuildContext context) => new players(),
 
         }
     );

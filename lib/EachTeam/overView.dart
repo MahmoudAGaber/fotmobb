@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:scroll_to_index/util.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class overView extends StatefulWidget {
   @override
@@ -296,47 +297,52 @@ class _overViewState extends State<overView> {
                             child:Card(
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5))),
                               child: Column(children: <Widget>[
-                                Container(
-                                  height: 145,
-                                  width: MediaQuery.of(context).size.width,
-                                 color: Theme.of(context).primaryColor,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 10,right: 10),
-                                    child: ClipRRect(
-                                      borderRadius:BorderRadius.only(topRight: Radius.circular(5),topLeft: Radius.circular(5)),
-                                        child: Column(
-                                            children: <Widget>[
-                                                Padding(
-                                                  padding: const EdgeInsets.only(top: 10),
-                                                  child: Row(children: <Widget>[Text("اهداف",style: TextStyle(color:Colors.white),)],
-                                                  ),
-                                                ),
-                                              Divider(thickness: 1.0,height:15,color: Colors.white,),
-                                              Container(
-                                                height: 95,
-                                                child: Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: <Widget>[
+                                GestureDetector(
+                                  onTap: (){
+                                    Navigator.pushNamed(context,'/players');
+                                  },
+                                  child: Container(
+                                    height: 145,
+                                    width: MediaQuery.of(context).size.width,
+                                   color: Theme.of(context).primaryColor,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 10,right: 10),
+                                      child: ClipRRect(
+                                        borderRadius:BorderRadius.only(topRight: Radius.circular(5),topLeft: Radius.circular(5)),
+                                          child: Column(
+                                              children: <Widget>[
                                                   Padding(
-                                                    padding: const EdgeInsets.only(bottom: 10),
-                                                    child: Column(children: <Widget>[
-                                                      SizedBox(height: 5,),
-                                                      Text("راموس",style: TextStyle(color: Colors.white),),
-                                                      SizedBox(height: 30,),
-                                                      Text("8",style: TextStyle(fontSize: 20,color: Colors.white),),
-                                                    ],),
+                                                    padding: const EdgeInsets.only(top: 10),
+                                                    child: Row(children: <Widget>[Text("اهداف",style: TextStyle(color:Colors.white),)],
+                                                    ),
                                                   ),
-                                                  Padding(
-                                                    padding: const EdgeInsets.only(top: 15),
-                                                    child: Column(mainAxisAlignment:MainAxisAlignment.end,children: <Widget>[
-                                                            Container(
-                                                              height: 65,width: 60,
-                                                              child: Image.asset("assets/530.jpg",fit: BoxFit.fill,),)
+                                                Divider(thickness: 1.0,height:15,color: Colors.white,),
+                                                Container(
+                                                  height: 95,
+                                                  child: Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: <Widget>[
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(bottom: 10),
+                                                      child: Column(children: <Widget>[
+                                                        SizedBox(height: 5,),
+                                                        Text("راموس",style: TextStyle(color: Colors.white),),
+                                                        SizedBox(height: 30,),
+                                                        Text("8",style: TextStyle(fontSize: 20,color: Colors.white),),
                                                       ],),
-                                                  ),
-                                    ]
-                                                        ),
-                                              )
-                                            ])
-                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(top: 15),
+                                                      child: Column(mainAxisAlignment:MainAxisAlignment.end,children: <Widget>[
+                                                              Container(
+                                                                height: 65,width: 60,
+                                                                child: Image.asset("assets/530.jpg",fit: BoxFit.fill,),)
+                                                        ],),
+                                                    ),
+                                      ]
+                                                          ),
+                                                )
+                                              ])
+                                        ),
+                                    ),
                                   ),
                                 ),
                                 Padding(
@@ -451,8 +457,53 @@ class _overViewState extends State<overView> {
         Padding(
           padding: const EdgeInsets.only(left: 5,right: 5),
           child: Container(
-            height: 180,width: MediaQuery.of(context).size.width,
-            child: Card(shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),),),
+            height: 185,width: MediaQuery.of(context).size.width,
+            child: Card(shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+            child:Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(children: <Widget>[
+                Row(children: <Widget>[Text("الملعب")],),
+                SizedBox(height: 20,),
+                Row(children: <Widget>[
+                  Icon(MdiIcons.scoreboard),
+                  SizedBox(width: 15,),
+                  Column(crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                    Text("Camp Nou"),
+                    Text("Barcelona,اسبانيا",style: TextStyle(color: Colors.grey),),
+                  ],),
+                  SizedBox(width: 25,),
+                  Card(
+                      color: Colors.grey[200],
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(100))),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Icon(MdiIcons.googleMaps,color: Colors.green[700],size: 22,),
+                      ))
+                ],),
+                Divider(height: 25,),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30,right: 30),
+                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                    Column(children: <Widget>[
+                      Text("عشب"),
+                      Text("سطح الملعب",style: TextStyle(color: Colors.grey)),
+                    ],),
+                    Column(children: <Widget>[
+                      Text("99.787"),
+                      Text("السعة",style: TextStyle(color: Colors.grey)),
+                    ],),
+                    Column(children: <Widget>[
+                      Text("1957"),
+                      Text("افتتح",style: TextStyle(color: Colors.grey),)
+                    ],),
+                  ],),
+                )
+
+              ],),
+            )
+            ),),
         ),
 
       ],),

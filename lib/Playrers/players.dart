@@ -5,13 +5,17 @@ import 'package:fotmobb/EachTeam/cups.dart';
 import 'package:fotmobb/EachTeam/matchesForteam.dart';
 import 'package:fotmobb/EachTeam/overView.dart';
 import 'package:fotmobb/EachTeam/statisticsForTeam.dart';
+import 'package:fotmobb/Playrers/playerMatches.dart';
+import 'package:fotmobb/Playrers/playerStatistics.dart';
+import 'package:fotmobb/Playrers/profile.dart';
+import 'package:fotmobb/Playrers/playerTransference.dart';
 
-class eachTeam extends StatefulWidget {
+class players extends StatefulWidget {
   @override
-  _eachTeamState createState() => _eachTeamState();
+  _playersState createState() => _playersState();
 }
 
-class _eachTeamState extends State<eachTeam> with TickerProviderStateMixin{
+class _playersState extends State<players> with TickerProviderStateMixin{
 
   bool chContaier = false;
   ScrollController _scrollController = new ScrollController();
@@ -24,7 +28,7 @@ class _eachTeamState extends State<eachTeam> with TickerProviderStateMixin{
 
   @override
   void initState() {
-    tabController = new TabController(length: 5, vsync: this);
+    tabController = new TabController(length: 4, vsync: this);
     tabController.addListener(() {
       setState(() {
         _selectedIndex=tabController.index;
@@ -129,19 +133,16 @@ class _eachTeamState extends State<eachTeam> with TickerProviderStateMixin{
                       },
                       tabs: [
                         Tab(
-                          text: "  نظرة عامة",
+                          text: "  الملف الشخصي",
                         ),
                         Tab(
                           text: " المباريات",
                         ),
                         Tab(
-                          text: " المراكز",
+                          text: " احصائيات",
                         ),
                         Tab(
-                          text: " احصائيات ",
-                        ),
-                        Tab(
-                          text: "  الكؤوس",
+                          text: " انتقالات ",
                         ),
                       ])),
             ),
@@ -160,24 +161,21 @@ class _eachTeamState extends State<eachTeam> with TickerProviderStateMixin{
             headerSliverBuilder: _sliverBuilder,
             body: new TabBarView(controller: tabController, children: [
               ListView(children: <Widget>[
-                overView()
+                profile()
               ]
               ),
               ListView(children: <Widget>[
-                matchesForTeam()
+                playerMatches()
               ]),
               ListView(
                   children: <Widget>[
-                    postions()
+                    playerStatistics()
                   ]),
               ListView(
                   children: <Widget>[
-                    statisticsForTeam()
+                    playerTransference()
                   ]),
-              ListView(
-                  children: <Widget>[
-                    cups()
-                  ]),
+
             ]),
           ),
         ),
