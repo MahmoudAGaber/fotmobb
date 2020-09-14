@@ -104,7 +104,7 @@ class _postionsState extends State<postions> {
                     style: TextStyle(color: Colors.grey),
                   ),
                   SizedBox(
-                    width: 85.0,
+                    width: 92.0,
                   ),
                   Text(
                     "م",
@@ -125,14 +125,14 @@ class _postionsState extends State<postions> {
                     style: TextStyle(color: Colors.grey),
                   ),
                   SizedBox(
-                    width: 17.0,
+                    width: 20.0,
                   ),
                   Text(
                     "خ",
                     style: TextStyle(color: Colors.grey),
                   ),
                   SizedBox(
-                    width: 19.0,
+                    width: 25.0,
                   ),
                   Text(
                     "-/+",
@@ -146,7 +146,7 @@ class _postionsState extends State<postions> {
                     style: TextStyle(color: Colors.grey),
                   ),
                   SizedBox(
-                    width: 25.0,
+                    width: 28.0,
                   ),
                   Text(
                     "ن",
@@ -168,37 +168,41 @@ class _postionsState extends State<postions> {
                   onTap: (){
                     Navigator.pushNamed(context, '/eachTeam');
                   },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Text("1"),
-                              Container(
-                                child: Container(
-                                    width: 40,
-                                    height: 30,
-                                    child: Image.asset(
-                                        "assets/541.jpg")),
-                              ),
-                              Text("ريال مدريد"),
-                            ],
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        width: 25.0,
-                      ),
-                      Text("23"),
-                      Text("20"),
-                      Text("2"),
-                      Text("1"),
-                      Text("8-56"),
-                      Text("48"),
-                      Text("62"),
-                    ],
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 35,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Text("1"),
+                                Container(
+                                  child: Container(
+                                      width: 40,
+                                      height: 30,
+                                      child: Image.asset(
+                                          "assets/541.jpg")),
+                                ),
+                                Text("ريال مدريد"),
+                              ],
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          width: 25.0,
+                        ),
+                        Text("23"),
+                        Text("20"),
+                        Text("2"),
+                        Text("1"),
+                        Text("8-56"),
+                        Text("48"),
+                        Text("62"),
+                      ],
+                    ),
                   ),
                 ),
                 Divider(

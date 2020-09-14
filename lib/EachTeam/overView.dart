@@ -174,62 +174,75 @@ class _overViewState extends State<overView> {
                   Text("الدوري الاسباني")],),
                 Padding(
                   padding: const EdgeInsets.only(top: 8,bottom: 8,right: 8),
-                  child: Row(
-                    children: <Widget>[
-                      Text(
-                        "فريق",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      SizedBox(
-                        width: 120.0,
-                      ),
-                      Text(
-                        "م",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      SizedBox(
-                        width: 21.0,
-                      ),
-                      Text(
-                        "ف",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      SizedBox(
-                        width: 15.0,
-                      ),
-                      Text(
-                        "ت",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      SizedBox(
-                        width: 12.0,
-                      ),
-                      Text(
-                        "خ",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      SizedBox(
-                        width: 19.0,
-                      ),
-                      Text(
-                        "-/+",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      SizedBox(
-                        width: 24.0,
-                      ),
-                      Text(
-                        "=",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      SizedBox(
-                        width: 24.0,
-                      ),
-                      Text(
-                        "ن",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                    ],
+                  child:  Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          width: MediaQuery.of(context).size.width*0.35,
+                          child: Row(
+                            children: <Widget>[
+                              SizedBox(width: 10,),
+                              Text(
+                                "فريق",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                            ],),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width*0.3,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 3,right: 8),
+                            child: Row(
+                              children: <Widget>[
+                                Text(
+                                  "م",
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                                SizedBox(width: 21,),
+                                Text(
+                                  "ف",
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                                SizedBox(width: 17,),
+                                Text(
+                                  "ت",
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                                SizedBox(width: 19,),
+                                Text(
+                                  "خ",
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width*0.22,
+                          child: Row(
+                            children: <Widget>[
+                              Text(
+                                "-/+",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              SizedBox(width: 25,),
+                              Text(
+                                "=",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              SizedBox(width: 25,),
+                              Text(
+                                "ن",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                            ],
+                          ),
+                        )
+
+                      ],
+                    ),
                   ),
                 ),
                 ListView.builder(
@@ -334,7 +347,7 @@ class _overViewState extends State<overView> {
                                                       child: Column(mainAxisAlignment:MainAxisAlignment.end,children: <Widget>[
                                                               Container(
                                                                 height: 65,width: 60,
-                                                                child: Image.asset("assets/530.jpg",fit: BoxFit.fill,),)
+                                                                child: Image.asset("assets/Marcelo.jpg",fit: BoxFit.fill,),)
                                                         ],),
                                                     ),
                                       ]
@@ -348,40 +361,32 @@ class _overViewState extends State<overView> {
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),
                                   child: Column(children: <Widget>[
-                                       Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: <Widget>[
-                                            Container(
-                                              width: 80,
-                                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                children: <Widget>[
-                                                Container(
-                                                  height: 25,width: 25,
-                                                  child: Image.asset("assets/530.jpg"),
-                                                ),
-                                                Text("ميسي")
-                                              ],),
-                                            ),
-                                            Text("7.40")
-                                          ]
-                                      ),
-                                    SizedBox(height: 20.0,),
-                                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: <Widget>[
-                                          Container(
-                                            width: 80,
-                                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                              children: <Widget>[
-                                                Container(
-                                                  height: 25,width: 25,
-                                                  child: Image.asset("assets/530.jpg"),
-                                                ),
-                                                Text("ميسي")
-                                              ],),
-                                          ),
-                                          Text("7.40")
-                                        ]
-                                    ),
-                                      Divider(height: 20,),
+                                       ListView.builder(
+                                         physics: ClampingScrollPhysics(),
+                                         shrinkWrap: true,
+                                         itemCount: 2,
+                                         itemBuilder: (BuildContext context,index){
+                                           return   Padding(
+                                             padding: const EdgeInsets.only(bottom: 8),
+                                             child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                 children: <Widget>[
+                                                   Container(
+                                                     width: 80,
+                                                     child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                       children: <Widget>[
+                                                         Container(height: 30,width: 30,
+                                                             child: ClipRRect(borderRadius: BorderRadius.all(Radius.circular(100)),
+                                                                 child: Image.asset("assets/Marcelo.jpg",))),
+                                                         Text("مارسيلو")
+                                                       ],),
+                                                   ),
+                                                   Text("7.40")
+                                                 ]
+                                             ),
+                                           );
+                                         },
+                                       ),
+                                      Divider(height: 15,),
                                     
                                       Row(children: <Widget>[
                                         Text("عرض الكل",style: TextStyle(color: Colors.grey,fontSize: 14),)],),

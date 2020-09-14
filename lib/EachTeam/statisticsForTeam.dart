@@ -302,7 +302,7 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                                                   child: Column(mainAxisAlignment:MainAxisAlignment.end,children: <Widget>[
                                                     Container(
                                                       height: 65,width: 60,
-                                                      child: Image.asset("assets/530.jpg",fit: BoxFit.fill,),)
+                                                      child: Image.asset("assets/Marcelo.jpg",fit: BoxFit.fill,),)
                                                   ],),
                                                 ),
                                               ]
@@ -315,40 +315,32 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                               Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Column(children: <Widget>[
-                                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Container(
-                                          width: 80,
-                                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  ListView.builder(
+                                    physics: ClampingScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemCount: 2,
+                                    itemBuilder: (BuildContext context,index){
+                                      return   Padding(
+                                        padding: const EdgeInsets.only(bottom: 8),
+                                        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: <Widget>[
                                               Container(
-                                                height: 25,width: 25,
-                                                child: Image.asset("assets/530.jpg"),
+                                                width: 80,
+                                                child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                  children: <Widget>[
+                                                    Container(height: 30,width: 30,
+                                                        child: ClipRRect(borderRadius: BorderRadius.all(Radius.circular(100)),
+                                                            child: Image.asset("assets/Marcelo.jpg",))),
+                                                    Text("مارسيلو")
+                                                  ],),
                                               ),
-                                              Text("ميسي")
-                                            ],),
+                                              Text("7.40")
+                                            ]
                                         ),
-                                        Text("7.40")
-                                      ]
+                                      );
+                                    },
                                   ),
-                                  SizedBox(height: 20.0,),
-                                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Container(
-                                          width: 80,
-                                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            children: <Widget>[
-                                              Container(
-                                                height: 25,width: 25,
-                                                child: Image.asset("assets/530.jpg"),
-                                              ),
-                                              Text("ميسي")
-                                            ],),
-                                        ),
-                                        Text("7.40")
-                                      ]
-                                  ),
-                                  Divider(height: 20,),
+                                  Divider(height: 15,),
 
                                   Row(children: <Widget>[
                                     Text("عرض الكل",style: TextStyle(color: Colors.grey,fontSize: 14),)],),
@@ -420,7 +412,7 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                                                           Text("ريال مدريد",style: TextStyle(color: Colors.white))
                                                         ],),
                                                       ),
-                                                      Text("4.3",style: TextStyle(color: Colors.white,fontSize: 20),)
+                                                      Text("4.4",style: TextStyle(color: Colors.white,fontSize: 20),)
                                                     ]
                                                 ),
                                               ]
@@ -432,43 +424,35 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                               Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Column(children: <Widget>[
-                                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Container(
-                                          width: 80,
-                                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  ListView.builder(
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    physics: ClampingScrollPhysics(),
+                                    itemCount: 2,
+                                    itemBuilder: (BuildContext context,index){
+                                      return  Padding(
+                                        padding: const EdgeInsets.only(bottom: 16),
+                                        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: <Widget>[
-                                              Text("2"),
                                               Container(
-                                                height: 25,width: 25,
-                                                child: Image.asset("assets/530.jpg"),
+                                                width: 80,
+                                                child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                  children: <Widget>[
+                                                    Text("2"),
+                                                    Container(
+                                                      height: 25,width: 25,
+                                                      child: Image.asset("assets/530.jpg"),
+                                                    ),
+                                                    Text("اتليتكو")
+                                                  ],),
                                               ),
-                                              Text("ميسي")
-                                            ],),
+                                              Text("3.9")
+                                            ]
                                         ),
-                                        Text("4.5")
-                                      ]
+                                      );
+                                    },
                                   ),
-                                  SizedBox(height: 20.0,),
-                                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Container(
-                                          width: 80,
-                                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            children: <Widget>[
-                                              Text("2"),
-                                              Container(
-                                                height: 25,width: 25,
-                                                child: Image.asset("assets/530.jpg"),
-                                              ),
-                                              Text("ميسي")
-                                            ],),
-                                        ),
-                                        Text("3.4")
-                                      ]
-                                  ),
-                                  Divider(height: 20,),
-
+                                  Divider(height: 10,),
                                   Row(children: <Widget>[
                                     Text("عرض الكل",style: TextStyle(color: Colors.grey,fontSize: 14),)],),
                                 ],),
@@ -539,7 +523,7 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                                                         Text("ريال مدريد",style: TextStyle(color: Colors.white))
                                                       ],),
                                                     ),
-                                                    Text("4.3",style: TextStyle(color: Colors.white,fontSize: 20),)
+                                                    Text("0.3",style: TextStyle(color: Colors.white,fontSize: 20),)
                                                   ]
                                               ),
                                             ]
@@ -551,43 +535,36 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                               Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Column(children: <Widget>[
-                                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Container(
-                                          width: 80,
-                                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  ListView.builder(
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    physics: ClampingScrollPhysics(),
+                                    itemCount: 2,
+                                    itemBuilder: (BuildContext context,index){
+                                      return  Padding(
+                                        padding: const EdgeInsets.only(bottom: 15),
+                                        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: <Widget>[
-                                              Text("2"),
                                               Container(
-                                                height: 25,width: 25,
-                                                child: Image.asset("assets/530.jpg"),
+                                                width: 80,
+                                                child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                  children: <Widget>[
+                                                    Text("2"),
+                                                    Container(
+                                                      height: 25,width: 25,
+                                                      child: Image.asset("assets/530.jpg"),
+                                                    ),
+                                                    Text("اتليتكو")
+                                                  ],),
                                               ),
-                                              Text("ميسي")
-                                            ],),
+                                              Text("0.8")
+                                            ]
                                         ),
-                                        Text("4.5")
-                                      ]
-                                  ),
-                                  SizedBox(height: 20.0,),
-                                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Container(
-                                          width: 80,
-                                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            children: <Widget>[
-                                              Text("2"),
-                                              Container(
-                                                height: 25,width: 25,
-                                                child: Image.asset("assets/530.jpg"),
-                                              ),
-                                              Text("ميسي")
-                                            ],),
-                                        ),
-                                        Text("3.4")
-                                      ]
-                                  ),
-                                  Divider(height: 20,),
+                                      );
+                                    },
 
+                                  ),
+                                  Divider(height: 15,),
                                   Row(children: <Widget>[
                                     Text("عرض الكل",style: TextStyle(color: Colors.grey,fontSize: 14),)],),
                                 ],),
@@ -670,42 +647,36 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                               Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Column(children: <Widget>[
-                                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Container(
-                                          width: 80,
-                                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  ListView.builder(
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    physics: ClampingScrollPhysics(),
+                                    itemCount: 2,
+                                    itemBuilder: (BuildContext context,index){
+                                      return  Padding(
+                                        padding: const EdgeInsets.only(bottom: 15),
+                                        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: <Widget>[
-                                              Text("2"),
                                               Container(
-                                                height: 25,width: 25,
-                                                child: Image.asset("assets/530.jpg"),
+                                                width: 80,
+                                                child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                  children: <Widget>[
+                                                    Text("2"),
+                                                    Container(
+                                                      height: 25,width: 25,
+                                                      child: Image.asset("assets/530.jpg"),
+                                                    ),
+                                                    Text("اتليتكو")
+                                                  ],),
                                               ),
-                                              Text("ميسي")
-                                            ],),
+                                              Text("190.3")
+                                            ]
                                         ),
-                                        Text("4.5")
-                                      ]
+                                      );
+                                    },
+
                                   ),
-                                  SizedBox(height: 20.0,),
-                                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Container(
-                                          width: 80,
-                                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            children: <Widget>[
-                                              Text("2"),
-                                              Container(
-                                                height: 25,width: 25,
-                                                child: Image.asset("assets/530.jpg"),
-                                              ),
-                                              Text("ميسي")
-                                            ],),
-                                        ),
-                                        Text("3.4")
-                                      ]
-                                  ),
-                                  Divider(height: 20,),
+                                  Divider(height: 15,),
 
                                   Row(children: <Widget>[
                                     Text("عرض الكل",style: TextStyle(color: Colors.grey,fontSize: 14),)],),

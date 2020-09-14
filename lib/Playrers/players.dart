@@ -64,6 +64,9 @@ class _playersState extends State<players> with TickerProviderStateMixin{
               Row(
                 children: <Widget>[
                   IconButton(
+                      icon: Icon(Icons.people,  color: Colors.white,),
+                      onPressed: null),
+                  IconButton(
                       icon: Icon(
                         Icons.notifications_none,
                         color: Colors.white,
@@ -86,28 +89,33 @@ class _playersState extends State<players> with TickerProviderStateMixin{
                     Padding(
                       padding: const EdgeInsets.only(right: 25,top: 60),
                       child: Row(mainAxisAlignment:MainAxisAlignment.start,children: <Widget>[
-                        Container(height: 60,width: 55,
-                            child: Image.asset("assets/541.jpg")),
+                        Container(height: 55,width: 55,
+                            child: ClipRRect(borderRadius: BorderRadius.all(Radius.circular(100)),
+                                child: Image.asset("assets/Marcelo.jpg",))),
                       ],
 
                       ),
                     ),
-                    Positioned(top:100,right: 100,
-                        child: Row(children: <Widget>[Text("اسبانيا",style: TextStyle(color: Colors.grey[200]),)],))
+                    Positioned(top:93,right: 95,
+                        child: Row(children: <Widget>[
+                          Container(height: 25,width: 25,
+                          child: Image.asset("assets/541.jpg"),),
+                          SizedBox(width: 10,),
+                          Text("ريال مدريد",style: TextStyle(color: Colors.grey[200]),)],))
                   ],
                 ),),
               centerTitle: true,
-              titlePadding: EdgeInsets.only(top: 1.0,bottom: 13.0),
+              titlePadding: EdgeInsets.only(top: 3.0,bottom: 13.0),
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(right: 60.0),
+                    padding: const EdgeInsets.only(right: 60.0,bottom: 4),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         Text(
-                          ' ريال مدريد',
+                          '  مارسيلو',
                           style: TextStyle(fontSize: 18),)],),
                   ),
 

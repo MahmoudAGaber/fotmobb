@@ -44,26 +44,32 @@ class _playersStatsState extends State<playersStats> {
                       Padding(
                         padding: const EdgeInsets.only(left: 20),
                         child: Column(mainAxisAlignment:MainAxisAlignment.end,children: <Widget>[ Container(
-                            height: 50,width: 50,
-                            child: Image.asset("assets/530.jpg"))],),
+                            height: 60,width: 60,
+                            child: Image.asset("assets/l2.png"))],),
                       )
                 ]
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10,right: 10,top: 20,bottom: 13),
+                    padding: const EdgeInsets.only(left: 10,right: 10,top: 20,bottom: 8),
                     child: Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: <Widget>[
                       Row(children: <Widget>[
-                        Container(height:25,width:25,child: Image.asset("assets/530.jpg"),),SizedBox(width: 5,), Text("سواريز")]),
-                      Text("9",style: TextStyle(fontSize: 17),),
+                        Container(height: 30,width: 30,
+                        child: ClipRRect(borderRadius: BorderRadius.all(Radius.circular(100)),
+                            child: Image.asset("assets/l2.png",))),
+                        SizedBox(width: 5,), Text("سواريز")]),
+                      Text("10",style: TextStyle(fontSize: 17),),
                     ],),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: <Widget>[
                       Row(children: <Widget>[
-                        Container(height:25,width:25,child: Image.asset("assets/530.jpg"),),SizedBox(width: 5,), Text("مارسيلو")]),
-                      Text("8",style: TextStyle(fontSize: 17),),
+                        Container(height: 30,width: 30,
+                            child: ClipRRect(borderRadius: BorderRadius.all(Radius.circular(100)),
+                                child: Image.asset("assets/l2.png",))),
+                        SizedBox(width: 5,), Text("مارسيلو")]),
+                      Text("10",style: TextStyle(fontSize: 17),),
                     ],),
                   ),
                   Divider(height: 2,),

@@ -467,23 +467,23 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text(leaguedetails[index].firstTeam),
+                  Text(leaguedetails1[index].firstTeam),
                   Container(
                     width: 30,
                     height: 25,
-                    child: Image.asset(leaguedetails[index].urlFirst),
+                    child: Image.asset(leaguedetails1[index].urlFirst),
                   ),
                   SizedBox(
                     width: 8,
                   ),
-                  Center(child: Text(leaguedetails[index].time)),
+                  Center(child: Text(leaguedetails1[index].time)),
                   SizedBox(width: 6),
                   Container(
                     width: 30,
                     height: 25,
-                    child: Image.asset(leaguedetails[index].urlSecond),
+                    child: Image.asset(leaguedetails1[index].urlSecond),
                   ),
-                  Text(leaguedetails[index].seconTeam),
+                  Text(leaguedetails1[index].seconTeam),
                 ],
               ),
             ),
