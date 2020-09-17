@@ -15,7 +15,7 @@ class _MatchEvent_aState extends State<MatchEvent_a> {
   Widget build(BuildContext context) {
     return  Column(
         children: <Widget>[
-         Container(
+        /* Container(
            child: ListView.builder(
              shrinkWrap: true,
              scrollDirection: Axis.vertical,
@@ -29,7 +29,7 @@ class _MatchEvent_aState extends State<MatchEvent_a> {
                   ),
 
               ),
-
+*/
       Padding(
         padding: const EdgeInsets.all(5.0),
         child: Container(height: 150,width: MediaQuery.of(context).size.width,

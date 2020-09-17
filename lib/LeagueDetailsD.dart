@@ -53,11 +53,7 @@ List<LeagueDetails> leaguedetails=<LeagueDetails>[
 
     ],
   ),
-  new LeagueDetails(l3,
-    <LeagueDetails1>[
-      new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ," 9:45 م"),
-    ],
-  ),
+
 
 
 
