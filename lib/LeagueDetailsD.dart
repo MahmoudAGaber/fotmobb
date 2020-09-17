@@ -37,42 +37,30 @@ List<LeagueN> leaguen =[
   LeagueN("الدوري الاسباني","assets/12.jpg", true),
   LeagueN("الدوري الاسباني","assets/12.jpg", true),
 
-
 ];
 
-List<LeagueDetails1> leaguedetails1=[
-  new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ," 9:45 م"),
-  new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ,"9:45 م"),
-  new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ,"9:45 م"),
-  new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ,"9:45 م"),
-  new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ,"9:45 م")
-];
-List<LeagueDetails> leaguedetails=[
-  LeagueDetails(l1,
+
+List<LeagueDetails> leaguedetails=<LeagueDetails>[
+  new LeagueDetails(l1,
   <LeagueDetails1>[
     new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ," 9:45 م"),
-    new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ,"9:45 م"),
-    new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ,"9:45 م"),
-    new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ,"9:45 م"),
-    new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ,"9:45 م")
+    new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ," 9:45 م"),
   ],
   ),
-  LeagueDetails(l1,
+  new LeagueDetails(l2,
     <LeagueDetails1>[
       new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ," 9:45 م"),
-      new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ,"9:45 م"),
-      new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ,"9:45 م")
-    ],),
-  LeagueDetails(l1,
+
+    ],
+  ),
+  new LeagueDetails(l3,
     <LeagueDetails1>[
       new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ," 9:45 م"),
-      new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ,"9:45 م"),
-      new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ,"9:45 م")
-    ],),
-  LeagueDetails(l1,
-    <LeagueDetails1>[
-      new LeagueDetails1('ريال مدريد', 'اتليتكو', 'assets/11.jpg', 'assets/530.jpg' ," 9:45 م"),
-    ],),
+    ],
+  ),
+
+
+
 
 ];
 

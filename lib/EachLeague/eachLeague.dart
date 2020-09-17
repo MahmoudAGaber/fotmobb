@@ -56,6 +56,7 @@ class _eachLeagueState extends State<eachLeague> with TickerProviderStateMixin{
         Directionality(
           textDirection: TextDirection.rtl,
           child: SliverAppBar(
+            elevation: 0.0,
             actions: <Widget>[
               Row(
                 children: <Widget>[

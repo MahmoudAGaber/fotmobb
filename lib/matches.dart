@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:fotmobb/Matches/LeagueN.dart';
 import 'package:fotmobb/LeagueDetailsD.dart';
+import 'package:fotmobb/News/transferCenter.dart';
+import 'package:fotmobb/clander1.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -51,7 +53,7 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
   }
 
   static const TextStyle tapbar =
-  TextStyle(fontSize: 17, fontWeight: FontWeight.w500);
+  TextStyle(fontSize: 15, fontWeight: FontWeight.w500);
   bool isSwitched = false;
   List<LeagueN> _list;
   _matchesState(this._list);
@@ -140,15 +142,19 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
     var selectedDate = new HijriCalendar.now();
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.only(right: 10),
             child: Row(
               children: <Widget>[
-                Icon(
+                IconButton(
+                    icon: Icon(
                   Icons.calendar_today,
                   size: 22,
-                ),
+                ),onPressed: (){
+                      Navigator.pushNamed(context, '/clanderbar');
+                },),
                 SizedBox(
                   width: 15,
                 ),
@@ -232,26 +238,36 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
                 ],
               ),
             ),
-            ListTile(
-              leading: IconButton(
-                  icon: Icon(Icons.tv), iconSize: 25.0, onPressed: null),
-              title: Text(
-                "الجدول التلفزيوني",
-                style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400),
+            GestureDetector(
+              onTap: (){
+                Navigator.pushNamed(context, '/tv');
+              },
+              child: ListTile(
+                leading: IconButton(
+                    icon: Icon(Icons.tv), iconSize: 25.0, onPressed: null),
+                title: Text(
+                  "الجدول التلفزيوني",
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400),
+                ),
               ),
             ),
-            ListTile(
-              leading: IconButton(
-                  icon: Icon(Icons.loop), iconSize: 25.0, onPressed: null),
-              title: Text(
-                "الانتقالات",
-                style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400),
+            GestureDetector(
+              onTap: (){
+                Navigator.pushNamed(context, '/transferCenter');
+              },
+              child: ListTile(
+                leading: IconButton(
+                    icon: Icon(Icons.loop), iconSize: 25.0, onPressed:null),
+                title: Text(
+                  "الانتقالات",
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400),
+                ),
               ),
             ),
             Divider(
@@ -352,9 +368,7 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
         _tabBarPage(),
         _tabBarPage(),
         _tabBarPage(),
-       GestureDetector(
-         onTap: ()=> _selectDate(context) ,
-       )
+        clander1(),
       ]),
     );
   }
@@ -418,8 +432,9 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
 
   Widget _tabBarPage() {
     return ListView.builder(
+      physics: ClampingScrollPhysics(),
       itemBuilder: (widget, indx) => _fullTile(indx),
-      itemCount: leaguen.length
+      itemCount: leaguen.length-1
     );
   }
 
@@ -454,39 +469,47 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
   Widget _tileItem() {
     return Padding(
       child: ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.vertical,
+        physics: ClampingScrollPhysics(),
         itemCount: leaguedetails.length,
-        itemBuilder: (widget, index) {
-          return GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, '/matchInfo');
+        shrinkWrap: true,
+        itemBuilder: (BuildContext context,indexx){
+          return ListView.builder(
+            physics: ClampingScrollPhysics(),
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            itemCount: leaguedetails.length,
+            itemBuilder: (widget, index) {
+              return GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/matchInfo_a');
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(left:75,right:75,bottom: 13),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(leaguedetails[index].childern[0].firstTeam),
+                      Container(
+                        width: 30,
+                        height: 25,
+                        child: Image.asset(leaguedetails[index].childern[0].urlFirst),
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Center(child: Text(leaguedetails[index].childern[0].time)),
+                      SizedBox(width: 6),
+                      Container(
+                        width: 30,
+                        height: 25,
+                        child: Image.asset(leaguedetails[index].childern[0].urlSecond),
+                      ),
+                      Text(leaguedetails[index].childern[0].seconTeam),
+                    ],
+                  ),
+                ),
+              );
             },
-            child: Padding(
-              padding: const EdgeInsets.only(left:75,right:75,bottom: 13),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(leaguedetails1[index].firstTeam),
-                  Container(
-                    width: 30,
-                    height: 25,
-                    child: Image.asset(leaguedetails1[index].urlFirst),
-                  ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Center(child: Text(leaguedetails1[index].time)),
-                  SizedBox(width: 6),
-                  Container(
-                    width: 30,
-                    height: 25,
-                    child: Image.asset(leaguedetails1[index].urlSecond),
-                  ),
-                  Text(leaguedetails1[index].seconTeam),
-                ],
-              ),
-            ),
           );
         },
       ),

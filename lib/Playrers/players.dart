@@ -105,7 +105,7 @@ class _playersState extends State<players> with TickerProviderStateMixin{
                   ],
                 ),),
               centerTitle: true,
-              titlePadding: EdgeInsets.only(top: 3.0,bottom: 13.0),
+              titlePadding: EdgeInsets.only(top: 5.0,bottom: 9.0),
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[

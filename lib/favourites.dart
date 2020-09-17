@@ -50,20 +50,18 @@ class _FavouritesState extends State<Favourites> with SingleTickerProviderStateM
               controller: tabController,
               labelColor: Colors.white,
               indicatorColor: Colors.yellow[500],
-              labelPadding: EdgeInsets.only(right: 50),
+              labelPadding: EdgeInsets.only(left: 70),
+              indicatorPadding: EdgeInsets.only(left: 70),
               tabs:<Widget>[
-
 
                 Tab(   child: Text("الفرق",style: tapbar,),
                 ),
                 Tab(
                   child: Text("اللاعبين",style: tapbar,),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 150),
-                  child: Tab(
-                    child: Text("الدوريات",style: tapbar,),),
-                ),
+                Tab(
+                  child: Text("الدوريات",style: tapbar,),),
+
               ],
 
             ),

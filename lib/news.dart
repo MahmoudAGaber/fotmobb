@@ -7,6 +7,8 @@ import 'package:fotmobb/drawerrr.dart';
 import 'package:fotmobb/trendingData.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import 'News/transference.dart';
+
 class news extends StatefulWidget {
   @override
   _newsState createState() => _newsState();
@@ -52,6 +54,7 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
             labelColor: Colors.white,
             labelPadding: EdgeInsets.only(left: 50),
             indicatorPadding: EdgeInsets.only(left: 50),
+            indicatorColor: Colors.yellow,
             tabs: <Widget>[
               Tab(
                 child: Text("لك",style: tapbar,),
@@ -96,26 +99,36 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
                   ],
                 ),
               ),
-              ListTile(
-                leading: IconButton(
-                    icon: Icon(Icons.tv), iconSize: 25.0, onPressed: null),
-                title: Text(
-                  "الجدول التلفزيوني",
-                  style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400),
+              GestureDetector(
+                onTap: (){
+                  Navigator.pushNamed(context, '/tv');
+                },
+                child: ListTile(
+                  leading: IconButton(
+                      icon: Icon(Icons.tv), iconSize: 25.0, onPressed: null),
+                  title: Text(
+                    "الجدول التلفزيوني",
+                    style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400),
+                  ),
                 ),
               ),
-              ListTile(
-                leading: IconButton(
-                    icon: Icon(Icons.loop), iconSize: 25.0, onPressed: null),
-                title: Text(
-                  "الانتقالات",
-                  style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400),
+              GestureDetector(
+                onTap: (){
+                  Navigator.pushNamed(context, '/transferCenter');
+                },
+                child: ListTile(
+                  leading: IconButton(
+                      icon: Icon(Icons.loop), iconSize: 25.0, onPressed:null),
+                  title: Text(
+                    "الانتقالات",
+                    style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400),
+                  ),
                 ),
               ),
               Divider(
@@ -186,7 +199,9 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
             new Scaffold(
               body:  latest()
             ),
-            new Scaffold(),
+            new ListView(
+              children: <Widget>[transference(),],
+            ),
             new Scaffold(),
 
 

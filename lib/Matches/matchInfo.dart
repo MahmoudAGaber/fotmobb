@@ -63,18 +63,10 @@ class _matchInfoState extends State<matchInfo> with TickerProviderStateMixin {
         Directionality(
           textDirection: TextDirection.rtl,
           child: SliverAppBar(
+            elevation: 0.0,
             actions: <Widget>[
               Row(
                 children: <Widget>[
-                  IconButton(
-                      icon: Icon(
-                        Icons.notifications_none,
-                        color: Colors.white,
-                      ),
-                      onPressed: null),
-                  IconButton(
-                      icon: Icon(Icons.share, color: Colors.white),
-                      onPressed: null),
                   IconButton(
                       icon: Icon(Icons.more_vert, color: Colors.white),
                       onPressed: null),
@@ -86,6 +78,22 @@ class _matchInfoState extends State<matchInfo> with TickerProviderStateMixin {
             floating: true,
             snap: true,
             flexibleSpace: FlexibleSpaceBar(
+              background: Padding(
+                padding: const EdgeInsets.only(bottom: 63,left: 40),
+                child: Row(mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                  IconButton(
+                      icon: Icon(
+                        Icons.notifications_none,
+                        color: Colors.white,
+                      ),
+                      onPressed: null),
+                  IconButton(
+                      icon: Icon(Icons.share, color: Colors.white),
+                      onPressed: null),
+                ],),
+              ),
+              titlePadding: EdgeInsets.only(bottom: 10),
               centerTitle: true,
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

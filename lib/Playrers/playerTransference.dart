@@ -23,9 +23,9 @@ class _playerTransferenceState extends State<playerTransference> {
               children: <Widget>[
               Text("مهنة الكبار"),
               Container(child: Row(children: <Widget>[
-                Icon(MdiIcons.scoreboard),
+                Icon(MdiIcons.scoreboard,size: 20,),
                 SizedBox(width: 10,),
-                Icon(MdiIcons.soccer),
+                Icon(MdiIcons.soccer,size: 20,),
               ],),)
             ],),
             ListView.builder(
@@ -73,9 +73,9 @@ class _playerTransferenceState extends State<playerTransference> {
                   children: <Widget>[
                     Text(" الفريق الوطني"),
                     Container(child: Row(children: <Widget>[
-                      Icon(MdiIcons.scoreboard),
+                      Icon(MdiIcons.scoreboard,size: 20,),
                       SizedBox(width: 10,),
-                      Icon(MdiIcons.soccer),
+                      Icon(MdiIcons.soccer,size: 20,),
                     ],),)
                   ],),
                 ListView.builder(
@@ -120,13 +120,13 @@ class _playerTransferenceState extends State<playerTransference> {
       Padding(
         padding: const EdgeInsets.only(right: 15,top: 10,bottom: 15),
         child: Row(children: <Widget>[
-          Icon(MdiIcons.scoreboard,color: Colors.grey,size: 17,),
+          Icon(MdiIcons.scoreboard,color: Colors.grey,size: 15,),
           SizedBox(width: 4,),
-          Text("data",style:_textStyle1,),
+          Text("مباريات لعبت",style:_textStyle1,),
           SizedBox(width: 15,),
-          Icon(MdiIcons.soccer,color: Colors.grey,size: 17,),
+          Icon(MdiIcons.soccer,color: Colors.grey,size: 15,),
           SizedBox(width: 4,),
-          Text("data",style: _textStyle1,),
+          Text("اهداف",style: _textStyle1,),
         ],),
       ),
       Padding(
