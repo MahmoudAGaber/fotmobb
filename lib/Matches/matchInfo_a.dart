@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:fotmobb/Matches/LeagueN.dart';
 import 'package:fotmobb/Matches/preConfron.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 
 import 'matchEvent_a.dart';
@@ -22,6 +26,16 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
   TextStyle _textStyle=TextStyle(color: Colors.grey[500],fontSize: 13);
   TextStyle _textStyle1=TextStyle(fontSize: 17);
   TextStyle _textStyle2=TextStyle(color: Colors.grey[500],fontSize: 15);
+
+
+  TextStyle content = TextStyle(fontSize: 13.5);
+  TextStyle content2 = TextStyle(fontSize: 13.5,color: Colors.grey);
+  TextStyle content3 = TextStyle(fontSize: 12);
+  TextStyle content4= TextStyle(fontSize: 12,color: Colors.grey);
+  TextStyle number = TextStyle(fontSize: 18,fontWeight: FontWeight.w400);
+
+  static const TextStyle tapbar = TextStyle(fontSize: 13, fontWeight: FontWeight.w500);
+  TextStyle head = TextStyle(fontSize: 16, );
 
   bool chContaier = false;
 
@@ -104,7 +118,7 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
               titlePadding: EdgeInsets.only(top: 10),
               centerTitle: true,
               title: Padding(
-                padding: const EdgeInsets.only(bottom:10 ),
+                padding: const EdgeInsets.only(bottom:8 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -145,8 +159,8 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
           textDirection: TextDirection.rtl,
           child: SliverPersistentHeader(
             delegate: _SliverAppBarDelegate1(
-                minHeight: 80.0,
-                maxHeight: 85.0,
+                minHeight: 82.0,
+                maxHeight: 87.0,
                 child: Container(
                   color: Theme.of(context).primaryColor,
                   child: Column(
@@ -178,17 +192,24 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                       ),
                        ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 90,right: 90),
+                        padding: const EdgeInsets.only(left: 110,right: 110),
                         child: Container(
                           height: 48,
                           child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: <Widget>[
                             Column(children: <Widget>[
-                              Text("مارسيلو 21\nمارسيلو55",style: TextStyle(color: Colors.white,fontSize: 12))
+                              Text("مارسيلو 22",style: TextStyle(color: Colors.white,fontSize: 12))
                             ],),
+                                Column(children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Icon(MdiIcons.soccer,size: 15,color: Colors.white,),
+                                  ),
+                                ],),
+
                               Column(mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
-                                Text("غريزمان20",style: TextStyle(color: Colors.white,fontSize: 12))
+                                Text("مارسيلو 21\nمارسيلو55",style: TextStyle(color: Colors.white,fontSize: 12))
                               ],)
                           ],),
                         ),
@@ -216,22 +237,22 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                       },
                       tabs: [
                         Tab(
-                          text: " الوسائط",
+                          child:Text(" الوسائط",style: tapbar,),
                         ),
                         Tab(
-                          text: "احداث المبارة",
+                          child:Text("احداث المبارة",style: tapbar,),
                         ),
                         Tab(
-                          text: "التغطية المباشرة",
+                          child:Text("التغطية المباشرة",style:tapbar,),
                         ),
                         Tab(
-                          text: "تشكيلة",
+                          child:Text("تشكيلة",style: tapbar,),
                         ),
                         Tab(
-                          text: "احصائيات",
+                          child:Text("احصائيات",style: tapbar,),
                         ),
                         Tab(
-                          text: "المواجهات السابقة",
+                          child:Text("المواجهات السابقة",style: tapbar,),
                         ),
                       ])),
             ),
@@ -249,12 +270,126 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
           child: NestedScrollView(
             headerSliverBuilder: _sliverBuilder,
             body: new TabBarView(controller: tabController, children: [
-              Scaffold(),
+              Directionality(
+                textDirection: TextDirection.ltr,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: ListView.builder(
+                    itemCount: 6,
+                      itemBuilder:(BuildContext context,index){
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 8,right: 8),
+                      child: GestureDetector(
+                        onTap: (){
+                         _launchURL();
+                        },
+                        child: Card(shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                        child:Container(
+                          height: 100,
+                          child: Row(children: <Widget>[
+                            Container(
+                              height: 100,
+                              width: MediaQuery.of(context).size.width*0.6,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                  Row(children: <Widget>[
+                                    Text("1-0 Phippe Coutiho 21'")
+                                  ],),
+                                    SizedBox(height: 5,),
+                                    Row(children: <Widget>[
+                                      Text("streamable.com",style: TextStyle(color: Colors.grey,fontSize: 13),)
+                                    ],)
+                                ],),
+                              ),
+                            ),
+                            Container(
+                              height: 100,
+                              width: MediaQuery.of(context).size.width*0.338,
+                              decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.all(Radius.circular(10))),
+                              child: Column(children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 40),
+                                  child: Container(
+                                      height: 25,width: 25,
+                                      decoration: BoxDecoration(
+                                          color: Colors.grey[700],
+                                          borderRadius: BorderRadius.all(Radius.circular(100))),
+                                      child: Icon(Icons.play_arrow,color: Colors.white,size: 17,)),
+                                ),
+                              ],)
+                            )
+                          ],),
+                        )
+                        ),
+                      ),
+                    );
+                  }),
+                ),
+              ),
               ListView(children: <Widget>[
                 MatchEvent_a()
               ]
               ),
-              Scaffold(),
+              Directionality(
+                textDirection: TextDirection.ltr,
+                child: SafeArea(
+                  minimum: EdgeInsets.only(bottom: 10),
+                  child: ListView(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: 40,
+                          child: Row(children: <Widget>[
+                            VerticalDivider(thickness:2),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text("Match ends,Madrid 3,Athlitco 1 ."),
+                            ),
+                          ],),
+                        ),
+                      ),
+                      ListView(
+                        physics: ClampingScrollPhysics(),
+                        shrinkWrap: true,
+                          children:_list(context)
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: 40,
+                          child: Row(children: <Widget>[
+                            VerticalDivider(thickness:2),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text("First Half begins"),
+                            ),
+                          ],),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: 40,
+                          child: Row(children: <Widget>[
+                            VerticalDivider(thickness:2),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text("Lineups are annonced and players are warming up"),
+                            ),
+                          ],),
+                        ),
+                      ),
+
+
+                    ],
+                  ),
+                ),
+              ),
               ListView(
                 children: <Widget>[
                   Column(
@@ -276,7 +411,7 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                       Stack(
                         children: <Widget>[
                           Container(
-                            width: MediaQuery.of(context).size.width,height: 800,
+                            width: MediaQuery.of(context).size.width,height: 850,
                           child: Image.asset("assets/green.jpg",fit: BoxFit.cover,),),
                           Positioned(right:MediaQuery.of(context).size.width*0.4,
                               top: 5,
@@ -411,7 +546,7 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                         ],),
                       ),
                       Container(
-                        height: 1000,
+                        height: 1060,
                         child: Row(
                           children: <Widget>[
                             Expanded(
@@ -438,14 +573,13 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                                                     ),
                                                   ),
                                                   Container(width: 80,
-                                                      child: Expanded(
                                                           child: Center(
                                                             child: Column(
                                                               children: <Widget>[
                                                                 Text(" 12 مارسيلو ",overflow: TextOverflow.visible,),
                                                                 Text("مدافع",style: _textStyle,)],
                                                             ),
-                                                          )))
+                                                          ))
                                                 ],
 
                                               ),
@@ -480,14 +614,13 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                                               ),
                                             ),
                                             Container(width: 80,
-                                                child: Expanded(
                                                     child: Center(
                                                       child: Column(
                                                         children: <Widget>[
                                                           Text(" 12 مارسيلو ",overflow: TextOverflow.visible,),
                                                         Text("مدافع",style: _textStyle,)],
                                                       ),
-                                                    )))
+                                                    ))
                                           ],
 
                                         ),
@@ -506,6 +639,7 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                           Text("اللاعبون المصابون والمطردون",style: TextStyle(fontSize: 17),),
                         ],),
                       ),
+
                       Row(
                         children: <Widget>[
                           Expanded(
@@ -534,13 +668,13 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                                                 ),
                                               ),
                                               Container(width: 120,
-                                                      child: Center(
-                                                        child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                                                          children: <Widget>[
-                                                            Text(" 12 مارسيلو ",overflow: TextOverflow.visible,),
-                                                            Center(child: Text("اصابه في الفرده اليمني   ",style: _textStyle,))],
-                                                        ),
-                                                      ))
+                                                  child: Center(
+                                                    child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                                                      children: <Widget>[
+                                                        Text(" 12 مارسيلو ",overflow: TextOverflow.visible,),
+                                                        Center(child: Text("اصابه في الفرده اليمني   ",style: _textStyle,))],
+                                                    ),
+                                                  ))
                                             ],
 
                                           ),
@@ -563,8 +697,8 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                       )
                     ],
                   )
-                ],
-              ),
+                    ],
+                  ),
               ListView(
                 children: <Widget>[
                   Padding(
@@ -701,29 +835,294 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
       ),
     );
   }
-  Widget _players(){
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-         Container(width: 40,height: 40,
-          child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(100),),
-            child: Image.asset("assets/Marcelo.jpg"),
+   Widget _players(){
+    return Container(
+      height: 150,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+           Container(width: 40,height: 40,
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(100),),
+              child: Image.asset("assets/Marcelo.jpg"),
+            ),
           ),
-        ),
-        Container(width: 80,
-            child: Expanded(
-                child: Center(
-                  child: Text(" 12 مارسيلو ",
-                    style: TextStyle(color: Colors.white,fontSize: 15,fontWeight:FontWeight.w800,),overflow: TextOverflow.visible,),
-                )))
-      ],
+          Container(width: 80,
+                    child: Text(" 12 مارسيلو ",
+                      style: TextStyle(color: Colors.white,fontSize: 15,fontWeight:FontWeight.w800,),overflow: TextOverflow.visible,),
+                  )
+        ],
 
+      ),
     );
 
   }
+  Widget _oneLine(){
+    return Padding(
+      padding: const EdgeInsets.only(left: 8,right: 8),
+      child: Container(
+        height: 40,
+        child: Row(children: <Widget>[
+          Container(
+          decoration: BoxDecoration(
+            border: Border.all(width: 1,color: Colors.grey),
+              borderRadius: BorderRadius.all(Radius.circular(8))),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+              child: Text("90"),
+            ),
+          ),
+          SizedBox(width: 20,),
+          Text("Second Half ends.Real 3,Athlitco 1.")
 
+        ],
+        ),
+      ),
+    );
+  }
+
+  Widget _threeLineC(){
+    return Padding(
+      padding: const EdgeInsets.only(left: 8,right: 8),
+      child: Row(
+        children: <Widget>[
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+            Container(
+              height: 40,
+              child: Row(children: <Widget>[
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 1,color: Colors.grey),
+                      borderRadius: BorderRadius.all(Radius.circular(8))),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+                    child: Text("87"),
+                  ),
+                ),
+
+              ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8),
+              child: Container(
+                height: 150,
+                child: Row(children: <Widget>[
+                  VerticalDivider(thickness: 2,)
+                ],),
+              ),
+            )
+          ],
+
+          ),
+          Column(mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Container(
+                width: MediaQuery.of(context).size.width*0.84,
+                height: 80,
+                child: Row(
+                  children: <Widget>[
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 25),
+                      child: Text("Attempt missed. pau Victor (GRIONA)right footed shot from outside"
+                          " the box is close,but missed to the right.Assisted by Enric Franquesa",overflow: TextOverflow.visible,),
+                    ),
+                  )
+                ],),
+              ),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width*0.8,
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8,right: 8,top: 4,bottom: 4),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(
+                      child: Row(
+                        children: <Widget>[
+                        Container(width: 35,height: 35,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.all(Radius.circular(100),),
+                            child: Image.asset("assets/Marcelo.jpg"),
+                          ),
+                        ),
+                        SizedBox(width: 8,),
+                        Container(height: 25,width: 25,
+                          child: Image.asset("assets/541.jpg"),)
+                      ],),
+                    ),
+                    Text("مارسيلو")
+
+                ],),
+              ),
+            ),
+            SizedBox(height: 10,),
+              Container(
+                width: MediaQuery.of(context).size.width*0.8,
+                decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8,right: 8,top: 4,bottom: 4),
+                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        child: Row(
+                          children: <Widget>[
+                            Container(width: 35,height: 35,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.all(Radius.circular(100),),
+                                child: Image.asset("assets/Marcelo.jpg"),
+                              ),
+                            ),
+                            SizedBox(width: 8,),
+                            Container(height: 25,width: 25,
+                              child: Image.asset("assets/541.jpg"),)
+                          ],),
+                      ),
+                      Text("مارسيلو")
+
+                    ],),
+                ),
+              ),
+          ],
+
+          )
+        ],
+      )
+
+      );
+  }
+
+  Widget _twoLineC(){
+    return Padding(
+        padding: const EdgeInsets.only(left: 8,right: 8),
+        child: Row(
+          children: <Widget>[
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  height: 40,
+                  child: Row(children: <Widget>[
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 1,color: Colors.grey),
+                          borderRadius: BorderRadius.all(Radius.circular(8))),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+                        child: Text("70"),
+                      ),
+                    ),
+
+                  ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Container(
+                    height: 150,
+                    child: Row(children: <Widget>[
+                      VerticalDivider(thickness: 2,)
+                    ],),
+                  ),
+                )
+              ],
+
+            ),
+            Column(mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width*0.84,
+                    height: 80,
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 25),
+                            child: Text("Attempt missed. pau Victor (GRIONA)right footed shot from outside"
+                                  ,overflow: TextOverflow.visible,),
+                          ),
+                        )
+                      ],),
+                  ),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width*0.8,
+                  decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8,right: 8,top: 4,bottom: 4),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          child: Row(
+                            children: <Widget>[
+                              Container(width: 35,height: 35,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.all(Radius.circular(100),),
+                                  child: Image.asset("assets/Marcelo.jpg"),
+                                ),
+                              ),
+                              SizedBox(width: 8,),
+                              Container(height: 25,width: 25,
+                                child: Image.asset("assets/541.jpg"),)
+                            ],),
+                        ),
+                        Text("مارسيلو")
+
+                      ],),
+                  ),
+                ),
+              ],
+
+            )
+          ],
+        )
+
+    );
+  }
+
+   List <Widget>_list(BuildContext context){
+    var test=List<Widget>();
+
+    test.add(_oneLine());
+    test.add(_threeLineC());
+    test.add(_twoLineC());
+    test.add(_threeLineC());
+    test.add(_oneLine());
+    test.add(_twoLineC());
+    test.add(_oneLine());
+    test.add(_threeLineC());
+    test.add(_twoLineC());
+    test.add(_threeLineC());
+    test.add(_oneLine());
+    test.add(_twoLineC());
+
+    return test;
+   }
+
+}
+
+_launchURL() async {
+  const url = 'https://www.google.com';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
 }
 
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {

@@ -9,6 +9,9 @@ class Leagues extends StatefulWidget {
   _LeaguesState createState() => _LeaguesState();
 }
 
+TextStyle content=TextStyle(fontSize: 14);
+TextStyle _textStyletitle=TextStyle(fontSize: 18);
+
 class _LeaguesState extends State<Leagues> with SingleTickerProviderStateMixin{
 
   TabController tabController;
@@ -34,7 +37,7 @@ class _LeaguesState extends State<Leagues> with SingleTickerProviderStateMixin{
             padding: const EdgeInsets.only(right: 10),
             child: Row(
               children: <Widget>[
-            Text("الدوريات",)
+            Text("الدوريات",style: _textStyletitle,)
             ],
             ),
           )
@@ -66,10 +69,10 @@ class _LeaguesState extends State<Leagues> with SingleTickerProviderStateMixin{
                             SizedBox(width: 10,),
                             Expanded(
                               child: TextField(
-                                obscureText: true,
+                                obscureText: false,
                                 textCapitalization: TextCapitalization.sentences,
                                 decoration: InputDecoration.collapsed(
-                                  hintText: "ابحث عن الدوري",hintStyle: TextStyle(fontSize: 15),
+                                  hintText: "ابحث عن الدوري",hintStyle: TextStyle(fontSize: 14),
                                 ),
                               ),
 
@@ -95,7 +98,7 @@ class _LeaguesState extends State<Leagues> with SingleTickerProviderStateMixin{
                  */
 
                 ExpansionTile(
-                  title: Text("المفضلة"),
+                  title: Text("المفضلة",style: content,),
                   children: <Widget>[
                     ListView.builder(
                       shrinkWrap: true,
@@ -115,7 +118,7 @@ class _LeaguesState extends State<Leagues> with SingleTickerProviderStateMixin{
                   ],
                 ),
                 ExpansionTile(
-                  title: Text("مقترح"),
+                  title: Text("مقترح",style: content,),
                   children: <Widget>[
                     ListView.builder(
                       shrinkWrap: true,
@@ -136,7 +139,7 @@ class _LeaguesState extends State<Leagues> with SingleTickerProviderStateMixin{
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 16),
-                  child: Row(children: <Widget>[Text("بقية العالم ",style: TextStyle(fontSize: 18),)],),
+                  child: Row(children: <Widget>[Text("بقية العالم ",style: content,)],),
                 ),
 
                 ListView.builder(
@@ -251,7 +254,7 @@ class StuffInTiles extends StatelessWidget{
       return Padding(
         padding: const EdgeInsets.only(right: 45),
         child: new ListTile(
-          title: Text(t.title),
+          title: Text(t.title,style: content,),
           leading: Container(height: 35,width:35,
             child: Image.asset(t.img)),
         trailing: IconButton(icon: Icon(Icons.star_border),onPressed: null),),
@@ -265,7 +268,7 @@ class StuffInTiles extends StatelessWidget{
         initiallyExpanded: false,
 
         key: new PageStorageKey<MyTile>(t),
-        title: new Text(t.title),
+        title: new Text(t.title,style: content,),
           leading: Container(height: 35,width: 35,
               child: Image.asset("assets/12.jpg")),
           children: t.childern.map(_buildTiles).toList(),

@@ -9,6 +9,14 @@ class statisticsForTeam extends StatefulWidget {
 }
 
 class _statisticsForTeamState extends State<statisticsForTeam> {
+
+  TextStyle head = TextStyle(fontSize: 14,fontWeight: FontWeight.w500);
+  TextStyle content = TextStyle(fontSize: 13.5);
+  TextStyle content2 = TextStyle(fontSize: 13.5,color: Colors.grey);
+  TextStyle content3 = TextStyle(fontSize: 12);
+  TextStyle content4= TextStyle(fontSize: 12,color: Colors.grey);
+  TextStyle number = TextStyle(fontSize: 20,fontWeight: FontWeight.w400);
+
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
@@ -18,8 +26,8 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
             Column(children: <Widget>[Container(height: 30,width: 30,child: Image.asset("assets/12.jpg"),)],),
             SizedBox(width: 10,),
             Column(crossAxisAlignment:CrossAxisAlignment.start,children: <Widget>[
-              Row(children: <Widget>[Text("الدوري الاسباني الدرجه الاولي")],),
-              Row(children: <Widget>[Text("2020/2021",style: TextStyle(color: Colors.grey,fontSize: 13),)],)
+              Row(children: <Widget>[Text("الدوري الاسباني الدرجه الاولي",style: head,)],),
+              Row(children: <Widget>[Text("2020/2021",style: content4,)],)
             ],)
           ],)
 
@@ -29,28 +37,28 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
         padding: const EdgeInsets.only(right: 3,left: 3),
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-          Container(height: 120,width: MediaQuery.of(context).size.width*0.49,
+          Container(height: 128,width: MediaQuery.of(context).size.width*0.49,
               child: Card(shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
               child:Padding(
                 padding: const EdgeInsets.only(top: 10,bottom: 10,right: 15),
                 child: Column(
                   children: <Widget>[
-                  Row(children: <Widget>[Text("تقيم اللاعب",style: TextStyle(fontSize: 15),)],),
-                  Row(children: <Widget>[Text("متوسط الدوري",style: TextStyle(color: Colors.grey,fontSize: 12),)],),
-                  SizedBox(height: 15,),
+                  Row(children: <Widget>[Text("تقيم اللاعب",style: head,)],),
+                  Row(children: <Widget>[Text("متوسط الدوري",style:content4,)],),
+                  SizedBox(height: 10,),
                   Row(children: <Widget>[
                     Text("6.9 ",style: TextStyle(color: Colors.green[600],fontSize: 20),)
                     ,Text("/ 6.5",style: TextStyle(color: Colors.grey,fontSize: 16),),],),
                 ],),
               )
                 )),
-          Container(height: 120,width: MediaQuery.of(context).size.width*0.49,
+          Container(height: 128,width: MediaQuery.of(context).size.width*0.49,
               child: Card(shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
               child:Padding(
                 padding: const EdgeInsets.only(top: 10,bottom: 10,right: 15),
                 child: Column(children: <Widget>[
-                  Row(children: <Widget>[Text("فريق مقابل فريق",style: TextStyle(fontSize: 15),)],),
-                  Row(children: <Widget>[Text("مقارنة الاحصائيات",style: TextStyle(color: Colors.grey,fontSize: 12),)],),
+                  Row(children: <Widget>[Text("فريق مقابل فريق",style: content)],),
+                  Row(children: <Widget>[Text("مقارنة الاحصائيات",style: content4)],),
                   SizedBox(height: 10,),
                   Row(
                     children: <Widget>[
@@ -75,7 +83,7 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
       Padding(
         padding: const EdgeInsets.only(left: 3,right: 3),
         child: Container(
-          height: 190,width: MediaQuery.of(context).size.width,
+          height: 210,width: MediaQuery.of(context).size.width,
           child: Card(shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
             child: Padding(padding: EdgeInsets.only(top: 8,bottom: 8,right: 10),
               child: Column(children: <Widget>[
@@ -83,9 +91,9 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                   padding: const EdgeInsets.only(left: 10),
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                    Text("النقاط "),Text("69",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400),)],),
+                    Text("النقاط ",style: content,),Text("69",style: number,)],),
                 ),
-                Row(children: <Widget>[Text("الرتبه 1",style: TextStyle(color: Colors.grey,fontSize: 13),)],),
+                Row(children: <Widget>[Text("الرتبه 1",style: content2,)],),
                 Divider(height: 20,),
                 Padding(
                   padding: const EdgeInsets.only(top: 8,bottom: 8,right: 8),
@@ -97,49 +105,49 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                         children: <Widget>[
                           Text(
                             "م",
-                            style: TextStyle(color: Colors.grey),
+                            style: content4
                           ),
                           SizedBox(
                             width: 21.0,
                           ),
                           Text(
                             "ف",
-                            style: TextStyle(color: Colors.grey),
+                            style: content4
                           ),
                           SizedBox(
                             width: 15.0,
                           ),
                           Text(
                             "ت",
-                            style: TextStyle(color: Colors.grey),
+                            style: content4
                           ),
                           SizedBox(
                             width: 12.0,
                           ),
                           Text(
                             "خ",
-                            style: TextStyle(color: Colors.grey),
+                            style: content4
                           ),
                           SizedBox(
                             width: 19.0,
                           ),
                           Text(
                             "-/+",
-                            style: TextStyle(color: Colors.grey),
+                            style: content4
                           ),
                           SizedBox(
                             width: 24.0,
                           ),
                           Text(
                             "=",
-                            style: TextStyle(color: Colors.grey),
+                            style: content4
                           ),
                           SizedBox(
                             width: 24.0,
                           ),
                           Text(
                             "ن",
-                            style: TextStyle(color: Colors.grey),
+                            style: content4
                           ),
                         ],
                       ),
@@ -171,7 +179,7 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                                               child: Image.asset(
                                                   "assets/541.jpg")),
                                         ),
-                                        Text("الذهاب "),
+                                        Text("الذهاب ",style: content,),
                                       ],
                                     )
                                   ],
@@ -179,13 +187,13 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                                 SizedBox(
                                   width: 30.0,
                                 ),
-                                Text("23"),
-                                Text("20"),
-                                Text("2"),
-                                Text("1"),
-                                Text("8-56"),
-                                Text("48"),
-                                Text("62"),
+                                Text("23",style: content,),
+                                Text("20",style: content),
+                                Text("2",style: content),
+                                Text("1",style: content),
+                                Text("8-56",style: content),
+                                Text("48",style: content),
+                                Text("62",style: content),
                               ],
                             ),
                           ),
@@ -208,39 +216,40 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
               child: Column(children: <Widget>[
                 Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                  Text("اهداف"),
-                  Text("58",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400),)
+                  Text("اهداف",style: content,),
+                  Text("58",style: number,)
                 ],),
                 Divider(height: 25,),
                 Expanded(
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                    Column(crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                      Text("اللعب المفتوح"),Text("ركنية"),Text("ضربة حرة"),Text("ضربة جزء"),Text("هدف في مرماه"),
-                    ],),
+                      Column(crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                        Text("اللعب المفتوح",style: content,),Text("ركنية",style: content,)
+                          ,Text("ضربة حرة",style: content,),Text("ضربة جزء",style: content,),Text("هدف في مرماه",style: content,),
+                      ],),
                     Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                       LinearPercentIndicator(
-                        width: 260,percent: 0.5,lineHeight: 15.0,backgroundColor:Colors.grey[200],
+                        width: 240,percent: 0.5,lineHeight: 15.0,backgroundColor:Colors.grey[200],
                         progressColor: Theme.of(context).primaryColor,isRTL: true,),
                       LinearPercentIndicator(
-                        width: 260,percent: 0.03,lineHeight: 15.0,backgroundColor:Colors.grey[200],
+                        width: 240,percent: 0.03,lineHeight: 15.0,backgroundColor:Colors.grey[200],
                         progressColor: Theme.of(context).primaryColor,isRTL: true,),
                       LinearPercentIndicator(
-                        width: 260,percent: 0.01,lineHeight: 15.0,backgroundColor:Colors.grey[200],
+                        width: 240,percent: 0.01,lineHeight: 15.0,backgroundColor:Colors.grey[200],
                         progressColor: Theme.of(context).primaryColor,isRTL: true,),
                       LinearPercentIndicator(
-                        width: 260,percent: 0.05,lineHeight: 15.0,backgroundColor:Colors.grey[200],
+                        width: 240,percent: 0.05,lineHeight: 15.0,backgroundColor:Colors.grey[200],
                         progressColor: Theme.of(context).primaryColor,isRTL: true,),
                       LinearPercentIndicator(
-                        width: 260,percent: 0.0,lineHeight: 15.0,backgroundColor:Colors.grey[200],
+                        width: 240,percent: 0.0,lineHeight: 15.0,backgroundColor:Colors.grey[200],
                         progressColor: Theme.of(context).primaryColor,isRTL: true,),
                     ],),
                     Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
-                      Text("49"),Text("3"),Text("1"),Text("5"),Text("0"),
+                      Text("49",style: content,),Text("3",style: content,),Text("1",style: content,),Text("5",style: content,),Text("0",style: content,),
                     ],)
                   ],),
                 )
@@ -254,7 +263,7 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
         padding: const EdgeInsets.only(left: 5,right: 5),
         child: Stack(children: <Widget>[
           Container(
-            height: 390,
+            height: 394,
             width: MediaQuery.of(context).size.width,
             child: Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
@@ -269,46 +278,51 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                           child:Card(
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5))),
                             child: Column(children: <Widget>[
-                              Container(
-                                height: 145,
-                                width: MediaQuery.of(context).size.width,
-                                color: Theme.of(context).primaryColor,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 10,right: 10),
-                                  child: ClipRRect(
-                                      borderRadius:BorderRadius.only(topRight: Radius.circular(5),topLeft: Radius.circular(5)),
-                                      child: Column(
-                                          children: <Widget>[
-                                            Padding(
-                                              padding: const EdgeInsets.only(top: 10),
-                                              child: Row(children: <Widget>[Text("اهداف",style: TextStyle(color:Colors.white),)],
-                                              ),
-                                            ),
-                                            Divider(thickness: 1.0,height:15,color: Colors.white,),
-                                            Container(
-                                              height: 95,
-                                              child: Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: <Widget>[
-                                                Padding(
-                                                  padding: const EdgeInsets.only(bottom: 10),
-                                                  child: Column(children: <Widget>[
-                                                    SizedBox(height: 5,),
-                                                    Text("راموس",style: TextStyle(color: Colors.white),),
-                                                    SizedBox(height: 30,),
-                                                    Text("8",style: TextStyle(fontSize: 20,color: Colors.white),),
-                                                  ],),
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.pushNamed(context,'/players');
+                                },
+                                child: Container(
+                                  height: 148,
+                                  width: MediaQuery.of(context).size.width,
+                                  color: Theme.of(context).primaryColor,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 10,right: 10),
+                                    child: ClipRRect(
+                                        borderRadius:BorderRadius.only(topRight: Radius.circular(5),topLeft: Radius.circular(5)),
+                                        child: Column(
+                                            children: <Widget>[
+                                              Padding(
+                                                padding: const EdgeInsets.only(top: 10),
+                                                child: Row(children: <Widget>[Text("اهداف",style: TextStyle(color:Colors.white),)],
                                                 ),
-                                                Padding(
-                                                  padding: const EdgeInsets.only(top: 15),
-                                                  child: Column(mainAxisAlignment:MainAxisAlignment.end,children: <Widget>[
-                                                    Container(
-                                                      height: 65,width: 60,
-                                                      child: Image.asset("assets/Marcelo.jpg",fit: BoxFit.fill,),)
-                                                  ],),
-                                                ),
-                                              ]
                                               ),
-                                            )
-                                          ])
+                                              Divider(thickness: 1.0,height:15,color: Colors.white,),
+                                              Container(
+                                                height: 95,
+                                                child: Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: <Widget>[
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(bottom: 10),
+                                                    child: Column(children: <Widget>[
+                                                      SizedBox(height: 5,),
+                                                      Text("راموس",style: TextStyle(color: Colors.white),),
+                                                      SizedBox(height: 10,),
+                                                      Text("8",style: TextStyle(fontSize: 20,color: Colors.white),),
+                                                    ],),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 15),
+                                                    child: Column(mainAxisAlignment:MainAxisAlignment.end,children: <Widget>[
+                                                      Container(
+                                                        height: 65,width: 60,
+                                                        child: Image.asset("assets/Marcelo.jpg",fit: BoxFit.fill,),)
+                                                    ],),
+                                                  ),
+                                                ]
+                                                ),
+                                              )
+                                            ])
+                                    ),
                                   ),
                                 ),
                               ),
@@ -322,20 +336,25 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                                     itemBuilder: (BuildContext context,index){
                                       return   Padding(
                                         padding: const EdgeInsets.only(bottom: 8),
-                                        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: <Widget>[
-                                              Container(
-                                                width: 80,
-                                                child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                  children: <Widget>[
-                                                    Container(height: 30,width: 30,
-                                                        child: ClipRRect(borderRadius: BorderRadius.all(Radius.circular(100)),
-                                                            child: Image.asset("assets/Marcelo.jpg",))),
-                                                    Text("مارسيلو")
-                                                  ],),
-                                              ),
-                                              Text("7.40")
-                                            ]
+                                        child: GestureDetector(
+                                          onTap: (){
+                                            Navigator.pushNamed(context,'/players');
+                                          },
+                                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: <Widget>[
+                                                Container(
+                                                  width: 80,
+                                                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                    children: <Widget>[
+                                                      Container(height: 30,width: 30,
+                                                          child: ClipRRect(borderRadius: BorderRadius.all(Radius.circular(100)),
+                                                              child: Image.asset("assets/Marcelo.jpg",))),
+                                                      Text("مارسيلو")
+                                                    ],),
+                                                ),
+                                                Text("7.40")
+                                              ]
+                                          ),
                                         ),
                                       );
                                     },
@@ -365,7 +384,7 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
         padding: const EdgeInsets.only(left: 5,right: 5),
         child: Stack(children: <Widget>[
           Container(
-            height: 330,
+            height: 335,
             width: MediaQuery.of(context).size.width,
             child: Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
@@ -381,7 +400,7 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5))),
                             child: Column(children: <Widget>[
                               Container(
-                                height: 85,
+                                height: 86,
                                 width: MediaQuery.of(context).size.width,
                                 color: Theme.of(context).primaryColor,
                                 child: Padding(
@@ -432,22 +451,27 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                                     itemBuilder: (BuildContext context,index){
                                       return  Padding(
                                         padding: const EdgeInsets.only(bottom: 16),
-                                        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: <Widget>[
-                                              Container(
-                                                width: 80,
-                                                child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                  children: <Widget>[
-                                                    Text("2"),
-                                                    Container(
-                                                      height: 25,width: 25,
-                                                      child: Image.asset("assets/530.jpg"),
-                                                    ),
-                                                    Text("اتليتكو")
-                                                  ],),
-                                              ),
-                                              Text("3.9")
-                                            ]
+                                        child: GestureDetector(
+                                          onTap: (){
+                                            Navigator.pushNamed(context, '/eachTeam');
+                                          },
+                                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: <Widget>[
+                                                Container(
+                                                  child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                    children: <Widget>[
+                                                      Text("2"),
+                                                      Container(
+                                                        height: 25,width: 25,
+                                                        child: Image.asset("assets/541.jpg"),
+                                                      ),
+                                                      Text("ريال مدريد")
+                                                    ],),
+                                                ),
+                                                Text("3.9")
+                                              ]
+                                          ),
                                         ),
                                       );
                                     },
@@ -476,7 +500,7 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
         padding: const EdgeInsets.only(left: 5,right: 5),
         child: Stack(children: <Widget>[
           Container(
-            height: 330,
+            height: 340,
             width: MediaQuery.of(context).size.width,
             child: Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
@@ -492,7 +516,7 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5))),
                             child: Column(children: <Widget>[
                               Container(
-                                height: 85,
+                                height: 87,
                                 width: MediaQuery.of(context).size.width,
                                 color: Theme.of(context).primaryColor,
                                 child: Padding(
@@ -543,22 +567,26 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                                     itemBuilder: (BuildContext context,index){
                                       return  Padding(
                                         padding: const EdgeInsets.only(bottom: 15),
-                                        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: <Widget>[
-                                              Container(
-                                                width: 80,
-                                                child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                  children: <Widget>[
-                                                    Text("2"),
-                                                    Container(
-                                                      height: 25,width: 25,
-                                                      child: Image.asset("assets/530.jpg"),
-                                                    ),
-                                                    Text("اتليتكو")
-                                                  ],),
-                                              ),
-                                              Text("0.8")
-                                            ]
+                                        child: GestureDetector(
+                                          onTap: (){
+                                            Navigator.pushNamed(context, '/eachTeam');
+                                          },
+                                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: <Widget>[
+                                                Container(
+                                                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                    children: <Widget>[
+                                                      Text("2"),
+                                                      Container(
+                                                        height: 25,width: 25,
+                                                        child: Image.asset("assets/541.jpg"),
+                                                      ),
+                                                      Text("ريال مدريد")
+                                                    ],),
+                                                ),
+                                                Text("0.8")
+                                              ]
+                                          ),
                                         ),
                                       );
                                     },
@@ -588,7 +616,7 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
         padding: const EdgeInsets.only(left: 5,right: 5),
         child: Stack(children: <Widget>[
           Container(
-            height: 330,
+            height: 340,
             width: MediaQuery.of(context).size.width,
             child: Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
@@ -604,7 +632,7 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5))),
                             child: Column(children: <Widget>[
                               Container(
-                                height: 85,
+                                height: 87,
                                 width: MediaQuery.of(context).size.width,
                                 color: Theme.of(context).primaryColor,
                                 child: Padding(
@@ -655,22 +683,26 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                                     itemBuilder: (BuildContext context,index){
                                       return  Padding(
                                         padding: const EdgeInsets.only(bottom: 15),
-                                        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: <Widget>[
-                                              Container(
-                                                width: 80,
-                                                child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                  children: <Widget>[
-                                                    Text("2"),
-                                                    Container(
-                                                      height: 25,width: 25,
-                                                      child: Image.asset("assets/530.jpg"),
-                                                    ),
-                                                    Text("اتليتكو")
-                                                  ],),
-                                              ),
-                                              Text("190.3")
-                                            ]
+                                        child: GestureDetector(
+                                          onTap: (){
+                                            Navigator.pushNamed(context, '/eachTeam');
+                                          },
+                                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: <Widget>[
+                                                Container(
+                                                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                    children: <Widget>[
+                                                      Text("2"),
+                                                      Container(
+                                                        height: 25,width: 25,
+                                                        child: Image.asset("assets/541.jpg"),
+                                                      ),
+                                                      Text("ريال مدريد")
+                                                    ],),
+                                                ),
+                                                Text("190.3")
+                                              ]
+                                          ),
                                         ),
                                       );
                                     },
@@ -701,7 +733,7 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
         padding: const EdgeInsets.only(left: 3,right: 3,bottom: 8),
         child: Row(children: <Widget>[
           Container(
-            height: 100,
+            height: 105,
             width: MediaQuery.of(context).size.width*0.49,
             child: Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -716,7 +748,7 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
             ),
           ),
           Container(
-            height: 100,
+            height: 105,
             width: MediaQuery.of(context).size.width*0.49,
             child: Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),

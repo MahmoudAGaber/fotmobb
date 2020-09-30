@@ -36,26 +36,31 @@ class _playerTransferenceState extends State<playerTransference> {
               itemBuilder: (BuildContext context,index){
               return  Padding(
                 padding: const EdgeInsets.only(right: 20,top: 25),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                  Container(child: Row(children: <Widget>[
-                    Container(height: 45,width: 45,
-                      child: Image.asset("assets/541.jpg"),),
-                    SizedBox(width: 15,),
-                    Column(crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                      Text("ريال مدريد"),
-                      Text("يناير 2007 - الان",style: _textStyle,),
-                    ],)
-                  ],),),
-                  Container(child: Row(children: <Widget>[
-                    Text("531"),
-                    SizedBox(width: 10,),
-                    Text("44"),
-                  ],
-                  ),)
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.pushNamed(context, '/eachTeam');
+                  },
+                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                    Container(child: Row(children: <Widget>[
+                      Container(height: 45,width: 45,
+                        child: Image.asset("assets/541.jpg"),),
+                      SizedBox(width: 15,),
+                      Column(crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                        Text("ريال مدريد"),
+                        Text("يناير 2007 - الان",style: _textStyle,),
+                      ],)
+                    ],),),
+                    Container(child: Row(children: <Widget>[
+                      Text("531"),
+                      SizedBox(width: 10,),
+                      Text("44"),
+                    ],
+                    ),)
 
-                ],),
+                  ],),
+                ),
               );
             },
             )
@@ -131,9 +136,12 @@ class _playerTransferenceState extends State<playerTransference> {
       ),
       Padding(
         padding: const EdgeInsets.only(right: 15,bottom: 15),
-        child: Row(children: <Widget>[
-          Text("* قد يكون عدد الاهداف والمباريات قبل 2006 غير صحيح في بعض الحالات",style: TextStyle(color: Colors.grey),)
-        ],),
+        child: Container(
+          width: MediaQuery.of(context).size.width*0.95,
+          child: Row(children: <Widget>[
+            Expanded(child: Text(" قد يكون عدد الاهداف والمباريات قبل 2006 غير صحيح في بعض الحالات",style: TextStyle(fontSize: 12,color: Colors.grey),overflow: TextOverflow.visible,))
+          ],),
+        ),
       )
     ],);
   }

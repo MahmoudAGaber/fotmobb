@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:fotmobb/News/forYou.dart';
 import 'package:fotmobb/News/latest.dart';
+import 'package:fotmobb/News/leagues.dart';
 import 'package:fotmobb/drawerrr.dart';
 import 'package:fotmobb/trendingData.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -19,8 +20,7 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
   bool isSwitched = false;
 
 
-  static const TextStyle tapbar =
-  TextStyle(fontSize: 17, fontWeight: FontWeight.w500);
+  static const TextStyle tapbar = TextStyle(fontSize: 13, fontWeight: FontWeight.w500);
 
 
   @override
@@ -172,17 +172,22 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
                               });
                             }),
                       ),
-                      ListTile(
-                        leading: IconButton(
-                            icon: Icon(Icons.settings),
-                            iconSize: 25.0,
-                            onPressed: null),
-                        title: Text(
-                          "الاعدادات",
-                          style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w400),
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.pushNamed(context, '/setting');
+                        },
+                        child: ListTile(
+                          leading: IconButton(
+                              icon: Icon(Icons.settings),
+                              iconSize: 25.0,
+                              onPressed: null),
+                          title: Text(
+                            "الاعدادات",
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400),
+                          ),
                         ),
                       ),
                     ]),
@@ -202,7 +207,9 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
             new ListView(
               children: <Widget>[transference(),],
             ),
-            new Scaffold(),
+            new Scaffold(
+              body: leagues(),
+            ),
 
 
           ],

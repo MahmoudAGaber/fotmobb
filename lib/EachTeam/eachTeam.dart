@@ -13,6 +13,9 @@ class eachTeam extends StatefulWidget {
 
 class _eachTeamState extends State<eachTeam> with TickerProviderStateMixin{
 
+  static const TextStyle tapbar = TextStyle(fontSize: 13, fontWeight: FontWeight.w500);
+  TextStyle head = TextStyle(fontSize: 16, );
+
   bool chContaier = false;
   ScrollController _scrollController = new ScrollController();
 
@@ -104,7 +107,7 @@ class _eachTeamState extends State<eachTeam> with TickerProviderStateMixin{
                       children: <Widget>[
                         Text(
                           ' ريال مدريد',
-                          style: TextStyle(fontSize: 18),)],),
+                          style: head,)],),
                   ),
 
                 ],
@@ -129,19 +132,19 @@ class _eachTeamState extends State<eachTeam> with TickerProviderStateMixin{
                       },
                       tabs: [
                         Tab(
-                          text: "  نظرة عامة",
+                          child:Text("نظرة عامة",style: tapbar,),
                         ),
                         Tab(
-                          text: " المباريات",
+                          child:Text (" المباريات",style: tapbar,),
                         ),
                         Tab(
-                          text: " المراكز",
+                          child:Text( " المراكز",style: tapbar,),
                         ),
                         Tab(
-                          text: " احصائيات ",
+                          child:Text (" احصائيات ",style: tapbar,),
                         ),
                         Tab(
-                          text: "  الكؤوس",
+                          child:Text( "  الكؤوس",style: tapbar,),
                         ),
                       ])),
             ),

@@ -10,6 +10,14 @@ class overView extends StatefulWidget {
 }
 
 class _overViewState extends State<overView> {
+
+  TextStyle head = TextStyle(fontSize: 15,fontWeight: FontWeight.w500);
+  TextStyle content = TextStyle(fontSize: 13.5);
+  TextStyle content2 = TextStyle(fontSize: 13.5,color: Colors.grey[700]);
+  TextStyle content3 = TextStyle(fontSize: 12);
+  TextStyle content4= TextStyle(fontSize: 12,color: Colors.grey);
+  TextStyle number = TextStyle(fontSize: 20,);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -18,75 +26,79 @@ class _overViewState extends State<overView> {
       child: Column(children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(top:5.0,left: 5,right: 5),
-          child: Container(
-            height: 140,
-            width: MediaQuery.of(context).size.width,
-            child: Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-              child: Column(children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 8,right: 12),
-                  child: Row(children: <Widget>[Text("المبارة التالية",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15),),],),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 12),
-                  child: Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: <Widget>[
-                    Text("غدا",style: TextStyle(color: Colors.grey),),
+          child: GestureDetector(
+            onTap: (){
+              Navigator.pushNamed(context, '/matchInfo');
+            },
+            child: Container(
+              height: 140,
+              width: MediaQuery.of(context).size.width,
+              child: Card(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                child: Column(children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(left: 25),
-                    child: Container(
-                      height: 20,
-                        decoration: BoxDecoration(
-                            color:Colors.grey[100],
-                            borderRadius: BorderRadius.all(Radius.circular(10))),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 3,right: 3),
-                          child: Text("دوري الاسباني ",style: TextStyle(color: Colors.grey[700],
-                              fontSize: 13),),
-                        )),
-                  )
-                  ],),
-                ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15,left: 80,right: 80),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text("ريال مدريد"),
-                        Container(
-                          width: 30,
-                          height: 25,
-                          child: Image.asset("assets/541.jpg"),
-                        ),
-                        SizedBox(
-                          width: 8,
-                        ),
-                        Center(child: Text("7:35 م")),
-                        SizedBox(width: 6),
-                        Container(
-                          width: 30,
-                          height: 25,
-                          child: Image.asset("assets/530.jpg"),
-                        ),
-                        Text("اتليتكو"),
-                      ],
-                    ),
+                    padding: const EdgeInsets.only(top: 8,right: 12),
+                    child: Row(children: <Widget>[Text("المبارة التالية",style: head,),],),
                   ),
-              ],),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 12),
+                    child: Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: <Widget>[
+                      Text("غدا",style:content2,),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 25),
+                      child: Container(
+                        height: 23,
+                          decoration: BoxDecoration(
+                              color:Colors.grey[100],
+                              borderRadius: BorderRadius.all(Radius.circular(10))),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 4,right: 4),
+                            child: Center(child: Text("دوري الاسباني ",style: content2,)),
+                          )),
+                    )
+                    ],),
+                  ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15,left: 80,right: 80),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text("ريال مدريد",style: content,),
+                          Container(
+                            width: 30,
+                            height: 25,
+                            child: Image.asset("assets/541.jpg"),
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Center(child: Text("3:30 م",style: content,)),
+                          SizedBox(width: 6),
+                          Container(
+                            width: 30,
+                            height: 25,
+                            child: Image.asset("assets/530.jpg"),
+                          ),
+                          Text("اتليتكو",style: content,),
+                        ],
+                      ),
+                    ),
+                ],),
+              ),
             ),
           ),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 5,right: 5),
           child: Container(
-            height: 140,
+            height: 145,
             child: Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Column(children: <Widget>[
                   Row(children: <Widget>[
-                    Text("المباريات الخمس الاخيرة",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15))
+                    Text("المباريات الخمس الاخيرة",style: head)
                   ],),
                   Padding(
                     padding: const EdgeInsets.only(right: 0.0),
@@ -135,14 +147,14 @@ class _overViewState extends State<overView> {
                               height: 55,
                               child: Row(
                                 children: <Widget>[
-                                  Expanded(child: Text("ريال مدريد يفقد لاعبان امام اتليتكو , مارسيلو الباك الشمال و راموس",style: TextStyle(fontSize: 13),
+                                  Expanded(child: Text("ريال مدريد يفقد لاعبان امام اتليتكو , مارسيلو الباك الشمال و راموس",style:content3,
                                     overflow: TextOverflow.visible,))],
                               ),
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top:10,right: 15),
-                            child: Row(children: <Widget>[Text("36 يوم مضت,10:51م",style: TextStyle(color: Colors.grey,fontSize: 12),)],),
+                            child: Row(children: <Widget>[Text("36 يوم مضت,10:51م",style:content4 ,)],),
                           )
                         ],),
                       )
@@ -156,7 +168,7 @@ class _overViewState extends State<overView> {
                 top: 20,right: 20,
                   child: Row(
                     children: <Widget>[
-                      Text("اخر الاخبار")],)),
+                      Text("اخر الاخبار",style: head,)],)),
       ]
             ),
           ),
@@ -171,7 +183,7 @@ class _overViewState extends State<overView> {
                   Container(height: 30,width: 30,
                   child: Image.asset("assets/12.jpg"),),
                   SizedBox(width: 10,),
-                  Text("الدوري الاسباني")],),
+                  Text("الدوري الاسباني",style: head,)],),
                 Padding(
                   padding: const EdgeInsets.only(top: 8,bottom: 8,right: 8),
                   child:  Container(
@@ -185,7 +197,7 @@ class _overViewState extends State<overView> {
                               SizedBox(width: 10,),
                               Text(
                                 "فريق",
-                                style: TextStyle(color: Colors.grey),
+                                style: content4,
                               ),
                             ],),
                         ),
@@ -197,22 +209,22 @@ class _overViewState extends State<overView> {
                               children: <Widget>[
                                 Text(
                                   "م",
-                                  style: TextStyle(color: Colors.grey),
+                                  style:content4,
                                 ),
                                 SizedBox(width: 21,),
                                 Text(
                                   "ف",
-                                  style: TextStyle(color: Colors.grey),
+                                  style: content4,
                                 ),
                                 SizedBox(width: 17,),
                                 Text(
                                   "ت",
-                                  style: TextStyle(color: Colors.grey),
+                                  style: content4,
                                 ),
-                                SizedBox(width: 19,),
+                                SizedBox(width: 15,),
                                 Text(
                                   "خ",
-                                  style: TextStyle(color: Colors.grey),
+                                  style: content4
                                 ),
 
                               ],
@@ -225,17 +237,17 @@ class _overViewState extends State<overView> {
                             children: <Widget>[
                               Text(
                                 "-/+",
-                                style: TextStyle(color: Colors.grey),
+                                style: content4
                               ),
                               SizedBox(width: 25,),
                               Text(
                                 "=",
-                                style: TextStyle(color: Colors.grey),
+                                style: content4
                               ),
                               SizedBox(width: 25,),
                               Text(
                                 "ن",
-                                style: TextStyle(color: Colors.grey),
+                                style: content4
                               ),
                             ],
                           ),
@@ -267,7 +279,7 @@ class _overViewState extends State<overView> {
                                             child: Image.asset(
                                                 "assets/541.jpg")),
                                       ),
-                                      Text("ريال مدريد"),
+                                      Text("ريال مدريد",style: content,),
                                     ],
                                   )
                                 ],
@@ -275,13 +287,13 @@ class _overViewState extends State<overView> {
                               SizedBox(
                                 width: 25.0,
                               ),
-                              Text("23"),
-                              Text("20"),
-                              Text("2"),
-                              Text("1"),
-                              Text("8-56"),
-                              Text("48"),
-                              Text("62"),
+                              Text("23",style: content,),
+                              Text("20",style: content),
+                              Text("2",style: content),
+                              Text("1",style: content),
+                              Text("8-56",style: content),
+                              Text("48",style: content),
+                              Text("62",style: content),
                             ],
                           ),
                       ]);
@@ -295,7 +307,7 @@ class _overViewState extends State<overView> {
           padding: const EdgeInsets.only(left: 5,right: 5),
           child: Stack(children: <Widget>[
             Container(
-              height: 390,
+              height: 394,
               width: MediaQuery.of(context).size.width,
               child: Card(
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
@@ -315,7 +327,7 @@ class _overViewState extends State<overView> {
                                     Navigator.pushNamed(context,'/players');
                                   },
                                   child: Container(
-                                    height: 145,
+                                    height: 148,
                                     width: MediaQuery.of(context).size.width,
                                    color: Theme.of(context).primaryColor,
                                     child: Padding(
@@ -338,12 +350,12 @@ class _overViewState extends State<overView> {
                                                       child: Column(children: <Widget>[
                                                         SizedBox(height: 5,),
                                                         Text("راموس",style: TextStyle(color: Colors.white),),
-                                                        SizedBox(height: 30,),
+                                                        SizedBox(height: 18,),
                                                         Text("8",style: TextStyle(fontSize: 20,color: Colors.white),),
                                                       ],),
                                                     ),
                                                     Padding(
-                                                      padding: const EdgeInsets.only(top: 15),
+                                                      padding: const EdgeInsets.only(top: 10),
                                                       child: Column(mainAxisAlignment:MainAxisAlignment.end,children: <Widget>[
                                                               Container(
                                                                 height: 65,width: 60,
@@ -403,7 +415,7 @@ class _overViewState extends State<overView> {
                 top: 20,right: 20,
                 child: Row(
                   children: <Widget>[
-                    Text("افضل اللاعبين")],)),
+                    Text("افضل اللاعبين",style: head,)],)),
           ]
           ),
         ),
@@ -418,7 +430,7 @@ class _overViewState extends State<overView> {
                 Column(children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(right: 8),
-                    child: Text("الكؤوس"),
+                    child: Text("الكؤوس",style: head,),
                   ),
                   SizedBox(height: 10,),
                     Container(height: 30,width: 30,
@@ -431,19 +443,19 @@ class _overViewState extends State<overView> {
                 Padding(
                   padding: const EdgeInsets.only(top: 55),
                   child: Column(crossAxisAlignment:CrossAxisAlignment.start,children: <Widget>[
-                    Text("اخر فوز 2014",style: TextStyle(color: Colors.grey,fontSize: 13),),
+                    Text("اخر فوز 2014",style: content4,),
                     SizedBox(height: 30,),
-                    Text("اخر فوز 2016/2017",style: TextStyle(color: Colors.grey,fontSize: 13),),
+                    Text("اخر فوز 2016/2017",style: content4,),
                   ],),
                 ),
-                SizedBox(width: 50,),
+                SizedBox(width: 40,),
                 Padding(
                   padding: const EdgeInsets.only(top: 5,right: 15),
                   child: Column(crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment:MainAxisAlignment.center,children: <Widget>[
-                    Text("CAF Super Cup"),
+                    Text("CAF Super Cup",style: content,),
                     SizedBox(height: 30,),
-                    Text("Cup")
+                    Text("Cup",style: content,)
                   ],),
                 ),
                 Padding(
@@ -462,19 +474,19 @@ class _overViewState extends State<overView> {
         Padding(
           padding: const EdgeInsets.only(left: 5,right: 5),
           child: Container(
-            height: 185,width: MediaQuery.of(context).size.width,
+            height: 210,width: MediaQuery.of(context).size.width,
             child: Card(shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
             child:Padding(
               padding: const EdgeInsets.all(10),
               child: Column(children: <Widget>[
-                Row(children: <Widget>[Text("الملعب")],),
+                Row(children: <Widget>[Text("الملعب",style: head,)],),
                 SizedBox(height: 20,),
                 Row(children: <Widget>[
                   Icon(MdiIcons.scoreboard),
                   SizedBox(width: 15,),
                   Column(crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                    Text("Camp Nou"),
+                    Text("Camp Nou",style: content,),
                     Text("Barcelona,اسبانيا",style: TextStyle(color: Colors.grey),),
                   ],),
                   SizedBox(width: 25,),
@@ -492,15 +504,15 @@ class _overViewState extends State<overView> {
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                     Column(children: <Widget>[
-                      Text("عشب"),
+                      Text("عشب",style: content,),
                       Text("سطح الملعب",style: TextStyle(color: Colors.grey)),
                     ],),
                     Column(children: <Widget>[
-                      Text("99.787"),
+                      Text("99.787",style: content,),
                       Text("السعة",style: TextStyle(color: Colors.grey)),
                     ],),
                     Column(children: <Widget>[
-                      Text("1957"),
+                      Text("1957",style: content,),
                       Text("افتتح",style: TextStyle(color: Colors.grey),)
                     ],),
                   ],),
@@ -520,7 +532,7 @@ Widget _Colnumm(text,img){
     padding: const EdgeInsets.all(8.0),
     child: Column(children: <Widget>[
       Container(
-        height:21,width:50,
+        height:22,width:50,
         decoration:BoxDecoration(
             color:Colors.green,
             borderRadius: BorderRadius.all(Radius.circular(4))),

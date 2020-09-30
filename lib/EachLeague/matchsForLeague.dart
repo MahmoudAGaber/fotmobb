@@ -9,6 +9,9 @@ class matchesForLeague extends StatefulWidget {
 }
 
 class _matchesForLeagueState extends State<matchesForLeague> {
+
+  TextStyle content = TextStyle(fontSize: 13.5, );
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -29,7 +32,7 @@ class _matchesForLeagueState extends State<matchesForLeague> {
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Row(children: <Widget>[
-                    Text("الخميس،14 اغسطس")
+                    Text("الخميس،14 اغسطس",style: content,)
                   ],),
                 ),
                    Column(children: <Widget>[
@@ -39,18 +42,23 @@ class _matchesForLeagueState extends State<matchesForLeague> {
                           shrinkWrap: true,
                           itemCount: 4,
                             itemBuilder: (BuildContext context,index){
-                          return Container(margin: EdgeInsets.only(bottom: 10),
-                            width: MediaQuery.of(context).size.width,
-                            height: 30,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 60,right:60  ),
-                              child: Row(mainAxisAlignment:MainAxisAlignment.spaceEvenly,children: <Widget>[
-                                Column(crossAxisAlignment:CrossAxisAlignment.end,children: <Widget>[Text("اتليتكو")],),
-                                Container(height: 25,width: 30,child: Image.asset("assets/530.jpg"),),
-                                Column(mainAxisAlignment:MainAxisAlignment.center,children: <Widget>[Text("3 - 0",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 15),)],),
-                                Container(height: 30,width: 35,child: Image.asset("assets/541.jpg"),),
-                                Column(crossAxisAlignment:CrossAxisAlignment.start,children: <Widget>[Text("ريال مدريد")],),
-                              ],),
+                          return GestureDetector(
+                            onTap: (){
+                              Navigator.pushNamed(context,'/matchInfo_a');
+                            },
+                            child: Container(margin: EdgeInsets.only(bottom: 10),
+                              width: MediaQuery.of(context).size.width,
+                              height: 30,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 60,right:60  ),
+                                child: Row(mainAxisAlignment:MainAxisAlignment.spaceEvenly,children: <Widget>[
+                                  Column(crossAxisAlignment:CrossAxisAlignment.end,children: <Widget>[Text("اتليتكو",style:content,)],),
+                                  Container(height: 25,width: 30,child: Image.asset("assets/530.jpg"),),
+                                  Column(mainAxisAlignment:MainAxisAlignment.center,children: <Widget>[Text("1 - 3",style: TextStyle(fontWeight: FontWeight.w600),)],),
+                                  Container(height: 30,width: 35,child: Image.asset("assets/541.jpg"),),
+                                  Column(crossAxisAlignment:CrossAxisAlignment.start,children: <Widget>[Text("ريال مدريد",style: content,)],),
+                                ],),
+                              ),
                             ),
                           );
                       }),

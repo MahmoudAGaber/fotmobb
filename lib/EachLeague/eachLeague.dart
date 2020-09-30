@@ -13,6 +13,9 @@ class eachLeague extends StatefulWidget {
 
 class _eachLeagueState extends State<eachLeague> with TickerProviderStateMixin{
 
+  TextStyle tapbar = TextStyle(fontSize: 13, );
+  TextStyle head = TextStyle(fontSize: 16, );
+
   bool chContaier = false;
   ScrollController _scrollController = new ScrollController();
 
@@ -105,7 +108,7 @@ class _eachLeagueState extends State<eachLeague> with TickerProviderStateMixin{
                       children: <Widget>[
                         Text(
                           'الدوري الاسباني',
-                          style: TextStyle(fontSize: 18),)],),
+                          style:head)],),
                   ),
 
                 ],
@@ -131,19 +134,19 @@ class _eachLeagueState extends State<eachLeague> with TickerProviderStateMixin{
                       },
                       tabs: [
                         Tab(
-                          text: "  المراكز",
+                          child:Text( "  المراكز",style: tapbar,),
                         ),
                         Tab(
-                          text: " المباريات",
+                          child:Text (" المباريات",style: tapbar,),
                         ),
                         Tab(
-                          text: " اخبار",
+                          child: Text(" اخبار",style: tapbar,),
                         ),
                         Tab(
-                          text: " احصائيات اللاعبين",
+                          child: Text(" احصائيات اللاعبين",style: tapbar,),
                         ),
                         Tab(
-                          text: " احصائيات الفرق",
+                          child:Text(" احصائيات الفرق",style: tapbar,),
                         ),
                       ])),
             ),

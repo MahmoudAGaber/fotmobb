@@ -5,6 +5,8 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
+import 'matchEvent_a.dart';
+
 class preConfront extends StatefulWidget {
   @override
   _preConfrontState createState() => _preConfrontState();
@@ -111,50 +113,53 @@ class _preConfrontState extends State<preConfront> {
                 itemCount: 15,
                 scrollDirection: Axis.vertical,
                 itemBuilder: (BuildContext context,index){
-                  return Container(
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20,left: 20,top: 15,bottom: 10),
-                          child: Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: <Widget>[
-                            Text("الجمعه،4 سبتمبر",style: TextStyle(color: Colors.grey[700]),),
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(12)),
-                                color: Colors.grey[200],
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 3,right: 3),
-                                child: Text("الدوري المصري الممتاز",style: TextStyle(fontSize: 10,color:Colors.grey[700]),),
-                              ),
-                            )
-                          ],
-                          ),
-                        ),Padding(
-                          padding: const EdgeInsets.only(left: 90,right: 90),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text("اتليتكو"),
+                  return GestureDetector(
+                    onTap: ()=> MatchEvent_a,
+                    child: Container(
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20,left: 20,top: 15,bottom: 10),
+                            child: Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: <Widget>[
+                              Text("الجمعه،4 سبتمبر",style: TextStyle(color: Colors.grey[700]),),
                               Container(
-                                width: 30,
-                                height: 25,
-                                child: Image.asset("assets/530.jpg"),
-                              ),
-
-                              Center(child: Text("4 - 2 ",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 15),)),
-                              Container(
-                                width: 30,
-                                height: 25,
-                                child: Image.asset("assets/541.jpg"),
-                              ),
-                              Text("ريال مدريد"),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                                  color: Colors.grey[200],
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 3,right: 3),
+                                  child: Text("الدوري المصري الممتاز",style: TextStyle(fontSize: 10,color:Colors.grey[700]),),
+                                ),
+                              )
                             ],
+                            ),
+                          ),Padding(
+                            padding: const EdgeInsets.only(left: 80,right: 80),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text("اتليتكو"),
+                                Container(
+                                  width: 30,
+                                  height: 25,
+                                  child: Image.asset("assets/530.jpg"),
+                                ),
+
+                                Center(child: Text("4 - 2 ",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 15),)),
+                                Container(
+                                  width: 30,
+                                  height: 25,
+                                  child: Image.asset("assets/541.jpg"),
+                                ),
+                                Text("ريال مدريد"),
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 15,),
-                        Divider(height: 2.0,)
-                      ],
+                          SizedBox(height: 15,),
+                          Divider(height: 2.0,)
+                        ],
+                      ),
                     ),
                   );
                 },

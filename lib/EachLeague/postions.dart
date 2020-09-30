@@ -5,6 +5,10 @@ class postions extends StatefulWidget {
   @override
   _postionsState createState() => _postionsState();
 }
+TextStyle tapbar = TextStyle(fontSize: 13, );
+TextStyle headline = TextStyle(fontSize: 11, fontWeight: FontWeight.w600);
+TextStyle headline2 = TextStyle(fontSize: 13.5, color: Colors.grey);
+TextStyle content = TextStyle(fontSize: 13.5, );
 
 class _postionsState extends State<postions> {
   @override
@@ -28,9 +32,7 @@ class _postionsState extends State<postions> {
                         Border.all(color: Colors.grey[300])),
                     child: Center(
                       child: Text("كل",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 12.5)),
+                          style: headline),
                     ),
                   ),
                   Container(
@@ -44,9 +46,7 @@ class _postionsState extends State<postions> {
                         Border.all(color: Colors.grey[300])),
                     child: Center(
                       child: Text("الذهاب",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 12.5)),
+                          style:headline),
                     ),
                   ),
                   Container(
@@ -61,9 +61,7 @@ class _postionsState extends State<postions> {
                     child: Center(
                       child: Text(
                         "الاياب",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 12.5),
+                        style: headline,
                       ),
                     ),
                   ),
@@ -79,9 +77,7 @@ class _postionsState extends State<postions> {
                         Border.all(color: Colors.grey[300])),
                     child: Center(
                       child: Text("تشكيل",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 12.5)),
+                          style: headline),
                     ),
                   ),
                 ],
@@ -119,22 +115,22 @@ class _postionsState extends State<postions> {
                           children: <Widget>[
                             Text(
                               "م",
-                              style: TextStyle(color: Colors.grey),
+                              style: headline2,
                             ),
                             SizedBox(width: 25,),
                             Text(
                               "ف",
-                              style: TextStyle(color: Colors.grey),
+                              style: headline2,
                             ),
                             SizedBox(width: 20,),
                             Text(
                               "ت",
-                              style: TextStyle(color: Colors.grey),
+                              style: headline2,
                             ),
                             SizedBox(width: 19,),
                             Text(
                               "خ",
-                              style: TextStyle(color: Colors.grey),
+                              style: headline2,
                             ),
 
                           ],
@@ -147,17 +143,17 @@ class _postionsState extends State<postions> {
                         children: <Widget>[
                           Text(
                             "-/+",
-                            style: TextStyle(color: Colors.grey),
+                            style: headline2,
                           ),
                           SizedBox(width: 25,),
                           Text(
                             "=",
-                            style: TextStyle(color: Colors.grey),
+                            style: headline2,
                           ),
                           SizedBox(width: 25,),
                           Text(
                             "ن",
-                            style: TextStyle(color: Colors.grey),
+                            style: headline2,
                           ),
                         ],
                       ),
@@ -198,7 +194,7 @@ class _postionsState extends State<postions> {
                                       child: Image.asset(
                                           "assets/541.jpg")),
                                 ),
-                                Text("ريال مدريد"),
+                                Text("ريال مدريد",style: content,),
                               ],
                             )
                           ],
@@ -206,13 +202,13 @@ class _postionsState extends State<postions> {
                         SizedBox(
                           width: 25.0,
                         ),
-                        Text("23"),
-                        Text("20"),
-                        Text("2"),
-                        Text("1"),
-                        Text("8-56"),
-                        Text("48"),
-                        Text("62"),
+                        Text("23",style: content,),
+                        Text("20",style: content,),
+                        Text("2",style: content,),
+                        Text("1",style: content,),
+                        Text("8-56",style: content,),
+                        Text("48",style: content,),
+                        Text("62",style: content,),
                       ],
                     ),
                   ),

@@ -17,6 +17,9 @@ class players extends StatefulWidget {
 
 class _playersState extends State<players> with TickerProviderStateMixin{
 
+  static const TextStyle tapbar = TextStyle(fontSize: 13, fontWeight: FontWeight.w500);
+  TextStyle head = TextStyle(fontSize: 16, );
+
   bool chContaier = false;
   ScrollController _scrollController = new ScrollController();
 
@@ -141,16 +144,16 @@ class _playersState extends State<players> with TickerProviderStateMixin{
                       },
                       tabs: [
                         Tab(
-                          text: "  الملف الشخصي",
+                          child:Text ("  الملف الشخصي",style: tapbar,),
                         ),
                         Tab(
-                          text: " المباريات",
+                          child:Text( " المباريات",style: tapbar,),
                         ),
                         Tab(
-                          text: " احصائيات",
+                          child:Text (" احصائيات",style: tapbar,),
                         ),
                         Tab(
-                          text: " انتقالات ",
+                          child: Text(" انتقالات ",style: tapbar,),
                         ),
                       ])),
             ),

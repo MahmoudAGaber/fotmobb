@@ -8,6 +8,10 @@ class leagueNews extends StatefulWidget {
 }
 
 class _leagueNewsState extends State<leagueNews> {
+
+  TextStyle headline = TextStyle(fontSize: 14, fontWeight: FontWeight.w500);
+  TextStyle headline2 = TextStyle(fontSize: 12, color: Colors.grey);
+
   @override
   Widget build(BuildContext context) {
      return ListView.builder(
@@ -56,9 +60,7 @@ class _leagueNewsState extends State<leagueNews> {
                                 padding: const EdgeInsets.only(left: 15,right: 15),
                                 child: Text(
                                   trend[index].text,
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500),
+                                  style: headline,
                                 ),
                               ),
                               Padding(
@@ -71,17 +73,11 @@ class _leagueNewsState extends State<leagueNews> {
                                     ),
                                     Text(
                                       "  FotMob",
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w400,
-                                          color: Colors.grey),
+                                      style: headline2,
                                     ),
                                     Text(
                                       " منذ 6 دقائق",
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w400,
-                                          color: Colors.grey),
+                                      style: headline2,
                                     ),
 
 

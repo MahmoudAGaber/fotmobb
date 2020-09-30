@@ -21,6 +21,10 @@ class matchInfo extends StatefulWidget {
 }
 
 class _matchInfoState extends State<matchInfo> with TickerProviderStateMixin {
+
+  static const TextStyle tapbar = TextStyle(fontSize: 13, fontWeight: FontWeight.w500);
+  TextStyle head = TextStyle(fontSize: 16, );
+
   bool chContaier = false;
   ScrollController _scrollController = new ScrollController();
 
@@ -145,7 +149,7 @@ class _matchInfoState extends State<matchInfo> with TickerProviderStateMixin {
                         "اتليتكو ",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 22,
+                            fontSize: 20,
                             fontWeight: FontWeight.w500),
                       ),
                       Text(
@@ -156,7 +160,7 @@ class _matchInfoState extends State<matchInfo> with TickerProviderStateMixin {
                         "ريال مدريد ",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 22,
+                            fontSize: 20,
                             fontWeight: FontWeight.w500),
                       ),
                     ],
@@ -182,13 +186,13 @@ class _matchInfoState extends State<matchInfo> with TickerProviderStateMixin {
                       },
                       tabs: [
                 Tab(
-                  text: "احداث المبارة",
+                  child:Text ("احداث المبارة",style: tapbar,),
                 ),
                 Tab(
-                  text: "المراكز",
+                  child:Text("المراكز",style: tapbar,),
                 ),
                 Tab(
-                  text: "المواجهات السابقة",
+                  child:Text("المواجهات السابقة",style: tapbar,),
                 ),
               ])),
             ),

@@ -8,6 +8,8 @@ class forYou extends StatefulWidget {
   _forYouState createState() => _forYouState();
 }
 
+TextStyle _headline=TextStyle(fontSize: 18,fontWeight: FontWeight.w600,);
+
 class _forYouState extends State<forYou> {
   @override
   Widget build(BuildContext context) {
@@ -28,10 +30,7 @@ class _forYouState extends State<forYou> {
                         ),
                         Text(
                           "اخبار شائعة",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18),
+                          style: _headline,
                         ),
                         SizedBox(width: 5),
 
@@ -40,28 +39,22 @@ class _forYouState extends State<forYou> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 8,right: 8,bottom: 8),
-                    child: new Card(
-                      semanticContainer: true,
-                      elevation: 0.0,
                       child: new Column(
                         children: <Widget>[
-                          Row(
+                          Row(mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(right: 8.0),
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width*0.9,
+                                Container(
+                                  width: MediaQuery.of(context).size.width*0.95,
                                   height: 200,
                                   child: new ClipRRect(
                                     child: Image.asset(
-                                      "assets/6.jpg",
+                                      "assets/5.jpg",
                                       fit: BoxFit.fill,
                                     ),
                                     borderRadius:
                                     BorderRadius.circular(16.0),
                                   ),
                                 ),
-                              ),
                             ],
                           ),
                           SizedBox(
@@ -104,7 +97,6 @@ class _forYouState extends State<forYou> {
                           )
                         ],
                       ),
-                    ),
                   ),
                 ],
               ),
@@ -198,7 +190,7 @@ class _forYouState extends State<forYou> {
             }
         ),
         Container(
-          color: Colors.grey[300],
+          color: Theme.of(context).backgroundColor,
           height: 8,
         ),
         Padding(
@@ -233,18 +225,12 @@ class _forYouState extends State<forYou> {
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: new Card(
-                          semanticContainer: true,
-                          elevation: 0.0,
                           child: new Column(
                             children: <Widget>[
-                              Row(
+                              Row(mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Padding(
-                                    padding:
-                                    const EdgeInsets.only(right: 8.0),
-                                    child: Container(
-                                      width: MediaQuery.of(context).size.width*0.9,
+                                  Container(
+                                      width: MediaQuery.of(context).size.width*0.95,
                                       height: 200,
                                       child: new ClipRRect(
                                         child: Image.asset(
@@ -255,7 +241,6 @@ class _forYouState extends State<forYou> {
                                         BorderRadius.circular(16.0),
                                       ),
                                     ),
-                                  ),
                                 ],
                               ),
                               SizedBox(
@@ -299,7 +284,6 @@ class _forYouState extends State<forYou> {
                               )
                             ],
                           ),
-                        ),
                       ),
                     ],
                   ),

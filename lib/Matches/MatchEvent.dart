@@ -21,7 +21,7 @@ class _MatchEventsState extends State<MatchEvents> {
       Padding(
         padding: const EdgeInsets.only(top: 5,left: 5,right: 5),
         child: Container(
-          height: 270,
+          height: 280,
           child: Swiper.children(
             scrollDirection: Axis.horizontal,
             autoplay: false,
@@ -34,7 +34,7 @@ class _MatchEventsState extends State<MatchEvents> {
                     activeSize: 7.0)),
             children: <Widget>[
               Column(children: <Widget>[Container(
-                height: 250.0,
+                height: 265.0,
                 width: MediaQuery.of(context).size.width,
                 child: Card(
                   shape: RoundedRectangleBorder(
@@ -53,7 +53,6 @@ class _MatchEventsState extends State<MatchEvents> {
                     Stack(
                         children: <Widget>[
                           Container(
-                            height: 180,
                             child: Column(children: <Widget>[
                               Padding(
                                 padding: const EdgeInsets.all(10.0),
@@ -126,7 +125,6 @@ class _MatchEventsState extends State<MatchEvents> {
                           ),
                           Visibility(visible: _visable,
                             child: Container(color: Colors.white,
-                              height: 180,
                               child: Column(children: <Widget>[
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),
@@ -205,7 +203,7 @@ class _MatchEventsState extends State<MatchEvents> {
               Column(
                   children: <Widget>[
                     Container(
-                      height: 250.0,
+                      height: 265.0,
                       width: MediaQuery.of(context).size.width,
                       child: Card(
                         shape: RoundedRectangleBorder(
@@ -226,7 +224,6 @@ class _MatchEventsState extends State<MatchEvents> {
                           Stack(
                               children: <Widget>[
                                 Container(
-                                  height: 180,
                                   child: Column(children: <Widget>[
                                     Padding(
                                       padding: const EdgeInsets.all(10.0),
@@ -269,7 +266,7 @@ class _MatchEventsState extends State<MatchEvents> {
                                 Visibility(
                                    visible: _visable1,
                                   child: Container(
-                                    height: 180, color: Colors.white,
+                                     color: Colors.white,
                                     child: Column(children: <Widget>[
                                       Padding(
                                         padding: const EdgeInsets.all(10.0),
@@ -337,7 +334,7 @@ class _MatchEventsState extends State<MatchEvents> {
                   ]
               ),
               Column(children: <Widget>[Container(
-                height: 250.0,
+                height: 265.0,
                 width: MediaQuery.of(context).size.width,
                 child: Card(
                   shape: RoundedRectangleBorder(
@@ -357,7 +354,6 @@ class _MatchEventsState extends State<MatchEvents> {
                     Stack(
                         children: <Widget>[
                           Container(
-                            height: 180,
                             child: Column(children: <Widget>[
                               Padding(
                                 padding: const EdgeInsets.all(10.0),
@@ -408,7 +404,7 @@ class _MatchEventsState extends State<MatchEvents> {
                           Visibility(
                             visible: _visable2,
                             child: Container(
-                              height: 180, color: Colors.white,
+                              color: Colors.white,
                               child: Column(children: <Widget>[
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),
@@ -477,7 +473,7 @@ class _MatchEventsState extends State<MatchEvents> {
               ]
               ),
               Column(children: <Widget>[Container(
-                height: 250.0,
+                height: 265.0,
                 width: MediaQuery.of(context).size.width,
                 child: Card(
                   shape: RoundedRectangleBorder(
@@ -559,7 +555,7 @@ class _MatchEventsState extends State<MatchEvents> {
                           Visibility(
                             visible: _visable3,
                             child: Container(
-                              height: 180, color: Colors.white,
+                              color: Colors.white,
                               child: Column(children: <Widget>[
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),

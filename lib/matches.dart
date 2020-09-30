@@ -10,12 +10,12 @@ import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'clander.dart';
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:hijri_picker/hijri_picker.dart';
 import 'package:table_calendar/table_calendar.dart';
+
 
 class matches extends StatefulWidget {
   @override
@@ -29,6 +29,11 @@ class matches extends StatefulWidget {
 
 
 class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
+
+  TextStyle tapbar = TextStyle(fontSize: 15, fontWeight: FontWeight.w500);
+  TextStyle headline = TextStyle(fontSize: 15, fontWeight: FontWeight.w400);
+  TextStyle content = TextStyle(fontSize: 14,);
+
 
   var selectedDate = new HijriCalendar.now();
   Future<Null> _selectDate(BuildContext context) async {
@@ -52,8 +57,9 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
       });
   }
 
-  static const TextStyle tapbar =
-  TextStyle(fontSize: 15, fontWeight: FontWeight.w500);
+
+
+
   bool isSwitched = false;
   List<LeagueN> _list;
   _matchesState(this._list);
@@ -76,9 +82,6 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
       _list[index].expanded = !(_list[index].expanded);
     });
   }
-
-  static const TextStyle tapbar1 =
-      TextStyle(fontSize: 13, fontWeight: FontWeight.w600);
 
   @override
   void initState() {
@@ -177,33 +180,33 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
           labelStyle: tapbar,
           tabs: [
             Tab(
-             text: "الاتنين ٢٤/٧ ",
+             child: Text("الاحد 20 سبتمبر ",style: tapbar,),
             ),
             Tab(
-              child:Text("الثلائاء ٢٥/۸"),
+              child:Text("الاتنين 21 سبتمبر",style: tapbar,),
             ),
             Tab(
-              child:Text("الامس"),
+              child:Text("الامس",style: tapbar,),
             ),
             Tab(
-              child:Text("اليوم"),
+              child:Text("اليوم",style: tapbar,),
             ),
             Tab(
-              child:Text("الغد"),
+              child:Text("الغد",style: tapbar,),
             ),
             Tab(
-              child:Text("السبت ٢٩/۸"),
+              child:Text("الجمعة 25 سبتمبر",style: tapbar,),
             ),
             Tab(
-              child:Text("الاحد ٣۰/۸"),
+              child:Text("السبت 26 سبتمبر",style: tapbar,),
             ),
             Tab(
-              child:Text("الاتنين ٣١/۸"),
+              child:Text("الاحد 27 سبتمبر",style: tapbar,),
             ),
             Tab(
-              child:Text("الثلاثاء ١/۹"),),
+              child:Text("الاتنين 28 سبتمبر",style: tapbar,),),
             Tab(
-              child:Text("الاربعاء ٢/۹"),
+              child:Text("الثلاثاء 29 سبتمبر",style: tapbar,),
             ),
             Tab(
               text: "التقويم",
@@ -309,19 +312,26 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
                               setState(() {
                                 isSwitched = value;
                               });
+
+                              print("hello world");
                             }),
                       ),
-                      ListTile(
-                        leading: IconButton(
-                            icon: Icon(Icons.settings),
-                            iconSize: 25.0,
-                            onPressed: null),
-                        title: Text(
-                          "الاعدادات",
-                          style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w400),
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.pushNamed(context, '/setting');
+                        },
+                        child: ListTile(
+                          leading: IconButton(
+                              icon: Icon(Icons.settings),
+                              iconSize: 25.0,
+                              onPressed: null),
+                          title: Text(
+                            "الاعدادات",
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400),
+                          ),
                         ),
                       ),
                     ]),
@@ -452,9 +462,7 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
               SizedBox(
                 width: 10,
               ),
-              Text(leaguen[index].leagueName
-                ,
-                style: TextStyle(color: Colors.black, fontSize: 16),
+              Text(leaguen[index].leagueName,style:headline ,
               )
             ],
           ),
@@ -488,7 +496,7 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text(leaguedetails[index].childern[0].firstTeam),
+                      Text(leaguedetails[index].childern[0].firstTeam,style: content,),
                       Container(
                         width: 30,
                         height: 25,
@@ -497,14 +505,14 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
                       SizedBox(
                         width: 8,
                       ),
-                      Center(child: Text(leaguedetails[index].childern[0].time)),
+                      Center(child: Text(leaguedetails[index].childern[0].time,style: content,)),
                       SizedBox(width: 6),
                       Container(
                         width: 30,
                         height: 25,
                         child: Image.asset(leaguedetails[index].childern[0].urlSecond),
                       ),
-                      Text(leaguedetails[index].childern[0].seconTeam),
+                      Text(leaguedetails[index].childern[0].seconTeam,style: content,),
                     ],
                   ),
                 ),

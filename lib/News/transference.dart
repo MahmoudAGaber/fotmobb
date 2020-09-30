@@ -79,50 +79,55 @@ class _transferenceState extends State<transference> {
                     physics: ClampingScrollPhysics(),
                     itemCount: 5,
                       itemBuilder: (BuildContext context,index){
-                    return Container(
-                      width: 200,
-                      child: Card(
-                        elevation: 2.0,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-                        child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                              Text("راموس"),
-                              Text("2 ايام مضت",style: _textStyle1,)
-                            ],
-                            ),
-                          ),
-                             Padding(
-                               padding: const EdgeInsets.only(right: 10,left: 10),
-                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    return GestureDetector(
+                      onTap: (){
+                        Navigator.pushNamed(context, '/transferCenter');
+                      },
+                      child: Container(
+                        width: 200,
+                        child: Card(
+                          elevation: 2.0,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                          child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
-                                Container(
-                                  width: MediaQuery.of(context).size.width*0.21,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(bottom: 1),
-                                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                      Container(width: 30,height: 30,
-                                      child: Image.asset("assets/541.jpg"),),
-                                      Container(
-                                          width: 18,height: 18,
-                                        decoration: BoxDecoration(
-                                            color: Colors.green,
-                                            borderRadius: BorderRadius.all(Radius.circular(100))),
-                                        child: Icon(Icons.arrow_back,size: 15,color: Colors.white,)),
-                                      Container(width: 30,height: 30,
-                                        child: Image.asset("assets/541.jpg"),)
-                                    ],),
-                                  )
-                                ),
-                                Container(width: 55,height: 55,
-                                child: Image.asset("assets/Marcelo.jpg"),)
-                            ],),
-                             ),
-                        ],),
+                                Text("راموس"),
+                                Text("2 ايام مضت",style: _textStyle1,)
+                              ],
+                              ),
+                            ),
+                               Padding(
+                                 padding: const EdgeInsets.only(right: 10,left: 10),
+                                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                  Container(
+                                    width: MediaQuery.of(context).size.width*0.21,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(bottom: 1),
+                                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: <Widget>[
+                                        Container(width: 30,height: 30,
+                                        child: Image.asset("assets/541.jpg"),),
+                                        Container(
+                                            width: 18,height: 18,
+                                          decoration: BoxDecoration(
+                                              color: Colors.green,
+                                              borderRadius: BorderRadius.all(Radius.circular(100))),
+                                          child: Icon(Icons.arrow_back,size: 15,color: Colors.white,)),
+                                        Container(width: 30,height: 30,
+                                          child: Image.asset("assets/541.jpg"),)
+                                      ],),
+                                    )
+                                  ),
+                                  Container(width: 55,height: 55,
+                                  child: Image.asset("assets/Marcelo.jpg"),)
+                              ],),
+                               ),
+                          ],),
+                        ),
                       ),
                     );
               }),

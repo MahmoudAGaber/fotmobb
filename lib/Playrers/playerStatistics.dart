@@ -60,16 +60,21 @@ class _playerStatisticsState extends State<playerStatistics> {
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(right: 13),
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              height: 35,
-                              width: 35,
-                              child: Image.asset("assets/12.jpg"),
-                            ),
-                            SizedBox(width: 10,),
-                            Text("اسبانيا - الدوري الاسباني الدرجة الاولي",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600),)
-                          ],
+                        child: GestureDetector(
+                          onTap:(){
+                            Navigator.pushNamed(context,'/eachLeague');
+                          },
+                          child: Row(
+                            children: <Widget>[ 
+                              Container(
+                                height: 35,
+                                width: 35,
+                                child: Image.asset("assets/12.jpg"),
+                              ),
+                              SizedBox(width: 10,),
+                              Text("اسبانيا - الدوري الاسباني الدرجة الاولي",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),)
+                            ],
+                          ),
                         ),
                       ),
                       Divider(height: 15,),

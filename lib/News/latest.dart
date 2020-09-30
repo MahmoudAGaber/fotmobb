@@ -25,18 +25,12 @@ class _latestState extends State<latest> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: new Card(
-                      semanticContainer: true,
-                      elevation: 0.0,
                       child: new Column(
                         children: <Widget>[
-                          Row(
+                          Row(mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Padding(
-                                padding:
-                                const EdgeInsets.only(right: 8.0),
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width*0.9,
+                              Container(
+                                  width: MediaQuery.of(context).size.width*0.95,
                                   height: 200,
                                   child: new ClipRRect(
                                     child: Image.asset(
@@ -47,7 +41,6 @@ class _latestState extends State<latest> {
                                     BorderRadius.circular(16.0),
                                   ),
                                 ),
-                              ),
                             ],
                           ),
                           SizedBox(
@@ -90,9 +83,7 @@ class _latestState extends State<latest> {
                             ),
                           )
                         ],
-                      ),
-                    ),
-                  ),
+                  ),)
                 ],
               ),
             )

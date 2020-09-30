@@ -176,15 +176,20 @@ class _homeState extends State<home> {
 
               ),
 
-              ListTile(
-                leading: IconButton(icon: Icon(Icons.settings),iconSize: 25.0,
-                    onPressed: null),
-                title: Text(
-                  "الاعدادات",
-                  style: TextStyle(
-                      fontSize: 14,color:  Colors.black,fontWeight: FontWeight.w400),
-                ),
+              GestureDetector(
+                onTap: (){
+                  Navigator.pushNamed(context, '/setting');
+                },
+                child: ListTile(
+                  leading: IconButton(icon: Icon(Icons.settings),iconSize: 25.0,
+                      onPressed: null),
+                  title: Text(
+                    "الاعدادات",
+                    style: TextStyle(
+                        fontSize: 14,color:  Colors.black,fontWeight: FontWeight.w400),
+                  ),
 
+                ),
               ),
 
 

@@ -1,6 +1,7 @@
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fotmobb/EachLeague/eachLeague.dart';
+import 'package:fotmobb/Matches/matchEvent_a.dart';
 import 'package:fotmobb/Matches/matchInfo.dart';
 import 'package:fotmobb/Matches/matchInfo_a.dart';
 import 'package:fotmobb/News/transferCenter.dart';
@@ -8,10 +9,13 @@ import 'package:fotmobb/Playrers/players.dart';
 import 'package:fotmobb/clander1.dart';
 import 'package:fotmobb/clanderbar.dart';
 import 'package:fotmobb/home.dart';
+import 'package:fotmobb/setting.dart';
 import 'package:fotmobb/tv.dart';
 import 'package:splashscreen/splashscreen.dart';
-
 import 'EachTeam/eachTeam.dart';
+import 'package:settings_ui/settings_ui.dart';
+import 'package:dynamic_theme/dynamic_theme.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -25,7 +29,8 @@ class MyApp extends StatelessWidget {
       title: ' EPLWORLD',
       theme: ThemeData(
         primarySwatch: Colors.grey,
-        primaryColor: Color.fromRGBO(95, 31, 117, 1.0)
+        primaryColor: Color.fromRGBO(95, 31, 117, 1.0),
+        fontFamily: 'DroidKufi',
 
       ),
       home: MyHomePage(title: 'FotMob'),
@@ -38,6 +43,8 @@ class MyApp extends StatelessWidget {
           "/transferCenter": (BuildContext context) => new transferCenter(),
           "/clanderbar": (BuildContext context) => new clanderbar(),
           "/tv": (BuildContext context) => new tv(),
+          "/matchEvent_a": (BuildContext context) => new MatchEvent_a(),
+          "/setting": (BuildContext context) => new setting(),
 
         }
     );
@@ -61,7 +68,7 @@ Widget build(BuildContext context) {
     child: Padding(
       padding: const EdgeInsets.only(top: 150),
       child: new SplashScreen(
-        seconds: 5,
+        seconds: 2,
         navigateAfterSeconds: new home(),
         image: new Image.asset('assets/EPL-Logo.png',),
         backgroundColor: Colors.white,
