@@ -285,7 +285,7 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                                 child: Container(
                                   height: 148,
                                   width: MediaQuery.of(context).size.width,
-                                  color: Theme.of(context).primaryColor,
+                                  color: Colors.grey[600],
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 10,right: 10),
                                     child: ClipRRect(
@@ -402,7 +402,10 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                               Container(
                                 height: 86,
                                 width: MediaQuery.of(context).size.width,
-                                color: Theme.of(context).primaryColor,
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[600],
+                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(8),topRight: Radius.circular(8))
+                                ),
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 10,right: 10),
                                   child: ClipRRect(
@@ -518,7 +521,10 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                               Container(
                                 height: 87,
                                 width: MediaQuery.of(context).size.width,
-                                color: Theme.of(context).primaryColor,
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[600],
+                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(8),topRight: Radius.circular(8))
+                                ),
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 10,right: 10),
                                   child: ClipRRect(
@@ -634,7 +640,10 @@ class _statisticsForTeamState extends State<statisticsForTeam> {
                               Container(
                                 height: 87,
                                 width: MediaQuery.of(context).size.width,
-                                color: Theme.of(context).primaryColor,
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[600],
+                                  borderRadius: BorderRadius.only(topLeft: Radius.circular(8),topRight: Radius.circular(8))
+                                ),
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 10,right: 10),
                                   child: ClipRRect(

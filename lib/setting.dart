@@ -7,7 +7,7 @@ class setting extends StatefulWidget {
   _settingState createState() => _settingState();
 }
 
-TextStyle _textStyle=TextStyle(fontSize: 16);
+  TextStyle _textStyle=TextStyle(fontSize: 16);
 TextStyle _textStyle1=TextStyle(color: Colors.grey,fontSize: 14);
 
 class _settingState extends State<setting> {

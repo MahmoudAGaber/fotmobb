@@ -5,6 +5,7 @@ import 'package:fotmobb/EachLeague/matchsForLeague.dart';
 import 'package:fotmobb/EachLeague/playersStats.dart';
 import 'package:fotmobb/EachLeague/postions.dart';
 import 'package:fotmobb/EachLeague/teamsStats.dart';
+import 'package:fotmobb/EachLeague/transferCenter.dart';
 
 class eachLeague extends StatefulWidget {
   @override
@@ -27,7 +28,7 @@ class _eachLeagueState extends State<eachLeague> with TickerProviderStateMixin{
 
   @override
   void initState() {
-    tabController = new TabController(length: 5, vsync: this);
+    tabController = new TabController(length: 6, vsync: this);
     tabController.addListener(() {
       setState(() {
         _selectedIndex=tabController.index;
@@ -59,6 +60,7 @@ class _eachLeagueState extends State<eachLeague> with TickerProviderStateMixin{
         Directionality(
           textDirection: TextDirection.rtl,
           child: SliverAppBar(
+            backgroundColor: Theme.of(context).primaryColor,
             elevation: 0.0,
             actions: <Widget>[
               Row(
@@ -66,11 +68,11 @@ class _eachLeagueState extends State<eachLeague> with TickerProviderStateMixin{
                   IconButton(
                       icon: Icon(
                         Icons.notifications_none,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                       onPressed: null),
                   IconButton(
-                      icon: Icon(Icons.star, color: Colors.white),
+                      icon: Icon(Icons.star, color: Colors.black),
                       onPressed: null),
                 ],
               )
@@ -93,7 +95,7 @@ class _eachLeagueState extends State<eachLeague> with TickerProviderStateMixin{
                     ),
                   ),
                   Positioned(top:100,right: 80,
-                      child: Row(children: <Widget>[Text("اسبانيا",style: TextStyle(color: Colors.grey[200]),)],))
+                      child: Row(children: <Widget>[Text("اسبانيا",style: TextStyle(color: Colors.black),)],))
                 ],
               ),),
               centerTitle: true,
@@ -143,6 +145,9 @@ class _eachLeagueState extends State<eachLeague> with TickerProviderStateMixin{
                           child: Text(" اخبار",style: tapbar,),
                         ),
                         Tab(
+                          child: Text(" انتقالات",style: tapbar,),
+                        ),
+                        Tab(
                           child: Text(" احصائيات اللاعبين",style: tapbar,),
                         ),
                         Tab(
@@ -175,6 +180,12 @@ class _eachLeagueState extends State<eachLeague> with TickerProviderStateMixin{
                   children: <Widget>[
                     leagueNews()
                   ]),
+              ListView(
+                physics: ClampingScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                children: <Widget>[
+                transferCenter()],),
               ListView(
                   children: <Widget>[
                     playersStats()

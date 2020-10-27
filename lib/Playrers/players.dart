@@ -67,16 +67,16 @@ class _playersState extends State<players> with TickerProviderStateMixin{
               Row(
                 children: <Widget>[
                   IconButton(
-                      icon: Icon(Icons.people,  color: Colors.white,),
+                      icon: Icon(Icons.people,  color: Colors.black,),
                       onPressed: null),
                   IconButton(
                       icon: Icon(
                         Icons.notifications_none,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                       onPressed: null),
                   IconButton(
-                      icon: Icon(Icons.star, color: Colors.white),
+                      icon: Icon(Icons.star, color: Colors.black),
                       onPressed: null),
                 ],
               )
@@ -104,7 +104,7 @@ class _playersState extends State<players> with TickerProviderStateMixin{
                           Container(height: 25,width: 25,
                           child: Image.asset("assets/541.jpg"),),
                           SizedBox(width: 10,),
-                          Text("ريال مدريد",style: TextStyle(color: Colors.grey[200]),)],))
+                          Text("ريال مدريد",style: TextStyle(color: Colors.black),)],))
                   ],
                 ),),
               centerTitle: true,

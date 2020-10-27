@@ -693,7 +693,7 @@ class _MatchEventsState extends State<MatchEvents> {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(top: 15,right: 10),
-                  child: Row(mainAxisAlignment:MainAxisAlignment.start, children: <Widget>[Text("تشكيلة الفريق")],),
+                  child: Row(mainAxisAlignment:MainAxisAlignment.start, children: <Widget>[Text("المواجهات السابقة")],),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:fotmobb/EachLeague/postions.dart';
+import 'package:fotmobb/EachTeam/Teampostions.dart';
 import 'package:fotmobb/EachTeam/cups.dart';
 import 'package:fotmobb/EachTeam/matchesForteam.dart';
 import 'package:fotmobb/EachTeam/overView.dart';
 import 'package:fotmobb/EachTeam/statisticsForTeam.dart';
+import 'package:fotmobb/EachTeam/teamNews.dart';
 
 class eachTeam extends StatefulWidget {
   @override
@@ -27,7 +29,7 @@ class _eachTeamState extends State<eachTeam> with TickerProviderStateMixin{
 
   @override
   void initState() {
-    tabController = new TabController(length: 5, vsync: this);
+    tabController = new TabController(length: 6, vsync: this);
     tabController.addListener(() {
       setState(() {
         _selectedIndex=tabController.index;
@@ -65,11 +67,11 @@ class _eachTeamState extends State<eachTeam> with TickerProviderStateMixin{
                   IconButton(
                       icon: Icon(
                         Icons.notifications_none,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                       onPressed: null),
                   IconButton(
-                      icon: Icon(Icons.star, color: Colors.white),
+                      icon: Icon(Icons.star, color: Colors.black),
                       onPressed: null),
                 ],
               )
@@ -92,7 +94,7 @@ class _eachTeamState extends State<eachTeam> with TickerProviderStateMixin{
                       ),
                     ),
                     Positioned(top:100,right: 100,
-                        child: Row(children: <Widget>[Text("اسبانيا",style: TextStyle(color: Colors.grey[200]),)],))
+                        child: Row(children: <Widget>[Text("اسبانيا",style: TextStyle(color: Colors.black),)],))
                   ],
                 ),),
               centerTitle: true,
@@ -135,6 +137,9 @@ class _eachTeamState extends State<eachTeam> with TickerProviderStateMixin{
                           child:Text("نظرة عامة",style: tapbar,),
                         ),
                         Tab(
+                          child:Text("أخبار ",style: tapbar,),
+                        ),
+                        Tab(
                           child:Text (" المباريات",style: tapbar,),
                         ),
                         Tab(
@@ -167,11 +172,14 @@ class _eachTeamState extends State<eachTeam> with TickerProviderStateMixin{
               ]
               ),
               ListView(children: <Widget>[
+                teamNews()
+              ],),
+              ListView(children: <Widget>[
                 matchesForTeam()
               ]),
               ListView(
                   children: <Widget>[
-                    postions()
+                    teamPosition()
                   ]),
               ListView(
                   children: <Widget>[

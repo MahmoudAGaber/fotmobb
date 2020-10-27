@@ -5,6 +5,7 @@ import 'package:fotmobb/Matches/LeagueN.dart';
 import 'package:fotmobb/LeagueDetailsD.dart';
 import 'package:fotmobb/News/transferCenter.dart';
 import 'package:fotmobb/clander1.dart';
+import 'package:fotmobb/main.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -30,34 +31,9 @@ class matches extends StatefulWidget {
 
 class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
 
-  TextStyle tapbar = TextStyle(fontSize: 15, fontWeight: FontWeight.w500);
+  TextStyle tapbar = TextStyle(fontSize: 15, fontWeight: FontWeight.w500,color: Colors.black);
   TextStyle headline = TextStyle(fontSize: 15, fontWeight: FontWeight.w400);
   TextStyle content = TextStyle(fontSize: 14,);
-
-
-  var selectedDate = new HijriCalendar.now();
-  Future<Null> _selectDate(BuildContext context) async {
-    final HijriCalendar picked = await showHijriDatePicker(
-      context: context,
-      initialDate: selectedDate,
-
-      lastDate: new HijriCalendar()
-        ..hYear = 1445
-        ..hMonth = 9
-        ..hDay = 25,
-      firstDate: new HijriCalendar()
-        ..hYear = 1438
-        ..hMonth = 12
-        ..hDay = 25,
-      initialDatePickerMode: DatePickerMode.day,
-    );
-    if (picked != null)
-      setState(() {
-        selectedDate = picked;
-      });
-  }
-
-
 
 
   bool isSwitched = false;
@@ -192,7 +168,7 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
               child:Text("اليوم",style: tapbar,),
             ),
             Tab(
-              child:Text("الغد",style: tapbar,),
+              child:Text("غدا",style: tapbar,),
             ),
             Tab(
               child:Text("الجمعة 25 سبتمبر",style: tapbar,),
@@ -209,11 +185,12 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
               child:Text("الثلاثاء 29 سبتمبر",style: tapbar,),
             ),
             Tab(
-              text: "التقويم",
+              child:Text("التقويم",style: tapbar,),
             ),
           ],
         ),
       ),
+      /*
       drawer: Drawer(
         child: Column(
           children: <Widget>[
@@ -224,7 +201,7 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(top: 50.0, left: 28.0),
+                    padding: const EdgeInsets.only(top: 50.0, left: 28.0,right: 15),
                     child: CircleAvatar(
                       radius: 13.0,
                       backgroundImage: null,
@@ -235,7 +212,7 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
                     child: Text(
                       "اسم المستخدم",
                       style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
+                           fontWeight: FontWeight.w400),
                     ),
                   )
                 ],
@@ -306,15 +283,20 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
                               color: Colors.black,
                               fontWeight: FontWeight.w400),
                         ),
-                        trailing: Switch(
-                            value: isSwitched,
-                            onChanged: (value) {
-                              setState(() {
-                                isSwitched = value;
-                              });
+                        trailing: GestureDetector(
+                          onTap: (){
 
-                              print("hello world");
-                            }),
+                          },
+                          child: Switch(
+                              value: isSwitched,
+                              onChanged: (value) {
+                                setState(() {
+                                  isSwitched = value;
+                                });
+
+                                print("hello world");
+                              }),
+                        ),
                       ),
                       GestureDetector(
                         onTap: (){
@@ -338,7 +320,7 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
               ),
           ],
         ),
-      ),
+      ),*/
       /* new Scaffold(
               body: _expansionPanel(),
             ),
@@ -383,7 +365,7 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
     );
   }
 
-  _expansionPanel() {
+  /*_expansionPanel() {
     List<ExpansionPanel> MyList = [];
     for (int i = 0, ii = _list.length; i < ii; i++) {
       var expansiondata = _list[i];
@@ -438,9 +420,13 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
                 margin: const EdgeInsets.all(8.0),
                 child: new ExpansionPanelList(
                     children: MyList, expansionCallback: _OnExpansion))));
+                    
+  
   }
-
+ */
+  
   Widget _tabBarPage() {
+
     return ListView.builder(
       physics: ClampingScrollPhysics(),
       itemBuilder: (widget, indx) => _fullTile(indx),
@@ -451,8 +437,10 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
   Widget _fullTile(int index) {
     return Card(
       child: ExpansionTile(
+
         initiallyExpanded: true,
-        title: GestureDetector(onTap: (){
+        title: GestureDetector(
+          onTap: (){
           Navigator.pushNamed(context, '/eachLeague');
         },
           child: Row(
@@ -488,33 +476,51 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
             itemCount: leaguedetails.length,
             itemBuilder: (widget, index) {
               return GestureDetector(
+                onLongPress: (){
+                  addDialog();
+                },
                 onTap: () {
                   Navigator.pushNamed(context, '/matchInfo_a');
                 },
-                child: Padding(
-                  padding: const EdgeInsets.only(left:75,right:75,bottom: 13),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(leaguedetails[index].childern[0].firstTeam,style: content,),
-                      Container(
-                        width: 30,
-                        height: 25,
-                        child: Image.asset(leaguedetails[index].childern[0].urlFirst),
-                      ),
-                      SizedBox(
-                        width: 8,
-                      ),
-                      Center(child: Text(leaguedetails[index].childern[0].time,style: content,)),
-                      SizedBox(width: 6),
-                      Container(
-                        width: 30,
-                        height: 25,
-                        child: Image.asset(leaguedetails[index].childern[0].urlSecond),
-                      ),
-                      Text(leaguedetails[index].childern[0].seconTeam,style: content,),
-                    ],
+                child: Row(children: <Widget>[
+                     Padding(
+                       padding: const EdgeInsets.only(right: 20),
+                       child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.all(Radius.circular(100))),
+                          child: Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: Icon(MdiIcons.timer,color: Colors.grey[500],size: 22,),
+                          )),
+                     ),
+                   Padding(
+                    padding: const EdgeInsets.only(left:70,right:35,bottom: 13),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(leaguedetails[index].childern[0].firstTeam,style: content,),
+                        Container(
+                          width: 30,
+                          height: 25,
+                          child: Image.asset(leaguedetails[index].childern[0].urlFirst),
+                        ),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Center(child: Text(leaguedetails[index].childern[0].time,style: content,)),
+                        SizedBox(width: 12),
+                        Container(
+                          width: 30,
+                          height: 25,
+                          child: Image.asset(leaguedetails[index].childern[0].urlSecond),
+                        ),
+                        Text(leaguedetails[index].childern[0].seconTeam,style: content,),
+                      ],
+                    ),
                   ),
+                ],
+
                 ),
               );
             },
@@ -524,6 +530,29 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
       padding: EdgeInsets.symmetric(vertical: 10),
     );
   }
+  addDialog() {
+    return showDialog(context: context, builder: (context) {
+      return AlertDialog(
+        insetPadding: EdgeInsets.only(bottom: 290,top: 290,left: 90,right: 90),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(5))),
+            content: Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                Text("الفرق المفضلة",style: TextStyle(color: Colors.green,fontSize: 13)),
+                Text("اضافة ريال مدريد",style: TextStyle(fontSize: 13),),
+                Text("اضافة اتليتكو مدريد",style: TextStyle(fontSize: 13),),
+                Text("تشغيل الاشعارات",style: TextStyle(color: Colors.grey,fontSize: 13),),
+                Text("اضافة الي تقويم",style: TextStyle(color: Colors.grey,fontSize: 13)),
+              ],
+            ),
+      );
+    });
+  }
+
 }
+
+
+
 
 

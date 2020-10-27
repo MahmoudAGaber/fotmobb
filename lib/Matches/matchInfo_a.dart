@@ -2,11 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:fotmobb/EachLeague/postions.dart';
 import 'package:fotmobb/Matches/LeagueN.dart';
 import 'package:fotmobb/Matches/preConfron.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'dart:math';
+
 
 
 
@@ -49,13 +52,15 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
 
   @override
   void initState() {
-    tabController = new TabController(length: 6, vsync: this);
+    tabController = new TabController(length: 7, vsync: this);
     tabController.addListener(() {
       setState(() {
         _selectedIndex=tabController.index;
       });
       print(tabController.index.toString());
+
     });
+    tabController.animateTo(2,duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
 
     animationController =
         AnimationController(duration: const Duration(seconds: 1), vsync: this);
@@ -85,7 +90,7 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
               Row(
                 children: <Widget>[
                   IconButton(
-                      icon: Icon(Icons.more_vert, color: Colors.white),
+                      icon: Icon(Icons.more_vert,color: Colors.black,),
                       onPressed: null),
                 ],
               )
@@ -103,12 +108,11 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                       children: <Widget>[
                         IconButton(
                             icon: Icon(
-                              Icons.notifications_none,
-                              color: Colors.white,
+                              Icons.notifications_none,color: Colors.black,
                             ),
                             onPressed: null),
                         IconButton(
-                            icon: Icon(Icons.share, color: Colors.white),
+                            icon: Icon(Icons.share,color: Colors.black,),
                             onPressed: null),
                       ],),
                   ],
@@ -173,18 +177,15 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                             Text(
                               "اتليتكو ",
                               style: TextStyle(
-                                  color: Colors.white,
                                   fontSize: 18,
                                   fontWeight: FontWeight.w500),
                             ),
                             Text(
                               "نهاية المبارة ",
-                              style: TextStyle(color: Colors.white),
                             ),
                             Text(
                               "ريال مدريد ",
                               style: TextStyle(
-                                  color: Colors.white,
                                   fontSize: 18,
                                   fontWeight: FontWeight.w500),
                             ),
@@ -198,18 +199,18 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                           child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: <Widget>[
                             Column(children: <Widget>[
-                              Text("مارسيلو 22",style: TextStyle(color: Colors.white,fontSize: 12))
+                              Text("مارسيلو 22",style: TextStyle(fontSize: 12))
                             ],),
                                 Column(children: <Widget>[
                                   Padding(
                                     padding: const EdgeInsets.only(top: 5),
-                                    child: Icon(MdiIcons.soccer,size: 15,color: Colors.white,),
+                                    child: Icon(MdiIcons.soccer,size: 15,color: Colors.black,),
                                   ),
                                 ],),
 
                               Column(mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
-                                Text("مارسيلو 21\nمارسيلو55",style: TextStyle(color: Colors.white,fontSize: 12))
+                                Text("مارسيلو 21\nمارسيلو55",style: TextStyle(fontSize: 12))
                               ],)
                           ],),
                         ),
@@ -222,12 +223,13 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
         Directionality(
           textDirection: TextDirection.rtl,
           child: DefaultTabController(
-            length: 2,
+            initialIndex: 3,
+            length: 7,
             child: SliverPersistentHeader(
               pinned: true,
               delegate: _SliverAppBarDelegate(
-
-                  TabBar(isScrollable: true, controller: tabController,
+                  TabBar(
+                      isScrollable: true, controller: tabController,
                       onTap: (index){
                         setState(() {
                           if(index==1){
@@ -237,19 +239,27 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                       },
                       tabs: [
                         Tab(
+                          child:Text(" تويتر",style: tapbar,),
+                        ),
+                        Tab(
                           child:Text(" الوسائط",style: tapbar,),
                         ),
                         Tab(
                           child:Text("احداث المبارة",style: tapbar,),
                         ),
-                        Tab(
+                     /*   Tab(
                           child:Text("التغطية المباشرة",style:tapbar,),
                         ),
+
+                      */
                         Tab(
                           child:Text("تشكيلة",style: tapbar,),
                         ),
                         Tab(
                           child:Text("احصائيات",style: tapbar,),
+                        ),
+                        Tab(
+                          child:Text("المراكز",style: tapbar,),
                         ),
                         Tab(
                           child:Text("المواجهات السابقة",style: tapbar,),
@@ -270,6 +280,7 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
           child: NestedScrollView(
             headerSliverBuilder: _sliverBuilder,
             body: new TabBarView(controller: tabController, children: [
+              Scaffold(),
               Directionality(
                 textDirection: TextDirection.ltr,
                 child: Padding(
@@ -283,47 +294,52 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                         onTap: (){
                          _launchURL();
                         },
-                        child: Card(shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-                        child:Container(
-                          height: 100,
-                          child: Row(children: <Widget>[
-                            Container(
-                              height: 100,
-                              width: MediaQuery.of(context).size.width*0.6,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Column(mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                  Row(children: <Widget>[
-                                    Text("1-0 Phippe Coutiho 21'")
-                                  ],),
-                                    SizedBox(height: 5,),
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.pushNamed(context, '/webView');
+                          },
+                          child: Card(shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                          child:Container(
+                            height: 100,
+                            child: Row(children: <Widget>[
+                              Container(
+                                height: 100,
+                                width: MediaQuery.of(context).size.width*0.6,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
                                     Row(children: <Widget>[
-                                      Text("streamable.com",style: TextStyle(color: Colors.grey,fontSize: 13),)
-                                    ],)
-                                ],),
-                              ),
-                            ),
-                            Container(
-                              height: 100,
-                              width: MediaQuery.of(context).size.width*0.338,
-                              decoration: BoxDecoration(
-                                  color: Colors.grey[200],
-                                  borderRadius: BorderRadius.all(Radius.circular(10))),
-                              child: Column(children: <Widget>[
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 40),
-                                  child: Container(
-                                      height: 25,width: 25,
-                                      decoration: BoxDecoration(
-                                          color: Colors.grey[700],
-                                          borderRadius: BorderRadius.all(Radius.circular(100))),
-                                      child: Icon(Icons.play_arrow,color: Colors.white,size: 17,)),
+                                      Text("1-0 Phippe Coutiho 21'")
+                                    ],),
+                                      SizedBox(height: 5,),
+                                      Row(children: <Widget>[
+                                        Text("streamable.com",style: TextStyle(color: Colors.grey,fontSize: 13),)
+                                      ],)
+                                  ],),
                                 ),
-                              ],)
-                            )
-                          ],),
-                        )
+                              ),
+                              Container(
+                                height: 100,
+                                width: MediaQuery.of(context).size.width*0.338,
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[200],
+                                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                                child: Column(children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 40),
+                                    child: Container(
+                                        height: 25,width: 25,
+                                        decoration: BoxDecoration(
+                                            color: Colors.grey[700],
+                                            borderRadius: BorderRadius.all(Radius.circular(100))),
+                                        child: Icon(Icons.play_arrow,color: Colors.white,size: 17,)),
+                                  ),
+                                ],)
+                              )
+                            ],),
+                          )
+                          ),
                         ),
                       ),
                     );
@@ -334,7 +350,7 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                 MatchEvent_a()
               ]
               ),
-              Directionality(
+           /*  Directionality(
                 textDirection: TextDirection.ltr,
                 child: SafeArea(
                   minimum: EdgeInsets.only(bottom: 10),
@@ -390,6 +406,7 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                   ),
                 ),
               ),
+              */
               ListView(
                 children: <Widget>[
                   Column(
@@ -398,139 +415,146 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                         width: MediaQuery.of(context).size.width,
                         height: 35,
                         color: Colors.green[400],
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 170),
-                          child: Row(
+                          child: Container(
+                            margin: EdgeInsets.only(right: MediaQuery.of(context).size.width*0.43),
+                            child: Row(
+                              children: <Widget>[
+                              Text("ريال مدريد",style: TextStyle(color: Colors.white,fontSize: 15,fontWeight:FontWeight.w800,),),
+                                SizedBox(width: 100,),
+                                Text("4-2-3-1",style: TextStyle(color: Colors.white,fontSize: 15,fontWeight:FontWeight.w800,)),
+                            ],),
+                          ),
+
+                      ),
+
+                          Stack(
                             children: <Widget>[
-                            Text("ريال مدريد",style: TextStyle(color: Colors.white,fontSize: 15,fontWeight:FontWeight.w800,),),
-                              SizedBox(width: 100,),
-                              Text("4-2-3-1",style: TextStyle(color: Colors.white,fontSize: 15,fontWeight:FontWeight.w800,)),
-                          ],),
-                        ),
-                      ),
-                      Stack(
-                        children: <Widget>[
-                          Container(
-                            width: MediaQuery.of(context).size.width,height: 850,
-                          child: Image.asset("assets/green.jpg",fit: BoxFit.cover,),),
-                          Positioned(right:MediaQuery.of(context).size.width*0.4,
-                              top: 5,
-                            child: _players()
+                               CustomPaint(
+                                painter: ShapesPointer(),
+                                child: Container(
+                                  height: 850,
+                                ),),
+                              Positioned(right:MediaQuery.of(context).size.width*0.4,
+                                  bottom: 720,
+                                  child: _players()
+                              ),
+
+                              Positioned(right:MediaQuery.of(context).size.width*0.01,
+                                  top: 70,
+                                  child: _players()
+                              ),
+
+                              Positioned(right:MediaQuery.of(context).size.width*0.25,
+                                  top: 70,
+                                  child: _players()
+                              ),
+
+                              Positioned(right:MediaQuery.of(context).size.width*0.55,
+                                  top: 70,
+                                  child: _players()
+                              ),
+
+                              Positioned(right:MediaQuery.of(context).size.width*0.8,
+                                  top: 70,
+                                  child: _players()
+                              ),
+
+                              Positioned(right:MediaQuery.of(context).size.width* 0.55,
+                                  top: 155,
+                                  child: _players()
+                              ),
+
+                              Positioned(right:MediaQuery.of(context).size.width*0.25,
+                                  top: 155,
+                                  child: _players()
+                              ),
+
+                              Positioned(
+                                right: MediaQuery.of(context).size.width*0.05
+                                ,top: 230,
+                                child: _players(),),
+
+                              Positioned(
+                                right: MediaQuery.of(context).size.width*0.4,
+                                top: 230,
+                                child: _players(),),
+
+                              Positioned(
+                                right:MediaQuery.of(context).size.width*0.75,
+                                top: 230,
+                                child: _players(),),
+
+                              Positioned(
+                                right: MediaQuery.of(context).size.width*0.4,
+                                top: 300,
+                                child: _players(),),
+
+                              Positioned(
+                                right: MediaQuery.of(context).size.width*0.4,
+                                top: 420,
+                                child: _players(),),
+
+                              Positioned(
+                                right:MediaQuery.of(context).size.width*0.75,
+                                top: 490,
+                                child: _players(),),
+
+
+                              Positioned(
+                                right: MediaQuery.of(context).size.width*0.4,
+                                top: 490,
+                                child: _players(),),
+
+                              Positioned(
+                                right: MediaQuery.of(context).size.width*0.05,
+                                top: 490,
+                                child: _players(),),
+
+                              Positioned(right:MediaQuery.of(context).size.width*0.25,
+                                  top: 560,
+                                  child: _players()
+                              ),
+
+                              Positioned(right:MediaQuery.of(context).size.width* 0.55,
+                                  top: 560,
+                                  child: _players()
+                              ),
+
+                              Positioned(right:MediaQuery.of(context).size.width*0.01,
+                                  top: 640,
+                                  child: _players()
+                              ),
+
+                              Positioned(right:MediaQuery.of(context).size.width*0.25,
+                                  top: 640,
+                                  child: _players()
+                              ),
+
+                              Positioned(right:MediaQuery.of(context).size.width*0.55,
+                                  top: 640,
+                                  child: _players()
+                              ),
+
+                              Positioned(right:MediaQuery.of(context).size.width*0.8,
+                                  top: 640,
+                                  child: _players()
+                              ),
+
+                              Positioned(right:MediaQuery.of(context).size.width* 0.4,
+                                  top: 720,
+                                  child: _players()
+                              ),
+                            ],
+
                           ),
 
-                          Positioned(right:MediaQuery.of(context).size.width*0.01,
-                              top: 90,
-                            child: _players()
-                          ),
 
-                          Positioned(right:MediaQuery.of(context).size.width*0.25,
-                              top: 90,
-                            child: _players()
-                          ),
-
-                          Positioned(right:MediaQuery.of(context).size.width*0.55,
-                              top: 90,
-                            child: _players()
-                          ),
-
-                          Positioned(right:MediaQuery.of(context).size.width*0.8,
-                              top: 90,
-                            child: _players()
-                          ),
-
-                          Positioned(right:MediaQuery.of(context).size.width* 0.55,
-                              top: 175,
-                            child: _players()
-                          ),
-
-                          Positioned(right:MediaQuery.of(context).size.width*0.25,
-                              top: 175,
-                            child: _players()
-                          ),
-
-                          Positioned(
-                            right: MediaQuery.of(context).size.width*0.05
-                            ,top: 250,
-                            child: _players(),),
-
-                          Positioned(
-                            right: MediaQuery.of(context).size.width*0.4,
-                            top: 245,
-                            child: _players(),),
-
-                          Positioned(
-                            right:MediaQuery.of(context).size.width*0.75,
-                            top: 250,
-                            child: _players(),),
-
-                          Positioned(
-                            right: MediaQuery.of(context).size.width*0.4,
-                            top: 320,
-                            child: _players(),),
-
-                          Positioned(
-                            right: MediaQuery.of(context).size.width*0.4,
-                            top: 420,
-                            child: _players(),),
-
-                          Positioned(
-                            right:MediaQuery.of(context).size.width*0.75,
-                            top: 490,
-                            child: _players(),),
-
-
-                          Positioned(
-                            right: MediaQuery.of(context).size.width*0.4,
-                            top: 490,
-                            child: _players(),),
-
-                          Positioned(
-                            right: MediaQuery.of(context).size.width*0.05,
-                            top: 490,
-                            child: _players(),),
-
-                          Positioned(right:MediaQuery.of(context).size.width*0.25,
-                              top: 560,
-                              child: _players()
-                          ),
-
-                          Positioned(right:MediaQuery.of(context).size.width* 0.55,
-                              top: 560,
-                              child: _players()
-                          ),
-
-                          Positioned(right:MediaQuery.of(context).size.width*0.01,
-                              top: 640,
-                              child: _players()
-                          ),
-
-                          Positioned(right:MediaQuery.of(context).size.width*0.25,
-                              top: 640,
-                              child: _players()
-                          ),
-
-                          Positioned(right:MediaQuery.of(context).size.width*0.55,
-                              top: 640,
-                              child: _players()
-                          ),
-
-                          Positioned(right:MediaQuery.of(context).size.width*0.8,
-                              top: 640,
-                              child: _players()
-                          ),
-
-                          Positioned(right:MediaQuery.of(context).size.width* 0.4,
-                              top: 720,
-                              child: _players()
-                          ),
-                        ],
-                      ),
                       Container(
                         width: MediaQuery.of(context).size.width,
                         height: 35,
                         color: Colors.green[400],
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 170),
+                        child: Container(
+                          margin: EdgeInsets.only(right: MediaQuery.of(context).size.width*0.43),
                           child: Row(
                             children: <Widget>[
                               Text("ريال مدريد",style: TextStyle(color: Colors.white,fontSize: 15,fontWeight:FontWeight.w800,),),
@@ -538,7 +562,66 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                               Text("4-2-3-1",style: TextStyle(color: Colors.white,fontSize: 15,fontWeight:FontWeight.w800,)),
                             ],),
                         ),
+
                       ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(children: <Widget>[
+                          Text("مدرب",style: TextStyle(fontSize: 17),),
+                        ],),
+                      ),
+                   Padding(
+                     padding: const EdgeInsets.all(10.0),
+                       child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                         children: <Widget>[
+                         Column(mainAxisAlignment: MainAxisAlignment.start,
+                           children: <Widget>[
+                             Container(width: 45,height: 45,
+                               decoration: BoxDecoration(
+                                   borderRadius: BorderRadius.all(Radius.circular(100)),
+                                   border: Border.all(width: 1,color: Colors.grey)
+                               ),
+                               child: ClipRRect(
+                                 borderRadius: BorderRadius.all(Radius.circular(100),),
+                                 child: Image.asset("assets/Marcelo.jpg"),
+                               ),
+                             ),
+                             Container(width: 80,
+                                 child: Center(
+                                   child: Column(
+                                     children: <Widget>[
+                                       Text("  مارسيلو ",overflow: TextOverflow.visible,),],
+                                   ),
+                                 ))
+                           ],
+
+                         ),
+                           Column(mainAxisAlignment: MainAxisAlignment.start,
+                             children: <Widget>[
+                               Container(width: 45,height: 45,
+                                 decoration: BoxDecoration(
+                                     borderRadius: BorderRadius.all(Radius.circular(100)),
+                                     border: Border.all(width: 1,color: Colors.grey)
+                                 ),
+                                 child: ClipRRect(
+                                   borderRadius: BorderRadius.all(Radius.circular(100),),
+                                   child: Image.asset("assets/Marcelo.jpg"),
+                                 ),
+                               ),
+                               Container(width: 80,
+                                   child: Center(
+                                     child: Column(
+                                       children: <Widget>[
+                                         Text("  مارسيلو ",overflow: TextOverflow.visible,),],
+                                     ),
+                                   ))
+                             ],
+
+                           ),
+                       ],
+                       ),
+                  ),
+                      Divider(),
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Row(children: <Widget>[
@@ -693,7 +776,66 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                         child: Container(
                           color: Colors.grey[200],
                           width: MediaQuery.of(context).size.width,
-                          height: 300,),
+                          height: 260,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20,right: 15,bottom: 30),
+                          child: Row(
+                            children: <Widget>[
+                              Column(crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: List.generate(_icons.length, (index){
+                                    return _collectionOfIcons(_icons[index], _textIcons[index]);
+                                  })),
+                              SizedBox(width: 80,),
+                              Column(crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: <Widget>[
+                                  Row(children: <Widget>[
+                                    Container(height: 22,width: 15,
+                                      decoration: BoxDecoration(color: Colors.yellow,
+                                          borderRadius: BorderRadius.all(Radius.circular(4))),),
+                                    SizedBox(width: 10,),
+                                    Text("بطاقة صفراء",style: TextStyle(fontSize: 12),)
+                                  ],),
+                                  Row(children: <Widget>[
+                                    Container(height: 22,width: 15,
+                                      decoration: BoxDecoration(color: Colors.red,
+                                          borderRadius: BorderRadius.all(Radius.circular(4))),),
+                                    SizedBox(width: 10,),
+                                    Text("بطاقة حمراء",style: TextStyle(fontSize: 12),)
+                                  ],),
+                                  Row(children: <Widget>[
+                                    Container(width: 20,height: 25,
+                                      child: Stack(children: <Widget>[
+                                        Container(height: 22,width: 15,
+                                          decoration: BoxDecoration(color: Colors.yellow,
+                                              borderRadius: BorderRadius.all(Radius.circular(4))),),
+                                        Positioned(
+                                          top:3 ,right: 3,
+                                          child:Container(height: 22,width: 15,
+                                          decoration: BoxDecoration(color: Colors.red,
+                                              borderRadius: BorderRadius.all(Radius.circular(4))),),),
+                                      ],),
+                                    ),
+                                    SizedBox(width: 10,),
+                                    Text("الاصفر الثاني",style: TextStyle(fontSize: 12),)
+                                  ],),
+                                  Row(children: <Widget>[
+                                    Icon(Icons.local_hospital,color: Colors.red,),
+                                    SizedBox(width: 10,),
+                                    Text("مصاب",style: TextStyle(fontSize: 12),)
+                                  ],),
+                                  Row(children: <Widget>[
+                                    Icon(Icons.public,color: Colors.blue,),
+                                    SizedBox(width: 10,),
+                                    Text("الواجب الدولي ",style: TextStyle(fontSize: 12),)
+                                  ],)
+                                ],
+                                ),
+                            ],
+
+                          ),
+                        ),),
                       )
                     ],
                   )
@@ -705,7 +847,14 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                     padding: const EdgeInsets.all(15.0),
                     child: Row(mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                      Text("السيطرة علي الكرة",style:TextStyle(fontWeight: FontWeight.w600),),
+                        Text("احصائيات الصدارة",style:content),
+                      ],),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5,right: 15,left: 15,bottom: 15),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                      Text("السيطرة علي الكرة",style:content),
                     ],),
                   ),
                   Padding(
@@ -734,8 +883,8 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                   Padding(
                     padding: const EdgeInsets.only(right: 20,left: 20,top: 15),
                     child: Container(
+                      height: 300,
                       width: MediaQuery.of(context).size.width,
-                      height: 200,
                       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                         Column(
@@ -777,14 +926,26 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                           Container(
                             child: Text("1",style: _textStyle1),
                           ),
+                            Container(
+                              child: Text("20",style: _textStyle1),
+                            ),
+                            Container(
+                              child: Text("7",style: _textStyle1),
+                            ),
+                            Container(
+                              child: Text("1",style: _textStyle1),
+                            ),
                         ],),
                         Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
-                          Text("تسديدات في المرمي",style: _textStyle2,),
-                          Text("تسديدات بعيده عن المرمي",style: _textStyle2),
-                          Text("ضربات ركنية",style: _textStyle2),
-                          Text("مخالفات",style: _textStyle2),
-                          Text("تسللات",style: _textStyle2),
+                          Text("اجمالي  التسديدات",style: _textStyle2,),
+                          Text("الفرص",style: _textStyle2),
+                          Text("فرص كبيرة",style: _textStyle2),
+                          Text("تمريرات دقيقة",style: _textStyle2),
+                          Text("نمريرة ناجحه",style: _textStyle2),
+                            Text("مخالفات ",style: _textStyle2),
+                            Text("ضربات ركنية",style: _textStyle2),
+                            Text("تسللات ",style: _textStyle2),
                         ],),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -818,13 +979,405 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                                   child: Text("2",style: _textStyle1,),
                                 ),
                               ),
+                              Container(
+                                child: Text("10",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("2",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("3",style: _textStyle1),
+                              ),
                             ],),
                       ],),
                     ),
-                  )
+                  ),
+                  Divider(),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20,left: 20,top: 15),
+                    child: Container(
+                      height: 300,
+                      width: MediaQuery.of(context).size.width,
+                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[300],
+                                    borderRadius: BorderRadius.all(Radius.circular(8))
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+                                  child: Text("10",style: TextStyle(fontSize: 22),),
+                                ),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[300],
+                                    borderRadius: BorderRadius.all(Radius.circular(8))
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+                                  child: Text("9",style: _textStyle1,),
+                                ),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[300],
+                                    borderRadius: BorderRadius.all(Radius.circular(8))
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+                                  child: Text("1",style: _textStyle1,),
+                                ),
+                              ),
+                              Container(
+                                child: Text("9",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("1",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("20",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("7",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("1",style: _textStyle1),
+                              ),
+                            ],),
+                          Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                              Text("اجمالي  التسديدات",style: content,),
+                              Text("تسديدات بعيد عن المرمي",style: _textStyle2),
+                              Text(" تسديدات في المرمي",style: _textStyle2),
+                              Text("التسديدات التي تم صدها",style: _textStyle2),
+                              Text("تسديدات  علي العارضة ",style: _textStyle2),
+                              Text("التسديدات داخل منطقة الجزاء ",style: _textStyle2),
+                              Text("التسديدات خارج منطقة الجزاء ",style: _textStyle2),
+
+                            ],),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                              Container(
+                                child: Text("2",style: TextStyle(fontSize: 22),),
+                              ),
+                              Container(
+                                child: Text("3",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("3",style: _textStyle1),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[300],
+                                    borderRadius: BorderRadius.all(Radius.circular(8))
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+                                  child: Text("10",style: _textStyle1,),
+                                ),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[300],
+                                    borderRadius: BorderRadius.all(Radius.circular(8))
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+                                  child: Text("2",style: _textStyle1,),
+                                ),
+                              ),
+                              Container(
+                                child: Text("10",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("2",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("3",style: _textStyle1),
+                              ),
+                            ],),
+                        ],),
+                    ),
+                  ),
+                  Divider(),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20,left: 20,top: 15),
+                    child: Container(
+                      height: 400,
+                      width: MediaQuery.of(context).size.width,
+                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[300],
+                                    borderRadius: BorderRadius.all(Radius.circular(8))
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+                                  child: Text("10",style: TextStyle(fontSize: 22),),
+                                ),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[300],
+                                    borderRadius: BorderRadius.all(Radius.circular(8))
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+                                  child: Text("9",style: _textStyle1,),
+                                ),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[300],
+                                    borderRadius: BorderRadius.all(Radius.circular(8))
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+                                  child: Text("1",style: _textStyle1,),
+                                ),
+                              ),
+                              Container(
+                                child: Text("9",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("1",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("20",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("7",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("1",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("5",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("4",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("7",style: _textStyle1),
+                              ),
+                            ],),
+                          Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                              Text("تمريرات  دقيقه",style: content,),
+                              Text("نصفي الخاص",style: _textStyle2),
+                              Text(" نصف الخصم",style: _textStyle2),
+                              Text("تمريرات",style: _textStyle2),
+                              Text("تمريرات ناجحه",style: _textStyle2),
+                              Text("اللمسات",style: _textStyle2),
+                              Text("كرات طويلة",style: _textStyle2),
+                              Text("كرات طويلة دقيقة",style: _textStyle2),
+                              Text("عرضيات",style: _textStyle2),
+                              Text("تمريرات عرضية دقيقة",style: _textStyle2),
+
+                            ],),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                              Container(
+                                child: Text("2",style: TextStyle(fontSize: 22),),
+                              ),
+                              Container(
+                                child: Text("3",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("3",style: _textStyle1),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[300],
+                                    borderRadius: BorderRadius.all(Radius.circular(8))
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+                                  child: Text("10",style: _textStyle1,),
+                                ),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[300],
+                                    borderRadius: BorderRadius.all(Radius.circular(8))
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+                                  child: Text("2",style: _textStyle1,),
+                                ),
+                              ),
+                              Container(
+                                child: Text("10",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("2",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("3",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("8",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("4",style: _textStyle1),
+                              ),
+                              Container(
+                                child: Text("3",style: _textStyle1),
+                              ),
+                            ],),
+                        ],),
+                    ),
+                  ),
+                  Divider(),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20,left: 20,top: 15),
+                    child: Container(
+                      height: 360,
+                      width: MediaQuery.of(context).size.width,
+                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey[300],
+                                      borderRadius: BorderRadius.all(Radius.circular(8))
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+                                    child: Text("10",style: _textStyle1,),
+                                  ),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey[300],
+                                      borderRadius: BorderRadius.all(Radius.circular(8))
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+                                    child: Text("9",style: _textStyle1,),
+                                  ),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey[300],
+                                      borderRadius: BorderRadius.all(Radius.circular(8))
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+                                    child: Text("1",style: _textStyle1,),
+                                  ),
+                                ),
+                                Container(
+                                  child: Text("9",style: _textStyle1),
+                                ),
+                                Container(
+                                  child: Text("1",style: _textStyle1),
+                                ),
+                                Container(
+                                  child: Text("20",style: _textStyle1),
+                                ),
+                                Container(
+                                  child: Text("7",style: _textStyle1),
+                                ),
+                                Container(
+                                  child: Text("1",style: _textStyle1),
+                                ),
+
+                              ],),
+
+
+                            Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                Text("الفوز في ثنائيات",style: content,),
+                                Text("محاولات مراوغة",style: _textStyle2),
+                                Text(" مراوغات ناجحه",style: _textStyle2),
+                                Text("محاولات قطع الكورة",style: _textStyle2),
+                                Text("افتكاك كورة ناجح",style: _textStyle2),
+                                Text("ربح الكرات العالية",style: _textStyle2),
+                                Text("الاعتراضات ",style: _textStyle2),
+
+
+                              ],),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: <Widget>[
+                                  Container(
+                                    child: Text("2",style: _textStyle1),),
+                                  Container(
+                                    child: Text("3",style: _textStyle1),
+                                  ),
+                                  Container(
+                                    child: Text("3",style: _textStyle1),
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: Colors.grey[300],
+                                        borderRadius: BorderRadius.all(Radius.circular(8))
+                                    ),
+                                      child: Text("10",style: _textStyle1,),
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: Colors.grey[300],
+                                        borderRadius: BorderRadius.all(Radius.circular(8))
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+                                      child: Text("2",style: _textStyle1,),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Text("10",style: _textStyle1),
+                                  ),
+                                  Container(
+                                    child: Text("2",style: _textStyle1),
+                                  ),
+                                  Container(
+                                    child: Text("3",style: _textStyle1),
+                                  ),
+
+                                ],),
+                          ),
+                        ],),
+                    ),
+                  ),
+                  /*
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20,right: 20),
+                    child:Container(
+                      height: 300,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children:List.generate(7, (index){
+                        return allDetailsL(_allDeatailsFirstNo[index],_allDeatailsDefination[index],_allDeatailsSecondNo[index]);
+                      }),),
+                    )
+                  ),
+
+                   */
+
+
 
                 ],
               ),
+              ListView(children: <Widget>[
+                postions()
+              ],),
               ListView(
                   children: <Widget>[
                     preConfront()
@@ -835,6 +1388,29 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
       ),
     );
   }
+
+  List<Icon> _icons=[
+    Icon(MdiIcons.hand),
+    Icon(MdiIcons.footPrint,),
+    Icon(MdiIcons.soccer,color: Colors.black,),
+    Icon(MdiIcons.soccer,color: Colors.red,),
+    Icon(MdiIcons.soccer),
+  ];
+  List<String> _textIcons=['ضربات جزاء مبعدة',"صناعة اهداف","هدف","هدف في مرماة","ضربة جزاء ضائعة"];
+  
+  Widget _collectionOfIcons(_icons,_textIcons){
+    return Column(
+      children: <Widget>[
+        Row(children: <Widget>[
+          _icons,
+          SizedBox(width: 10,),
+          Text(_textIcons,style: TextStyle(fontSize: 12),)
+        ],),
+      ],
+      
+    );
+  }
+
    Widget _players(){
     return Container(
       height: 150,
@@ -1095,6 +1671,58 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
     );
   }
 
+  allDetailsL(FNo,SNo,Defination){
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.all(Radius.circular(8))
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+              child: Center(child: Text(FNo,style: _textStyle1,)),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 7,right: 7,top: 2,bottom: 2),
+            child: Text(SNo,style: content2,),
+          ),
+          Container(
+            child: Text(Defination,style: _textStyle1))]);
+  }
+
+  List <String>_allDeatailsFirstNo=[
+    "1",
+    "5",
+    "10",
+    "4",
+    "7",
+    "0",
+    "9"
+  ];
+
+  List <String>_allDeatailsDefination=[
+    "اجمالي التسديدات",
+    "الفرص",
+    "تمريرات دقيقة",
+    "تمريرة ناجحه",
+    "مخالفات",
+    "ضربات ركنية",
+    "تسللات"
+  ];
+
+  List <String>_allDeatailsSecondNo=[
+    "1",
+    "5",
+    "10",
+    "4",
+    "7",
+    "0",
+    "9"
+  ];
+
    List <Widget>_list(BuildContext context){
     var test=List<Widget>();
 
@@ -1179,4 +1807,82 @@ class _SliverAppBarDelegate1 extends SliverPersistentHeaderDelegate {
         minHeight != oldDelegate.minHeight ||
         child != oldDelegate.child;
   }
+}
+
+class ShapesPointer extends CustomPainter{
+  @override
+  void paint(Canvas canvas, Size size) {
+
+    final paint = Paint();
+
+    paint.color = Colors.green[600];
+    var rect = Rect.fromLTWH(0, 0, size.width,850);
+    canvas.drawRect(rect, paint);
+
+
+    paint.color = Colors.green[400];
+    paint.style=PaintingStyle.stroke;
+    paint.strokeWidth=4;
+    var rectbig = Rect.fromLTWH(size.width/4.5, 0, 225, 100);
+    canvas.drawRect(rectbig, paint);
+
+    paint.color = Colors.green[400];
+    paint.style=PaintingStyle.stroke;
+    paint.strokeWidth=4;
+    var rectsmall = Rect.fromLTWH(size.width/2.77,0, 112, 50);
+    canvas.drawRect(rectsmall, paint);
+
+    paint.color = Colors.green[400];
+    paint.style=PaintingStyle.stroke;
+    paint.strokeWidth=4;
+    var rectbig1 = Rect.fromLTWH(size.width/4.5, 750, 225, 100);
+    canvas.drawRect(rectbig1, paint);
+
+    paint.color = Colors.green[400];
+    paint.style=PaintingStyle.stroke;
+    paint.strokeWidth=4;
+    var rectsmall1 = Rect.fromLTWH(size.width/2.77, 800, 112, 50);
+    canvas.drawRect(rectsmall1, paint);
+
+
+    final rect3 = Rect.fromLTRB(150, 50, 260, 125);
+    final startAngle = pi/9;
+    final sweepAngle = pi/1.3;
+    final useCenter = false;
+    paint.color = Colors.green[400];
+    paint.style = PaintingStyle.stroke;
+    paint.strokeWidth = 4;
+    canvas.drawArc(rect3, startAngle, sweepAngle, useCenter, paint);
+
+    final rect4 = Rect.fromLTRB(150, 720, 260, 820);
+    final startAngle2 = -pi/9;
+    final sweepAngle2 = -pi/1.3;
+    final useCenter2 = false;
+    paint.color = Colors.green[400];
+    paint.style = PaintingStyle.stroke;
+    paint.strokeWidth = 4;
+    canvas.drawArc(rect4, startAngle2, sweepAngle2, useCenter2, paint);
+
+
+
+
+    paint.color=Colors.green[400];
+    paint.style=PaintingStyle.stroke;
+    paint.strokeWidth= 4;
+    var center = Offset(size.width / 2, size.height / 2);
+    canvas.drawCircle(center, 60.0,paint);
+
+    paint.color=Colors.green[400];
+    var line1 = Offset(size.width,size.height/2);
+    var line2 = Offset(0,size.height/2);
+    canvas.drawLine(line1, line2, paint);
+
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+
+    return true;
+  }
+
 }

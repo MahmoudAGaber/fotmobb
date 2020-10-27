@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-class postions extends StatefulWidget {
+class teamPosition extends StatefulWidget {
   @override
-  _postionsState createState() => _postionsState();
+  _teamPositionState createState() => _teamPositionState();
 }
+var indexx=2;
+class _teamPositionState extends State<teamPosition> {
 
-class _postionsState extends State<postions> {
   @override
   Widget build(BuildContext context) {
+
     return Column(
       children: <Widget>[
         Column(
@@ -97,7 +99,7 @@ class _postionsState extends State<postions> {
                     style: TextStyle(color: Colors.grey),
                   ),
                   SizedBox(
-                    width: 48.0,
+                    width: 38.0,
                   ),
                   Text(
                     "فريق",
@@ -168,6 +170,7 @@ class _postionsState extends State<postions> {
                   onTap: (){
                     Navigator.pushNamed(context, '/eachTeam');
                   },
+
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: 35,

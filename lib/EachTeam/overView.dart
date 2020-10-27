@@ -60,27 +60,30 @@ class _overViewState extends State<overView> {
                   ),
                     Padding(
                       padding: const EdgeInsets.only(top: 15,left: 80,right: 80),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text("ريال مدريد",style: content,),
-                          Container(
-                            width: 30,
-                            height: 25,
-                            child: Image.asset("assets/541.jpg"),
-                          ),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          Center(child: Text("3:30 م",style: content,)),
-                          SizedBox(width: 6),
-                          Container(
-                            width: 30,
-                            height: 25,
-                            child: Image.asset("assets/530.jpg"),
-                          ),
-                          Text("اتليتكو",style: content,),
-                        ],
+                      child: Container(
+                        width: 500,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text("ريال مدريد",style: content,),
+                            Container(
+                              width: 30,
+                              height: 25,
+                              child: Image.asset("assets/541.jpg"),
+                            ),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            Center(child: Text("3:30 م",style: content,)),
+                            SizedBox(width: 6),
+                            Container(
+                              width: 30,
+                              height: 25,
+                              child: Image.asset("assets/530.jpg"),
+                            ),
+                            Text("اتليتكو",style: content,),
+                          ],
+                        ),
                       ),
                     ),
                 ],),
@@ -130,33 +133,38 @@ class _overViewState extends State<overView> {
                         itemBuilder: (BuildContext context,index){
                       return Container(
                         height: 200,width: 200,
-                      child:Card(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-                        child: Column(children: <Widget>[
-                          Container(
-                            height: 100,
-                            width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.only(topRight: Radius.circular(10),topLeft: Radius.circular(10))),
-                                child:ClipRRect(child: Image.asset("assets/6.jpg",fit:BoxFit.fill),
-                                borderRadius: BorderRadius.only(topRight: Radius.circular(10),topLeft: Radius.circular(10)),),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              height: 55,
-                              child: Row(
-                                children: <Widget>[
-                                  Expanded(child: Text("ريال مدريد يفقد لاعبان امام اتليتكو , مارسيلو الباك الشمال و راموس",style:content3,
-                                    overflow: TextOverflow.visible,))],
+                      child:GestureDetector(
+                        onTap: (){
+                          Navigator.pushNamed(context, '/webView');
+                        },
+                        child: Card(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                          child: Column(children: <Widget>[
+                            Container(
+                              height: 100,
+                              width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(topRight: Radius.circular(10),topLeft: Radius.circular(10))),
+                                  child:ClipRRect(child: Image.asset("assets/6.jpg",fit:BoxFit.fill),
+                                  borderRadius: BorderRadius.only(topRight: Radius.circular(10),topLeft: Radius.circular(10)),),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                height: 55,
+                                child: Row(
+                                  children: <Widget>[
+                                    Expanded(child: Text("ريال مدريد يفقد لاعبان امام اتليتكو , مارسيلو الباك الشمال و راموس",style:content3,
+                                      overflow: TextOverflow.visible,))],
+                                ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top:10,right: 15),
-                            child: Row(children: <Widget>[Text("36 يوم مضت,10:51م",style:content4 ,)],),
-                          )
-                        ],),
+                            Padding(
+                              padding: const EdgeInsets.only(top:10,right: 15),
+                              child: Row(children: <Widget>[Text("36 يوم مضت,10:51م",style:content4 ,)],),
+                            )
+                          ],),
+                        ),
                       )
 
                       );
@@ -329,7 +337,11 @@ class _overViewState extends State<overView> {
                                   child: Container(
                                     height: 148,
                                     width: MediaQuery.of(context).size.width,
-                                   color: Theme.of(context).primaryColor,
+                                   decoration: BoxDecoration(
+                                       color: Colors.grey[600],
+                                     borderRadius: BorderRadius.only(topRight: Radius.circular(8),topLeft: Radius.circular(8))
+                                   ),
+
                                     child: Padding(
                                       padding: const EdgeInsets.only(left: 10,right: 10),
                                       child: ClipRRect(
@@ -400,8 +412,13 @@ class _overViewState extends State<overView> {
                                        ),
                                       Divider(height: 15,),
                                     
-                                      Row(children: <Widget>[
-                                        Text("عرض الكل",style: TextStyle(color: Colors.grey,fontSize: 14),)],),
+                                      GestureDetector(
+                                        onTap: (){
+                                          Navigator.pushNamed(context, '/allDetails');
+                                        },
+                                        child: Row(children: <Widget>[
+                                          Text("عرض الكل",style: TextStyle(color: Colors.grey,fontSize: 14),)],),
+                                      ),
                                   ],),
                                 )
                               ],),
@@ -448,7 +465,7 @@ class _overViewState extends State<overView> {
                     Text("اخر فوز 2016/2017",style: content4,),
                   ],),
                 ),
-                SizedBox(width: 40,),
+                SizedBox(width: 30,),
                 Padding(
                   padding: const EdgeInsets.only(top: 5,right: 15),
                   child: Column(crossAxisAlignment: CrossAxisAlignment.end,

@@ -20,7 +20,7 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
   bool isSwitched = false;
 
 
-  static const TextStyle tapbar = TextStyle(fontSize: 13, fontWeight: FontWeight.w500);
+  static const TextStyle tapbar = TextStyle(fontSize: 13, fontWeight: FontWeight.w500,color: Colors.black);
 
 
   @override
@@ -72,6 +72,7 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
             ],
           ),
         ),
+        /*
         drawer: Drawer(
           child: Column(
             children: <Widget>[
@@ -82,7 +83,7 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(top: 50.0, left: 28.0),
+                      padding: const EdgeInsets.only(top: 50.0, left: 28.0,right: 15),
                       child: CircleAvatar(
                         radius: 13.0,
                         backgroundImage: null,
@@ -92,8 +93,7 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
                       padding: const EdgeInsets.only(top: 50.0, left: 26.0),
                       child: Text(
                         "اسم المستخدم",
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w400),
+                        style: TextStyle(fontWeight: FontWeight.w400),
                       ),
                     )
                   ],
@@ -194,7 +194,7 @@ class _newsState extends State<news> with SingleTickerProviderStateMixin {
               ),
             ],
           ),
-        ),
+        ),*/
         body: TabBarView(
           controller: tabController,
           children: [

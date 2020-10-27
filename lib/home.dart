@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'More.dart';
 import 'favourites.dart';
 import 'leagues.dart';
 import 'matches.dart';
@@ -31,6 +32,7 @@ class _homeState extends State<home> {
     news(),
     Leagues(),
     Favourites(),
+    More(),
 
   ];
 
@@ -75,7 +77,7 @@ class _homeState extends State<home> {
                 ),
                 title:Padding(
                   padding: const EdgeInsets.only(left: 10),
-                  child: new Text("الاخبار",
+                  child: new Text("أخبار",
                     style: TextStyle(
                         fontWeight: FontWeight.w400,
                         color: _selectedIndex == 1 ? Color.fromRGBO(95, 31, 117, 1.0) : Colors.grey),),
@@ -86,7 +88,7 @@ class _homeState extends State<home> {
                 icon: new Icon(MdiIcons.trophy,
                     color: _selectedIndex == 2 ? Color.fromRGBO(95, 31, 117, 1.0): Colors.grey
                 ),
-                title:new Text("الدوريات",
+                title:new Text("البطولات",
                   style: TextStyle(
                       fontWeight: FontWeight.w400,
                       color: _selectedIndex == 2 ? Color.fromRGBO(95, 31, 117, 1.0): Colors.grey),)
@@ -96,10 +98,21 @@ class _homeState extends State<home> {
                 icon:Icon(Icons.star,
                     color: _selectedIndex == 3 ? Color.fromRGBO(95, 31, 117, 1.0) : Colors.grey
                 ),
-                title:Text("المفضل",
+                title:Text("المفضلة",
                   style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      color: _selectedIndex == 3 ? Color.fromRGBO(95, 31, 117, 1.0) : Colors.grey),)
+                      color: _selectedIndex == 3 ? Color.fromRGBO(95, 31, 117, 1.0) : Colors.grey),),
+
+            ),
+            BottomNavigationBarItem(
+              icon:Icon(Icons.menu,
+                  color: _selectedIndex == 4 ? Color.fromRGBO(95, 31, 117, 1.0) : Colors.grey
+              ),
+              title:Text("المزيد",
+                style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: _selectedIndex == 4 ? Color.fromRGBO(95, 31, 117, 1.0) : Colors.grey),),
+
             ),
 
 

@@ -31,6 +31,69 @@ class _MatchEvent_aState extends State<MatchEvent_a> {
       minimum: EdgeInsets.only(bottom: 20),
       child: Column(
           children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.pushNamed(context,'/players');
+                },
+                child: Card(shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
+                  child:Padding(
+                    padding: const EdgeInsets.only(top: 15,bottom: 15,right: 15),
+                    child: Column(children: <Widget>[
+                    Row(children: <Widget>[
+                      Text("أفضل لاعب",style: content,)
+                    ],),
+                      SizedBox(height: 15,),
+                      Row(children: <Widget>[
+                        Container(
+                          width: 80,
+                          child: Stack(children: <Widget>[
+                             Container(width: 50,height: 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(Radius.circular(100)),
+                                  border: Border.all(width: 1,color: Colors.grey)
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.all(Radius.circular(100),),
+                                child: Image.asset("assets/Marcelo.jpg"),
+                              ),
+                            ),
+                            Positioned(
+                              right: 22,bottom: 32,
+                                child: Container(
+                                  width: 42,height: 18,
+                                  decoration: BoxDecoration(
+                                    color:Colors.blue[700],
+                              borderRadius: BorderRadius.all(Radius.circular(4)),
+
+                            ),child: Padding(
+                              padding: const EdgeInsets.all(1.0),
+                              child: Row(children: <Widget>[
+                                    Icon(Icons.star,size: 15,color: Colors.white,),
+                                    Text("8.6",style: TextStyle(color: Colors.white,fontSize: 13.5,fontWeight: FontWeight.w500),),
+                                  ],),
+                            ),
+                                ))
+                          ],
+                          ),
+                        ),
+                        SizedBox(width: 25,),
+                        Column(crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                          Text("Marcelo",style: content,),
+                          Row(children: <Widget>[
+                            Container(height: 20,width:20,
+                            child: Image.asset("assets/541.jpg"),),
+                            SizedBox(width: 5,),
+                            Text("ريال مدريد",style: _textStyle1,)
+                          ],)
+                        ],)
+                      ],)
+                ],),
+                  ) ,),
+              ),
+            ),
           Container(
              child: ListView(
                physics: ClampingScrollPhysics(),
@@ -98,7 +161,7 @@ class _MatchEvent_aState extends State<MatchEvent_a> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(top: 15,right: 10),
-                    child: Row(mainAxisAlignment:MainAxisAlignment.start, children: <Widget>[Text("تشكيلة الفريق",style: content,)],),
+                    child: Row(mainAxisAlignment:MainAxisAlignment.start, children: <Widget>[Text("المواجهات السابقة",style: content,)],),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),

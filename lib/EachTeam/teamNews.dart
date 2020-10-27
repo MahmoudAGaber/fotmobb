@@ -3,12 +3,12 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 import '../trendingData.dart';
 
-class latest extends StatefulWidget {
+class teamNews extends StatefulWidget {
   @override
-  _latestState createState() => _latestState();
+  _teamNewsState createState() => _teamNewsState();
 }
 
-class _latestState extends State<latest> {
+class _teamNewsState extends State<teamNews> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -23,7 +23,7 @@ class _latestState extends State<latest> {
               width: MediaQuery.of(context).size.width,
               child: GestureDetector(
                 onTap: (){
-                  Navigator.pushNamed(context,'/webView');
+                  Navigator.pushNamed(context, '/webView');
                 },
                 child: Column(
                   children: <Widget>[

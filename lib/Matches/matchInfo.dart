@@ -22,7 +22,7 @@ class matchInfo extends StatefulWidget {
 
 class _matchInfoState extends State<matchInfo> with TickerProviderStateMixin {
 
-  static const TextStyle tapbar = TextStyle(fontSize: 13, fontWeight: FontWeight.w500);
+  static const TextStyle tapbar = TextStyle(fontSize: 13, fontWeight: FontWeight.w500,color: Colors.black);
   TextStyle head = TextStyle(fontSize: 16, );
 
   bool chContaier = false;
@@ -72,7 +72,7 @@ class _matchInfoState extends State<matchInfo> with TickerProviderStateMixin {
               Row(
                 children: <Widget>[
                   IconButton(
-                      icon: Icon(Icons.more_vert, color: Colors.white),
+                      icon: Icon(Icons.more_vert, color: Colors.black),
                       onPressed: null),
                 ],
               )
@@ -89,11 +89,11 @@ class _matchInfoState extends State<matchInfo> with TickerProviderStateMixin {
                   IconButton(
                       icon: Icon(
                         Icons.notifications_none,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                       onPressed: null),
                   IconButton(
-                      icon: Icon(Icons.share, color: Colors.white),
+                      icon: Icon(Icons.share, color: Colors.black),
                       onPressed: null),
                 ],),
               ),
@@ -148,18 +148,18 @@ class _matchInfoState extends State<matchInfo> with TickerProviderStateMixin {
                       Text(
                         "اتليتكو ",
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20,
                             fontWeight: FontWeight.w500),
                       ),
                       Text(
                         "غدا",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.black),
                       ),
                       Text(
                         "ريال مدريد ",
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20,
                             fontWeight: FontWeight.w500),
                       ),

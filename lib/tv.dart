@@ -13,7 +13,7 @@ class _tvState extends State<tv> with SingleTickerProviderStateMixin {
   TextStyle _textStyle2=TextStyle(fontSize: 13,color:Colors.green,fontWeight:FontWeight.w400);
 
   static const TextStyle tapbar =
-  TextStyle(fontSize: 15, fontWeight: FontWeight.w500);
+  TextStyle(fontSize: 15, fontWeight: FontWeight.w500,color: Colors.black);
 
   TabController _tabController;
 
@@ -49,25 +49,25 @@ class _tvState extends State<tv> with SingleTickerProviderStateMixin {
             labelStyle: tapbar,
             tabs: [
               Tab(
-                child: Text("اليوم"),
+                child: Text("اليوم",style: tapbar,),
               ),
               Tab(
-                child: Text("الغد"),
+                child: Text("الغد",style: tapbar,),
               ),
               Tab(
-                child: Text("السبت ٢٩/۸"),
+                child: Text("السبت ٢٩/۸",style: tapbar,),
               ),
               Tab(
-                child: Text("الاحد ٣۰/۸"),
+                child: Text("الاحد ٣۰/۸",style: tapbar,),
               ),
               Tab(
-                child: Text("الاتنين ٣١/۸"),
+                child: Text("الاتنين ٣١/۸",style: tapbar,),
               ),
               Tab(
-                child: Text("الثلاثاء ١/۹"),
+                child: Text("الثلاثاء ١/۹",style: tapbar,),
               ),
               Tab(
-                child: Text("الاربعاء ٢/۹"),
+                child: Text("الاربعاء ٢/۹",style: tapbar,),
               ),
             ],
           ),
