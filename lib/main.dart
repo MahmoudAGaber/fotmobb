@@ -91,7 +91,7 @@ Widget build(BuildContext context) {
     child: Padding(
       padding: const EdgeInsets.only(top: 150),
       child: new SplashScreen(
-        seconds: 2,
+        seconds: 3,
         navigateAfterSeconds: new home(),
         image: new Image.asset('assets/EPL-Logo.png',),
         backgroundColor: Colors.white,

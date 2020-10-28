@@ -414,7 +414,7 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                       Container(
                         width: MediaQuery.of(context).size.width,
                         height: 35,
-                        color: Colors.green[400],
+                        color: Color.fromRGBO(26, 158, 109, 1.0),
                           child: Container(
                             margin: EdgeInsets.only(right: MediaQuery.of(context).size.width*0.43),
                             child: Row(
@@ -552,7 +552,7 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
                       Container(
                         width: MediaQuery.of(context).size.width,
                         height: 35,
-                        color: Colors.green[400],
+                        color: Color.fromRGBO(26, 158, 109, 1.0),
                         child: Container(
                           margin: EdgeInsets.only(right: MediaQuery.of(context).size.width*0.43),
                           child: Row(
@@ -1414,22 +1414,41 @@ class _matchInfo_aState extends State<matchInfo_a> with TickerProviderStateMixin
    Widget _players(){
     return Container(
       height: 150,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-           Container(width: 40,height: 40,
-            child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(100),),
-              child: Image.asset("assets/Marcelo.jpg"),
+      child: Stack(children: <Widget>[
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Container(width: 40,height: 40,
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(100),),
+                child: Image.asset("assets/Marcelo.jpg"),
+              ),
             ),
-          ),
-          Container(width: 80,
-                    child: Text(" 12 مارسيلو ",
-                      style: TextStyle(color: Colors.white,fontSize: 15,fontWeight:FontWeight.w800,),overflow: TextOverflow.visible,),
-                  )
-        ],
+            Container(width: 80,
+              child: Text(" 12 مارسيلو ",
+                style: TextStyle(color: Colors.white,fontSize: 13,fontWeight:FontWeight.w500,),overflow: TextOverflow.visible,),
+            )
+          ],
 
+        ),
+        Positioned(
+            left: 50,bottom: 95,
+            child: Container(
+              width: 28,height: 20,
+              decoration: BoxDecoration(
+                color:Colors.green,
+                borderRadius: BorderRadius.all(Radius.circular(4)),
+
+              ),child: Padding(
+              padding: const EdgeInsets.only(left: 4,right: 4,top: 2),
+              child: Row(children: <Widget>[
+                Text("8.6",style: TextStyle(color: Colors.white,fontSize: 13.5,fontWeight: FontWeight.w500),),
+              ],),
+            ),
+            ))
+
+      ],
       ),
     );
 
@@ -1815,30 +1834,30 @@ class ShapesPointer extends CustomPainter{
 
     final paint = Paint();
 
-    paint.color = Colors.green[600];
+    paint.color =Color.fromRGBO(0, 147, 92,1.0);
     var rect = Rect.fromLTWH(0, 0, size.width,850);
     canvas.drawRect(rect, paint);
 
 
-    paint.color = Colors.green[400];
+    paint.color=Color.fromRGBO(26, 158, 109, 1.0);
     paint.style=PaintingStyle.stroke;
     paint.strokeWidth=4;
     var rectbig = Rect.fromLTWH(size.width/4.5, 0, 225, 100);
     canvas.drawRect(rectbig, paint);
 
-    paint.color = Colors.green[400];
+    paint.color=Color.fromRGBO(26, 158, 109, 1.0);
     paint.style=PaintingStyle.stroke;
     paint.strokeWidth=4;
     var rectsmall = Rect.fromLTWH(size.width/2.77,0, 112, 50);
     canvas.drawRect(rectsmall, paint);
 
-    paint.color = Colors.green[400];
+    paint.color=Color.fromRGBO(26, 158, 109, 1.0);
     paint.style=PaintingStyle.stroke;
     paint.strokeWidth=4;
     var rectbig1 = Rect.fromLTWH(size.width/4.5, 750, 225, 100);
     canvas.drawRect(rectbig1, paint);
 
-    paint.color = Colors.green[400];
+    paint.color=Color.fromRGBO(26, 158, 109, 1.0);
     paint.style=PaintingStyle.stroke;
     paint.strokeWidth=4;
     var rectsmall1 = Rect.fromLTWH(size.width/2.77, 800, 112, 50);
@@ -1849,7 +1868,7 @@ class ShapesPointer extends CustomPainter{
     final startAngle = pi/9;
     final sweepAngle = pi/1.3;
     final useCenter = false;
-    paint.color = Colors.green[400];
+    paint.color=Color.fromRGBO(26, 158, 109, 1.0);
     paint.style = PaintingStyle.stroke;
     paint.strokeWidth = 4;
     canvas.drawArc(rect3, startAngle, sweepAngle, useCenter, paint);
@@ -1858,7 +1877,7 @@ class ShapesPointer extends CustomPainter{
     final startAngle2 = -pi/9;
     final sweepAngle2 = -pi/1.3;
     final useCenter2 = false;
-    paint.color = Colors.green[400];
+    paint.color=Color.fromRGBO(26, 158, 109, 1.0);
     paint.style = PaintingStyle.stroke;
     paint.strokeWidth = 4;
     canvas.drawArc(rect4, startAngle2, sweepAngle2, useCenter2, paint);
@@ -1866,13 +1885,13 @@ class ShapesPointer extends CustomPainter{
 
 
 
-    paint.color=Colors.green[400];
+    paint.color=Color.fromRGBO(26, 158, 109, 1.0);
     paint.style=PaintingStyle.stroke;
     paint.strokeWidth= 4;
     var center = Offset(size.width / 2, size.height / 2);
     canvas.drawCircle(center, 60.0,paint);
 
-    paint.color=Colors.green[400];
+    paint.color=Color.fromRGBO(26, 158, 109, 1.0);
     var line1 = Offset(size.width,size.height/2);
     var line2 = Offset(0,size.height/2);
     canvas.drawLine(line1, line2, paint);
